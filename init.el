@@ -32,12 +32,17 @@
 ;;leader键
 (use-package evil-leader
   :ensure t
+  :init
+  ;;evil-collection 的 warning
+  (setq evil-want-keybinding nil)
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "SPC")
   (evil-leader/set-key
     ;;org file
     "zo" 'find-file
+    ;;reload init.el
+    "zr" 'find-file
     ;;init.el
     "ze" 'find-file
     ;;magit-status
@@ -47,10 +52,14 @@
 ;;evil as vim
 (use-package evil
   :ensure t
+  :init
+  ;;evil-collection 的 warning
+  (setq evil-want-keybinding nil)
   :config
     (evil-mode 1))
 ;;surround,添加环绕字符
 (use-package evil-surround
+  :after evil
   :ensure t
   :config
     (global-evil-surround-mode 1))
@@ -60,6 +69,17 @@
   :ensure t
   :config
     (evil-collection-init))
+;;退出evil的快捷方式
+(use-package evil-escape
+  :after evil
+  :ensure t
+  :config
+  (evil-escape-mode)
+  (setq-default evil-escape-key-sequence "jk")
+  )
+;;其他全局按键
+(global-set-key (kbd "C-g") 'evil-escape)
+
 (use-package which-key
   :config
   (which-key-mode))
@@ -68,6 +88,8 @@
 
 ;;ui
 (use-package all-the-icons)
+;; 关闭开始界面 hide startup message
+(setq inhibit-startup-message t)
 ;;偷用doom的主题
 (use-package doom-themes
   :ensure t
