@@ -27,13 +27,11 @@
 ;; 2. 它会自动 (require)
 ;; 3. 它有很多配置项能让你控制每个环节，从而做到把和这个软件包有关的所
 
-;;better-defaults 比如关闭工具栏等有趣的行为
-(use-package better-defaults)
 ;;leader键
 (use-package evil-leader
   :ensure t
   :init
-  ;;evil-collection 的 warning
+  ;;evil-collection 的 warning, 不得不关闭
   (setq evil-want-keybinding nil)
   :config
   (global-evil-leader-mode)
@@ -45,6 +43,8 @@
     "zr" 'find-file
     ;;init.el
     "ze" 'find-file
+    ;;neotree
+    "1" 'neotree-toggle
     ;;magit-status
     "gg" 'magit-status
     )
@@ -85,11 +85,14 @@
   (which-key-mode))
 ;;pyim
 ;;(use-package pyim)
-
 ;;ui
 (use-package all-the-icons)
 ;; 关闭开始界面 hide startup message
 (setq inhibit-startup-message t)
+;;better-defaults 比如关闭工具栏等有趣的行为
+(use-package better-defaults)
+;;关闭烦人的warning,和我有毛线关系？
+(setq warning-minimum-level :error)
 ;;偷用doom的主题
 (use-package doom-themes
   :ensure t
@@ -114,5 +117,10 @@
   (after-init . doom-modeline-mode)
   :config
   (setq doom-modeline-project-detection 'project))
+;;熟悉的状态栏
+(use-package neotree
+  ;;需要all the icon 包
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 ;;git
 (use-package magit)
