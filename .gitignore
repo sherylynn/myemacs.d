@@ -9,3 +9,10 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+eln-cache/
+elpa/
+history
+pyim/
+transient/
+places
