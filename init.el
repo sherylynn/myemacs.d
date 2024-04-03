@@ -18,17 +18,19 @@
 ;;  (package-install 'use-package))
 
 ;;(require 'use-package)
-;; 让 use-package 永远按需安装软件包
+;; 让 use-package 永远按需安装软件包 ;;use-package will not use :ensure t
 (setq use-package-always-ensure t)
-;; package switch
-(setq my-use-package-vim "evil")
-;;(setq my-use-package-vim "meow")
+;; 让 use-package 永远按需安装软件包 ;;use-package will not use :ensure t
+;;(setq use-package-always-defer t)
 ;; 之后就可以使用它了。
 ;; 比如上文安装并 require better-defaults 的过程就可以简化为这一行：
 ;; 1. 它会判断是否已安装。没有时才会更新 package 缓存并安装它
 ;; 2. 它会自动 (require)
 ;; 3. 它有很多配置项能让你控制每个环节，从而做到把和这个软件包有关的所
 
+;; package switch
+(setq my-use-package-vim "evil")
+;;(setq my-use-package-vim "meow")
 
 (unless (display-graphic-p)
   (xterm-mouse-mode 1)
@@ -40,7 +42,6 @@
 (when (equal my-use-package-vim "evil")
     ;;leader键
     (use-package evil-leader
-    :ensure t
     :init
     ;;evil-collection 的 warning, 不得不关闭
     (setq evil-want-keybinding nil)
@@ -64,7 +65,6 @@
     )
     ;;evil as vim
     (use-package evil
-    :ensure t
     :init
     ;;evil-collection 的 warning
     (setq evil-want-keybinding nil)
@@ -73,19 +73,16 @@
     ;;surround,添加环绕字符
     (use-package evil-surround
     :after evil
-    :ensure t
     :config
         (global-evil-surround-mode 1))
     ;;一些包括evil for magit的操作合集
     (use-package evil-collection
     :after evil
-    :ensure t
     :config
         (evil-collection-init))
     ;;退出evil的快捷方式
     (use-package evil-escape
     :after evil
-    :ensure t
     :config
     (evil-escape-mode)
     (setq-default evil-escape-key-sequence "jk")
@@ -121,7 +118,6 @@
 (setq warning-minimum-level :error)
 ;;偷用doom的主题
 (use-package doom-themes
-  :ensure t
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
