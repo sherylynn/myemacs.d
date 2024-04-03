@@ -38,15 +38,26 @@
 (setq my-use-package-vim "evil")
 ;;(setq my-use-package-vim "meow")
 
+;;leader key
+;;(setq my-use-package-leader "evil-leader")  ;;evil-leader没法复合键位
+;;(setq my-use-package-leader "general") ;; general 配置未完成，可以用whichkey提示
+(setq my-use-package-leader "evil") ;; 发现可以直接用evil来配置 配置方式和general有点像, 少安装个包, 也和evil-leader一样没法使用复合键位
+
 (unless (display-graphic-p)
   (xterm-mouse-mode 1)
   (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
   (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
   )
 
+;;按键总是最重要的，让我们来开始which-key（leader 时候general也会用到)
+(use-package which-key
+  :config
+  (which-key-mode))
 
+;;接下来让我们vim起来
 (when (equal my-use-package-vim "evil")
     ;;leader键
+  (when (equal my-use-package-leader "evil-leader")
     (use-package evil-leader
     :init
     ;;evil-collection 的 warning, 不得不关闭
@@ -64,20 +75,46 @@
         ;;neotree
         "1" 'neotree-toggle
         ;;quit buffer
-        ;;"q" 'kill-buffer
+        "q" 'kill-buffer-and-window
         ;;quit emacs
-        "q" 'kill-emacs
+        "qq" 'kill-emacs ;;evil leader 不能叠词
         ;;magit-status
         "gg" 'magit-status
         )
     )
+  )
+  (when (equal my-use-package-leader "general")
+    (use-package general
+    :config
+        (general-create-definer my-leader-def
+        ;; :prefix my-leader
+        :prefix "SPC")
+    )   
+  )
     ;;evil as vim
     (use-package evil
     :init
     ;;evil-collection 的 warning
     (setq evil-want-keybinding nil)
     :config
-        (evil-mode 1))
+    (evil-mode 1)
+    ;; evil也自带 leader模式
+    (when (equal my-use-package-leader "evil")
+      (evil-set-leader nil (kbd "SPC"))
+      ;;org file
+      (evil-define-key 'normal 'global (kbd "<leader>zo") 'open-myorg)
+      ;;init.el
+      (evil-define-key 'normal 'global (kbd "<leader>ze") 'configure-emacs)
+      ;;neotree
+      (evil-define-key 'normal 'global (kbd "<leader>1") 'neotree-toggle)
+      ;;quit buffer
+      (evil-define-key 'normal 'global (kbd "<leader>q") 'kill-buffer-and-window)
+      ;;quit emacs
+      ;;(evil-define-key 'normal 'global (kbd "<leader>qq") 'kill-emacs);;一样废物，不能和上面的leaderq重合
+      ;;magit-status
+      (evil-define-key 'normal 'global (kbd "<leader>gg") 'magit-status)
+      
+      ))
     ;;surround,添加环绕字符
     (use-package evil-surround
     :after evil
@@ -105,9 +142,6 @@
     (meow-global-mode 1)
     )
 )
-(use-package which-key
-  :config
-  (which-key-mode))
 ;;pyim
 ;;(use-package pyim)
 ;;2 is good
@@ -208,15 +242,6 @@
 )
 ;;minibuffer补全
 ;;mini
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(corfu-terminal)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;;关闭emacs的custom在init文件里瞎下蛋拉屎
+(setq custom-file "~/.emacs.d_my/custom.el")
+(load custom-file 'noerror)

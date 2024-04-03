@@ -28,12 +28,19 @@
   ;;(org-todo "t")
   (org-update-checkbox-count-maybe )
        )
+(defun open-file-in-right-window (filename)
+  "在右边窗口中打开指定的文件。"
+  (interactive "FEnter file name: ")
+  (let ((new-buffer (find-file-noselect filename)))
+    (select-window (split-window-right))
+    (set-window-buffer (selected-window) new-buffer)))
+
 (defun configure-emacs ()
   "configure emacs"
   (interactive)
   ;;(find-file "~/.emacs.d_my/packages.el")
   (find-file "~/.emacs.d_my/init.el")
-  (find-file "~/.emacs.d_my/lisp/init-utils.el")
+  (open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
   )
 (defun open-myorg()
   "configure emacs"
