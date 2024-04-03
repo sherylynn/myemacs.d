@@ -40,8 +40,8 @@
 
 ;;leader key
 ;;(setq my-use-package-leader "evil-leader")  ;;evil-leader没法复合键位
-;;(setq my-use-package-leader "general") ;; general 配置未完成，可以用whichkey提示
-(setq my-use-package-leader "evil") ;; 发现可以直接用evil来配置 配置方式和general有点像, 少安装个包, 也和evil-leader一样没法使用复合键位
+(setq my-use-package-leader "general") ;; general 配置未完成，可以用whichkey提示, 发现都不能叠词，算了
+;;(setq my-use-package-leader "evil") ;; 发现可以直接用evil来配置 配置方式和general有点像, 少安装个包, 也和evil-leader一样没法使用复合键位
 
 (unless (display-graphic-p)
   (xterm-mouse-mode 1)
@@ -77,7 +77,7 @@
         ;;quit buffer
         "q" 'kill-buffer-and-window
         ;;quit emacs
-        "qq" 'kill-emacs ;;evil leader 不能叠词
+        "zz" 'kill-emacs ;;evil leader 不能用qq叠词
         ;;magit-status
         "gg" 'magit-status
         )
@@ -86,12 +86,33 @@
   (when (equal my-use-package-leader "general")
     (use-package general
     :config
-        (general-create-definer my-leader-def
-        ;; :prefix my-leader
-        :prefix "SPC")
-    )   
-  )
-    ;;evil as vim
+    ;;这样就指定了 normal state 下的 leader 键是 SPC、其余的 insert / visual /emacs state 下是 C-,。之后用这个新创建的 definer 分配键位就好：
+    (general-create-definer my-leader-def
+    :states '(normal insert visual emacs)
+    :prefix "SPC"
+    :non-normal-prefix "C-,")
+    ;;定义键位时，可以用 :which-key 或简写 :wk 来指定 which-key 所显示的文字：
+    (my-leader-def
+        ;;z about editor
+        "z" '(:wk "editor")
+        ;;org file
+        "zo" '(open-myorg :wk "open my orgfile")
+        ;;reload init.el
+        "zr" '(find-file :wk "reload emacs")
+        ;;init.el
+        "ze" '(configure-emacs :wk "edit emacs configure")
+        ;;neotree
+        "1" '(neotree-toggle :wk "toggle neotree")
+        ;;quit buffer
+        "q" '(kill-buffer-and-window :wk "quit buffer")
+        ;;quit emacs
+        "zz" 'kill-emacs 
+        ;;magit-status
+        "g" '(:wk "git")
+        "gg" '(magit-status :wk "magit-status")
+     )   
+    ))
+    ;;EVIL:: as vim
     (use-package evil
     :init
     ;;evil-collection 的 warning
@@ -110,7 +131,7 @@
       ;;quit buffer
       (evil-define-key 'normal 'global (kbd "<leader>q") 'kill-buffer-and-window)
       ;;quit emacs
-      ;;(evil-define-key 'normal 'global (kbd "<leader>qq") 'kill-emacs);;一样废物，不能和上面的leaderq重合
+      (evil-define-key 'normal 'global (kbd "<leader>zz") 'kill-emacs);;一样废物，不能和上面的leaderq重合
       ;;magit-status
       (evil-define-key 'normal 'global (kbd "<leader>gg") 'magit-status)
       
