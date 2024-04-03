@@ -2,6 +2,9 @@
 ;;加载自己的方法,在lisp文件夹下的
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-utils)
+;;异步获取自动更新
+(async-shell-command-no-window "git -C ~/.emacs.d_my pull")
+
 ;;设置tuna源
 (setq package-archives '(
   ("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
