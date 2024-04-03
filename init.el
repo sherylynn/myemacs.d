@@ -11,84 +11,110 @@
 ;; 以下用来 bootstrap use-package 自己。在上文设置好软件源后，
 
 ;; 如果 use-package 没安装
-(unless (package-installed-p 'use-package)
+;;(unless (package-installed-p 'use-package)
   ;; 更新本地缓存
-  (package-refresh-contents)
+;;  (package-refresh-contents)
   ;; 之后安装它。use-package 应该是你配置中唯一一个需要这样安装的包。
-  (package-install 'use-package))
+;;  (package-install 'use-package))
 
-(require 'use-package)
+;;(require 'use-package)
 ;; 让 use-package 永远按需安装软件包
 (setq use-package-always-ensure t)
-
+;; package switch
+(setq my-use-package-vim "evil")
+;;(setq my-use-package-vim "meow")
 ;; 之后就可以使用它了。
 ;; 比如上文安装并 require better-defaults 的过程就可以简化为这一行：
 ;; 1. 它会判断是否已安装。没有时才会更新 package 缓存并安装它
 ;; 2. 它会自动 (require)
 ;; 3. 它有很多配置项能让你控制每个环节，从而做到把和这个软件包有关的所
 
-;;leader键
-(use-package evil-leader
-  :ensure t
-  :init
-  ;;evil-collection 的 warning, 不得不关闭
-  (setq evil-want-keybinding nil)
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "SPC")
-  (evil-leader/set-key
-    ;;org file
-    "zo" 'find-file
-    ;;reload init.el
-    "zr" 'find-file
-    ;;init.el
-    "ze" 'find-file
-    ;;neotree
-    "1" 'neotree-toggle
-    ;;magit-status
-    "gg" 'magit-status
-    )
-  )
-;;evil as vim
-(use-package evil
-  :ensure t
-  :init
-  ;;evil-collection 的 warning
-  (setq evil-want-keybinding nil)
-  :config
-    (evil-mode 1))
-;;surround,添加环绕字符
-(use-package evil-surround
-  :after evil
-  :ensure t
-  :config
-    (global-evil-surround-mode 1))
-;;一些包括evil for magit的操作合集
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :config
-    (evil-collection-init))
-;;退出evil的快捷方式
-(use-package evil-escape
-  :after evil
-  :ensure t
-  :config
-  (evil-escape-mode)
-  (setq-default evil-escape-key-sequence "jk")
-  )
-;;其他全局按键
-(global-set-key (kbd "C-g") 'evil-escape)
 
+(unless (display-graphic-p)
+  (xterm-mouse-mode 1)
+  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+  (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
+  )
+
+
+(when (equal my-use-package-vim "evil")
+    ;;leader键
+    (use-package evil-leader
+    :ensure t
+    :init
+    ;;evil-collection 的 warning, 不得不关闭
+    (setq evil-want-keybinding nil)
+    :config
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "SPC")
+    (evil-leader/set-key
+        ;;org file
+        "zo" 'find-file
+        ;;reload init.el
+        "zr" 'find-file
+        ;;init.el
+        "ze" 'find-file
+        ;;neotree
+        "1" 'neotree-toggle
+        ;;quit emacs
+        "q" 'kill-emacs
+        ;;magit-status
+        "gg" 'magit-status
+        )
+    )
+    ;;evil as vim
+    (use-package evil
+    :ensure t
+    :init
+    ;;evil-collection 的 warning
+    (setq evil-want-keybinding nil)
+    :config
+        (evil-mode 1))
+    ;;surround,添加环绕字符
+    (use-package evil-surround
+    :after evil
+    :ensure t
+    :config
+        (global-evil-surround-mode 1))
+    ;;一些包括evil for magit的操作合集
+    (use-package evil-collection
+    :after evil
+    :ensure t
+    :config
+        (evil-collection-init))
+    ;;退出evil的快捷方式
+    (use-package evil-escape
+    :after evil
+    :ensure t
+    :config
+    (evil-escape-mode)
+    (setq-default evil-escape-key-sequence "jk")
+    )
+    ;;其他全局按键
+    (global-set-key (kbd "C-g") 'evil-escape)
+);;my-use-package when evil
+(when (equal my-use-package-vim "meow")
+  (use-package meow
+    :config
+    ;;(meow-setup)
+    (meow-global-mode 1)
+    )
+)
 (use-package which-key
   :config
   (which-key-mode))
 ;;pyim
 ;;(use-package pyim)
+;;2 is good
+(setq tab-width 2)
 ;;ui
 (use-package all-the-icons)
 ;; 关闭开始界面 hide startup message
 (setq inhibit-startup-message t)
+;;
+(global-display-line-numbers-mode 1)
+;;
+(setq display-line-numbers-type 'relative)
 ;;better-defaults 比如关闭工具栏等有趣的行为
 (use-package better-defaults)
 ;;关闭烦人的warning,和我有毛线关系？
@@ -168,5 +194,10 @@
   ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
   ;; setting is useful beyond Corfu.
   (setq read-extended-command-predicate #'command-completion-default-include-p))
+;; corfu in terminal
+(use-package corfu-terminal
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
 ;;minibuffer补全
 ;;mini
