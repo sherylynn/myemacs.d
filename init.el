@@ -1,26 +1,29 @@
 ;; ~/.emacs.d/init.el
 ;;加载自己的方法,在lisp文件夹下的
-;;(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-;;(require 'init-utils)
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'init-utils)
 ;;设置tuna源
 (setq package-archives '(
   ("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
   ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
   ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
-;; 以下用来 bootstrap use-package 自己。在上文设置好软件源后，
+;; emacs 29以后use-package 已经内置
+(when (< emacs-major-version 29)
+  ;; 以下用来 bootstrap use-package 自己。在上文设置好软件源后，
+  ;; 如果 use-package 没安装
+  (unless (package-installed-p 'use-package)
+    ;; 更新本地缓存
+    (package-refresh-contents)
+    ;; 之后安装它。use-package 应该是你配置中唯一一个需要这样安装的包。
+    (package-install 'use-package))
 
-;; 如果 use-package 没安装
-;;(unless (package-installed-p 'use-package)
-  ;; 更新本地缓存
-;;  (package-refresh-contents)
-  ;; 之后安装它。use-package 应该是你配置中唯一一个需要这样安装的包。
-;;  (package-install 'use-package))
-
-;;(require 'use-package)
-;; 让 use-package 永远按需安装软件包 ;;use-package will not use :ensure t
+  (require 'use-package)
+  )
+;; 让 use-package 永远按需安装软件包 不知道为啥不行了
+(require 'use-package-ensure)
 (setq use-package-always-ensure t)
-;; 让 use-package 永远按需安装软件包 ;;use-package will not use :ensure t
+;; 让 use-package 永远按需加载软件包 ;;结果全没加载，无语
 ;;(setq use-package-always-defer t)
 ;; 之后就可以使用它了。
 ;; 比如上文安装并 require better-defaults 的过程就可以简化为这一行：
@@ -50,13 +53,15 @@
     (evil-leader/set-leader "SPC")
     (evil-leader/set-key
         ;;org file
-        "zo" 'find-file
+        "zo" 'open-myorg
         ;;reload init.el
         "zr" 'find-file
         ;;init.el
-        "ze" 'find-file
+        "ze" 'configure-emacs
         ;;neotree
         "1" 'neotree-toggle
+        ;;quit buffer
+        ;;"q" 'kill-buffer
         ;;quit emacs
         "q" 'kill-emacs
         ;;magit-status
@@ -192,8 +197,23 @@
   (setq read-extended-command-predicate #'command-completion-default-include-p))
 ;; corfu in terminal
 (use-package corfu-terminal
+  :ensure t
   :config
   (unless (display-graphic-p)
-    (corfu-terminal-mode +1)))
+    (corfu-terminal-mode +1)
+  )
+)
 ;;minibuffer补全
 ;;mini
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(corfu-terminal)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
