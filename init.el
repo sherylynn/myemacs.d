@@ -106,6 +106,13 @@
     "rd" 'find-function
     "rl" 'reload-emacs
     "rr" 'restart-emacs
+    ;;windows 
+    "w" '(:wk "windows")
+    "wq" 'kill-buffer-and-window
+    "wh" 'evil-window-left
+    "wj" 'evil-window-down
+    "wk" 'evil-window-up
+    "wl" 'evil-window-right
     ;;help
     "h" '(:wk "help")
     "hf" 'find-function
