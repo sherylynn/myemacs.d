@@ -5,6 +5,16 @@
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
 
+;;来自purcell的性能优化
+;; Adjust garbage collection threshold for early startup (see use of gcmh below)
+(setq gc-cons-threshold (* 128 1024 1024))
+;; Process performance tuning
+(setq read-process-output-max (* 4 1024 1024))
+(setq process-adaptive-read-buffering nil)
+;; General performance tuning
+(setq jit-lock-defer-time 0)
+
+(setq package-native-compile t)
 ;;设置tuna源
 (setq package-archives '(
   ("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -42,6 +52,13 @@
 ;;(setq my-use-package-leader "evil-leader")  ;;evil-leader没法复合键位
 (setq my-use-package-leader "general") ;; general 配置未完成，可以用whichkey提示, 发现都不能叠词，算了
 ;;(setq my-use-package-leader "evil") ;; 发现可以直接用evil来配置 配置方式和general有点像, 少安装个包, 也和evil-leader一样没法使用复合键位
+
+;;加载emacs重启的插件，方便调试emacs
+(use-package restart-emacs
+  :config
+  ;;重启后重新打开当前窗口
+  (setq restart-emacs-restore-frames t)
+  )
 
 ;;加载evil相关插件（把evil分离出去了，因为很少动)
 (require 'init-evil)
@@ -84,6 +101,11 @@
     ;;magit-status
     "g" '(:wk "git")
     "gg" '(magit-status :wk "magit-status")
+    ;;redo reload restart
+    "r" '(:wk "re-do reload restart")
+    "rd" 'find-function
+    "rl" 'reload-emacs
+    "rr" 'restart-emacs
     ;;help
     "h" '(:wk "help")
     "hf" 'find-function
@@ -116,6 +138,10 @@
 (global-hl-line-mode 1)
 ;;关闭烦人的warning,和我有毛线关系？
 (setq warning-minimum-level :error)
+;;emacs 自动加载外部修改过的文件
+(global-auto-revert-mode 1)
+;;y or n 不要 yes or no
+(fset 'yes-or-no-p 'y-or-n-p)
 ;;偷用doom的主题
 (use-package doom-themes
   :config
