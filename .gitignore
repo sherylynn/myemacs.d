@@ -17,3 +17,6 @@ pyim/
 transient/
 places
 custom.el
+
+#quelpa
+quelpa/

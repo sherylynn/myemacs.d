@@ -14,35 +14,8 @@
 ;; General performance tuning
 (setq jit-lock-defer-time 0)
 
-(setq package-native-compile t)
-;;设置tuna源
-(setq package-archives '(
-  ("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-  ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
-  ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-
-;; emacs 29以后use-package 已经内置
-(when (< emacs-major-version 29)
-  ;; 以下用来 bootstrap use-package 自己。在上文设置好软件源后，
-  ;; 如果 use-package 没安装
-  (unless (package-installed-p 'use-package)
-    ;; 更新本地缓存
-    (package-refresh-contents)
-    ;; 之后安装它。use-package 应该是你配置中唯一一个需要这样安装的包。
-    (package-install 'use-package))
-
-  (require 'use-package)
-  )
-;; 让 use-package 永远按需安装软件包 不知道为啥不行了
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
-;; 让 use-package 永远按需加载软件包 ;;结果全没加载，无语
-;;(setq use-package-always-defer t)
-;; 之后就可以使用它了。
-;; 比如上文安装并 require better-defaults 的过程就可以简化为这一行：
-;; 1. 它会判断是否已安装。没有时才会更新 package 缓存并安装它
-;; 2. 它会自动 (require)
-;; 3. 它有很多配置项能让你控制每个环节，从而做到把和这个软件包有关的所
+;;加载use-package 和源 （把设置分离出去了，因为很少动)
+(require 'init-package)
 
 ;; package switch
 (setq my-use-package-vim "evil")
@@ -58,19 +31,6 @@
   :config
   ;;重启后重新打开当前窗口
   (setq restart-emacs-restore-frames t)
-  )
-;;保存光标历史，记住上个命令
-(use-package savehist
-  :ensure nil
-  :hook (after-init . savehist-mode)
-  :init (setq enable-recursive-minibuffers t ; Allow commands in minibuffers
-              history-length 1000
-              savehist-additional-variables '(mark-ring
-                                              global-mark-ring
-                                              search-ring
-                                              regexp-search-ring
-                                              extended-command-history)
-              savehist-autosave-interval 300)
   )
 
 (use-package saveplace
@@ -91,10 +51,12 @@
   )
 
 ;;按键总是最重要的，让我们来开始which-key（leader 时候general也会用到)
+;;which-key是快捷键提示
 (use-package which-key
   :config
   (which-key-mode))
 
+;;general是通用的按键绑定
 (when (equal my-use-package-leader "general")
 (use-package general
 :config
@@ -199,6 +161,19 @@
   ;;需要all the icon 包
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+;;elisp ()括号🌈彩虹
+(use-package rainbow-delimiters
+  :hook ((prog-mode . rainbow-delimiters-mode)))
+;;自动括号 29.3的emacs还不支持:vc 的命令
+;;(when (< emacs-major-version 30)
+;;    (use-package awesome-pair 
+;;    :quelpa (awesome-pair :fetcher github :repo "manateelazycat/awesome-pair")
+;;    )
+;;  )
+;;(use-package awesome-pair
+;;:vc (:url "" :rev :newest)
+  ;;)
+
 ;;git
 (use-package magit)
 ;;in-buffer补全
@@ -271,6 +246,11 @@
   ;; (setq vertico-cycle t)
   )
 
+;;保存光标历史，记住上个命令,配合vertico使用更香
+(use-package savehist
+  :init
+  (savehist-mode)
+  )
 ;;使用orderless无序补全
 (use-package orderless
   :init
