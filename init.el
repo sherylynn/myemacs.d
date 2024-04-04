@@ -43,6 +43,9 @@
 (setq my-use-package-leader "general") ;; general 配置未完成，可以用whichkey提示, 发现都不能叠词，算了
 ;;(setq my-use-package-leader "evil") ;; 发现可以直接用evil来配置 配置方式和general有点像, 少安装个包, 也和evil-leader一样没法使用复合键位
 
+;;加载evil相关插件（把evil分离出去了，因为很少动)
+(require 'init-evil)
+
 (unless (display-graphic-p)
   (xterm-mouse-mode 1)
   (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
@@ -54,110 +57,40 @@
   :config
   (which-key-mode))
 
-;;接下来让我们vim起来
-(when (equal my-use-package-vim "evil")
-    ;;leader键
-  (when (equal my-use-package-leader "evil-leader")
-    (use-package evil-leader
-    :init
-    ;;evil-collection 的 warning, 不得不关闭
-    (setq evil-want-keybinding nil)
-    :config
-    (global-evil-leader-mode)
-    (evil-leader/set-leader "SPC")
-    (evil-leader/set-key
-        ;;org file
-        "zo" 'open-myorg
-        ;;reload init.el
-        "zr" 'reload-emacs
-        ;;init.el
-        "ze" 'configure-emacs
-        ;;neotree
-        "1" 'neotree-toggle
-        ;;quit buffer
-        "q" 'kill-buffer-and-window
-        ;;quit emacs
-        "zz" 'kill-emacs ;;evil leader 不能用qq叠词
-        ;;magit-status
-        "gg" 'magit-status
-        )
-    )
-  )
-  (when (equal my-use-package-leader "general")
-    (use-package general
-    :config
-    ;;这样就指定了 normal state 下的 leader 键是 SPC、其余的 insert / visual /emacs state 下是 C-,。之后用这个新创建的 definer 分配键位就好：
-    (general-create-definer my-leader-def
-    :states '(normal insert visual emacs)
-    :prefix "SPC"
-    :non-normal-prefix "C-,")
-    ;;定义键位时，可以用 :which-key 或简写 :wk 来指定 which-key 所显示的文字：
-    (my-leader-def
-        ;;z about editor
-        "z" '(:wk "editor")
-        ;;org file
-        "zo" '(open-myorg :wk "open my orgfile")
-        ;;reload init.el
-        "zr" '(reload-emacs :wk "reload emacs")
-        ;;init.el
-        "ze" '(configure-emacs :wk "edit emacs configure")
-        ;;neotree
-        "1" '(neotree-toggle :wk "toggle neotree")
-        ;;quit buffer
-        "q" '(kill-buffer-and-window :wk "quit buffer")
-        ;;quit emacs
-        "zz" 'kill-emacs 
-        ;;magit-status
-        "g" '(:wk "git")
-        "gg" '(magit-status :wk "magit-status")
-     )   
-    ))
-    ;;EVIL:: as vim
-    (use-package evil
-    :init
-    ;;evil-collection 的 warning
-    (setq evil-want-keybinding nil)
-    :config
-    (evil-mode 1)
-    ;; evil也自带 leader模式
-    (when (equal my-use-package-leader "evil")
-      (evil-set-leader nil (kbd "SPC"))
-      ;;org file
-      (evil-define-key 'normal 'global (kbd "<leader>zo") 'open-myorg)
-      ;;init.el
-      (evil-define-key 'normal 'global (kbd "<leader>ze") 'configure-emacs)
-      ;;neotree
-      (evil-define-key 'normal 'global (kbd "<leader>1") 'neotree-toggle)
-      ;;quit buffer
-      (evil-define-key 'normal 'global (kbd "<leader>q") 'kill-buffer-and-window)
-      ;;reload emacs
-      (evil-define-key 'normal 'global (kbd "<leader>zr") 'reload-emacs);;一样废物，不能和上面的leaderq重合
-      ;;quit emacs
-      (evil-define-key 'normal 'global (kbd "<leader>zz") 'kill-emacs);;一样废物，不能和上面的leaderq重合
-      ;;magit-status
-      (evil-define-key 'normal 'global (kbd "<leader>gg") 'magit-status)
-      
-      ))
-    ;;surround,添加环绕字符
-    (use-package evil-surround
-    :after evil
-    :config
-        (global-evil-surround-mode 1))
-    ;;一些包括evil for magit的操作合集
-    (use-package evil-collection
-    :after evil
-    :config
-        (evil-collection-init))
-    ;;退出evil的快捷方式
-    (use-package evil-escape
-    :after evil
-    :config
-    (evil-escape-mode)
-    (setq-default evil-escape-key-sequence "jk")
-    )
-    ;;其他全局按键
-    (global-set-key (kbd "C-g") 'evil-escape)
-);;my-use-package when evil
+(when (equal my-use-package-leader "general")
+(use-package general
+:config
+;;这样就指定了 normal state 下的 leader 键是 SPC、其余的 insert / visual /emacs state 下是 C-,。之后用这个新创建的 definer 分配键位就好：
+(general-create-definer my-leader-def
+:states '(normal insert visual emacs)
+:prefix "SPC"
+:non-normal-prefix "C-,")
+;;定义键位时，可以用 :which-key 或简写 :wk 来指定 which-key 所显示的文字：
+(my-leader-def
+    ;;z about editor
+    "z" '(:wk "editor")
+    ;;org file
+    "zo" '(open-myorg :wk "open my orgfile")
+    ;;reload init.el
+    "zr" '(reload-emacs :wk "reload emacs")
+    ;;init.el
+    "ze" '(configure-emacs :wk "edit emacs configure")
+    ;;neotree
+    "1" '(neotree-toggle :wk "toggle neotree")
+    ;;quit buffer
+    "q" '(kill-buffer-and-window :wk "quit buffer")
+    ;;quit emacs
+    "zz" 'kill-emacs 
+    ;;magit-status
+    "g" '(:wk "git")
+    "gg" '(magit-status :wk "magit-status")
+    ;;help
+    "h" '(:wk "help")
+    "hf" 'find-function
+    "hv" 'find-variable
+    "hk" 'find-function-on-key
+    )   
+))
 (when (equal my-use-package-vim "meow")
   (use-package meow
     :config
@@ -173,12 +106,14 @@
 (use-package all-the-icons)
 ;; 关闭开始界面 hide startup message
 (setq inhibit-startup-message t)
-;;
+;;打开行号
 (global-display-line-numbers-mode 1)
-;;
+;;相对行号
 (setq display-line-numbers-type 'relative)
 ;;better-defaults 比如关闭工具栏等有趣的行为
 (use-package better-defaults)
+;;高亮当前行
+(global-hl-line-mode 1)
 ;;关闭烦人的warning,和我有毛线关系？
 (setq warning-minimum-level :error)
 ;;偷用doom的主题
@@ -281,9 +216,18 @@
   ;; (setq vertico-cycle t)
   )
 
+;;使用orderless无序补全
+(use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
 
 
 
 ;;关闭emacs的custom在init文件里瞎下蛋拉屎
 (setq custom-file "~/.emacs.d_my/custom.el")
-(load custom-file 'noerror)
+(load custom-file 'no-error 'no-message)
