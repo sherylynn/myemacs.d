@@ -59,9 +59,30 @@
   ;;重启后重新打开当前窗口
   (setq restart-emacs-restore-frames t)
   )
+;;保存光标历史，记住上个命令
+(use-package savehist
+  :ensure nil
+  :hook (after-init . savehist-mode)
+  :init (setq enable-recursive-minibuffers t ; Allow commands in minibuffers
+              history-length 1000
+              savehist-additional-variables '(mark-ring
+                                              global-mark-ring
+                                              search-ring
+                                              regexp-search-ring
+                                              extended-command-history)
+              savehist-autosave-interval 300)
+  )
+
+(use-package saveplace
+  :ensure nil
+  :hook (after-init . save-place-mode))
+
 
 ;;加载evil相关插件（把evil分离出去了，因为很少动)
 (require 'init-evil)
+
+;;加载org相关插件（把org分离出去了，因为很少动)
+(require 'init-org)
 
 (unless (display-graphic-p)
   (xterm-mouse-mode 1)
@@ -106,17 +127,18 @@
     "rd" 'find-function
     "rl" 'reload-emacs
     "rr" 'restart-emacs
+    "rc" '(package-recompile-all :wk "recompile package")
     ;;windows 
     "w" '(:wk "windows")
     "wq" 'kill-buffer-and-window
-    "wh" 'evil-window-left
-    "wj" 'evil-window-down
-    "wk" 'evil-window-up
-    "wl" 'evil-window-right
+    "wh" 'evil-window-left ;;C-w h
+    "wj" 'evil-window-down ;;C-w j
+    "wk" 'evil-window-up ;;C-w k
+    "wl" 'evil-window-right ;;C-w l
     ;;help
     "h" '(:wk "help")
-    "hf" 'find-function
-    "hv" 'find-variable
+    "hf" 'describe-function ;;"hf" 'find-function
+    "hv" 'describe-variable ;;"hv" 'find-variable
     "hk" 'find-function-on-key
     )   
 ))
