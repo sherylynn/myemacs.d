@@ -69,7 +69,7 @@
         ;;org file
         "zo" 'open-myorg
         ;;reload init.el
-        "zr" 'find-file
+        "zr" 'reload-emacs
         ;;init.el
         "ze" 'configure-emacs
         ;;neotree
@@ -98,7 +98,7 @@
         ;;org file
         "zo" '(open-myorg :wk "open my orgfile")
         ;;reload init.el
-        "zr" '(find-file :wk "reload emacs")
+        "zr" '(reload-emacs :wk "reload emacs")
         ;;init.el
         "ze" '(configure-emacs :wk "edit emacs configure")
         ;;neotree
@@ -130,6 +130,8 @@
       (evil-define-key 'normal 'global (kbd "<leader>1") 'neotree-toggle)
       ;;quit buffer
       (evil-define-key 'normal 'global (kbd "<leader>q") 'kill-buffer-and-window)
+      ;;reload emacs
+      (evil-define-key 'normal 'global (kbd "<leader>zr") 'reload-emacs);;一样废物，不能和上面的leaderq重合
       ;;quit emacs
       (evil-define-key 'normal 'global (kbd "<leader>zz") 'kill-emacs);;一样废物，不能和上面的leaderq重合
       ;;magit-status
@@ -262,7 +264,26 @@
   )
 )
 ;;minibuffer补全
-;;mini
+(use-package vertico
+  :init
+  (vertico-mode)
+
+  ;; Different scroll margin
+  ;; (setq vertico-scroll-margin 0)
+
+  ;; Show more candidates
+  ;; (setq vertico-count 20)
+
+  ;; Grow and shrink the Vertico minibuffer
+  ;; (setq vertico-resize t)
+
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  ;; (setq vertico-cycle t)
+  )
+
+
+
+
 ;;关闭emacs的custom在init文件里瞎下蛋拉屎
 (setq custom-file "~/.emacs.d_my/custom.el")
 (load custom-file 'noerror)

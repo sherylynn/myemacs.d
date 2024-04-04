@@ -42,6 +42,12 @@
   (find-file "~/.emacs.d_my/init.el")
   (open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
   )
+(defun reload-emacs ()
+  "reload emacs"
+  (interactive)
+  ;;重新加载
+  (load-file "~/.emacs.d_my/init.el")
+  )
 (defun open-myorg()
   "configure emacs"
   (interactive)
