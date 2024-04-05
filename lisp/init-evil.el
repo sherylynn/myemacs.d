@@ -55,6 +55,7 @@
       (evil-define-key 'normal 'global (kbd "<leader>gg") 'magit-status)
       
       ))
+    ;;evil-anzu 
     ;;surround,添加环绕字符
     (use-package evil-surround
     :after evil

@@ -179,6 +179,8 @@
 
 ;;加载补全配置
 (require 'init-completion)
+;;pyim
+(require 'init-pyim)
 
 ;;关闭emacs的custom在init文件里瞎下蛋拉屎
 (setq custom-file "~/.emacs.d_my/custom.el")
