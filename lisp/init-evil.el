@@ -76,4 +76,10 @@
     ;;其他全局按键
     (global-set-key (kbd "C-g") 'evil-escape)
 );;my-use-package when evil
+
+
+;;evil-matchit 并不完全依赖evil 主要用来搞一点奇怪的匹配
+(use-package evil-matchit
+  :config
+  (global-evil-matchit-mode 1))
 (provide 'init-evil)
