@@ -165,6 +165,11 @@
   (after-init . doom-modeline-mode)
   :config
   (setq doom-modeline-project-detection 'project))
+;;直接用doom的dashboard
+(use-package dashboard
+  :config
+  (progn
+        (dashboard-setup-startup-hook)))
 ;;熟悉的文件栏
 (use-package neotree
   ;;需要all the icon 包
