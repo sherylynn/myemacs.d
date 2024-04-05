@@ -110,6 +110,9 @@
       "hf" 'describe-function ;;"hf" 'find-function
       "hv" 'describe-variable ;;"hv" 'find-variable
       "hk" 'find-function-on-key
+      ;;toggle
+      "t" '(:wk "toggle")
+      "tt" 'vterm-other-window
       )
     ))
 (when (equal my-use-package-vim "meow")
@@ -189,12 +192,27 @@
   :hook (prog-mode . format-all-mode)
   ;; 绑定一个手动格式化的快捷键
   :bind ("C-c f" . #'format-all-region-or-buffer))
-
+;;来点语法高亮,自动设置treesit
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (setq treesit-font-lock-level 4)
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 ;;git
 (use-package magit)
 
+;;(use-package fingertip) ;;又是github包
+;;lsp客户端
+(use-package eglot
+  :hook (prog-mode . eglot-ensure)
+  :bind ("C-c e f" . eglot-format))
 ;;加载补全配置
 (require 'init-completion)
+
+;;来点终端
+(use-package vterm)
 ;;pyim
 (require 'init-pyim)
 
