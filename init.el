@@ -5,6 +5,9 @@
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
 
+;;加载use-package 和源 （把设置分离出去了，因为很少动)
+(require 'init-package)
+
 ;;来自purcell的性能优化
 ;; Adjust garbage collection threshold for early startup (see use of gcmh below)
 (setq gc-cons-threshold (* 128 1024 1024))
@@ -14,8 +17,11 @@
 ;; General performance tuning
 (setq jit-lock-defer-time 0)
 
-;;加载use-package 和源 （把设置分离出去了，因为很少动)
-(require 'init-package)
+;;使用GC优化包
+(use-package gcmh
+  :config
+  (gcmh-mode 1)
+  )
 
 ;; package switch
 (setq my-use-package-vim "evil")
@@ -111,8 +117,6 @@
     (meow-global-mode 1)
     )
 )
-;;pyim
-;;(use-package pyim)
 ;;2 is good
 (setq tab-width 2)
 ;;ui
@@ -156,7 +160,7 @@
   (after-init . doom-modeline-mode)
   :config
   (setq doom-modeline-project-detection 'project))
-;;熟悉的状态栏
+;;熟悉的文件栏
 (use-package neotree
   ;;需要all the icon 包
   :config
@@ -173,6 +177,9 @@
 ;;(use-package awesome-pair
 ;;:vc (:url "" :rev :newest)
   ;;)
+;;所以使用旧的括号匹配
+;;(use-package paredit) ;;发现还是没匹配，用emacs自带的
+(electric-pair-mode 1)
 
 ;;git
 (use-package magit)
@@ -181,6 +188,7 @@
 (require 'init-completion)
 ;;pyim
 (require 'init-pyim)
+
 
 ;;关闭emacs的custom在init文件里瞎下蛋拉屎
 (setq custom-file "~/.emacs.d_my/custom.el")
