@@ -1,10 +1,10 @@
 ;; ~/.emacs.d/init.el
 ;;加载自己的方法,在lisp文件夹下的
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'init-termux)
 (require 'init-utils)
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
-(require 'init-termux)
 
 ;;加载use-package 和源 （把设置分离出去了，因为很少动)
 (require 'init-package)
