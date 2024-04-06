@@ -4,6 +4,7 @@
 (require 'init-utils)
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
+(require 'init-termux)
 
 ;;加载use-package 和源 （把设置分离出去了，因为很少动)
 (require 'init-package)

@@ -22,3 +22,5 @@ custom.el
 quelpa/
 
 ido.last
+recentf
+tree-sitter/
