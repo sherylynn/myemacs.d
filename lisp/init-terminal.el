@@ -7,7 +7,10 @@
     ))
 (when (equal my-use-package-terminal "eshell")
   ;;来点终端
-  (use-package eshell)
-  (eshell/toggle)
-  )
+  ;;(use-package eshell-toggle)
+  (defun toggle-terminal()
+    (interactive)
+    (select-window (split-window-right))
+    (eshell )
+    ))
 (provide 'init-terminal)

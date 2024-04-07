@@ -2,7 +2,7 @@
 ;;加载自己的方法,在 lisp 文件夹下的
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 ;;默认终端 vterm
-;;(setq my-use-package-terminal "vterm")
+;;(setq my-use-package-terminal "eshell")
 ;;需要全局变量
 (defvar my-use-package-terminal "eshell")
 ;;init-termux 中会改默认终端
