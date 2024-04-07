@@ -1,11 +1,11 @@
-(when (equal my-use-package-termnial "vterm")
+(when (equal my-use-package-terminal "vterm")
   ;;来点终端
   (use-package vterm)
   (defun toggle-terminal()
     (interactive)
     (vterm-other-window )
     ))
-(when (equal my-use-package-termnial "eshell")
+(when (equal my-use-package-terminal "eshell")
   ;;来点终端
   (use-package eshell)
   (eshell/toggle)
