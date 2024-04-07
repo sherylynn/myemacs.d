@@ -124,6 +124,7 @@
      ;;toggle
      "t" '(:wk "toggle")
      "tt" 'toggle-terminal
+     "ti" 'toggle-input-method
      )
     ))
 (when (equal my-use-package-vim "meow")
@@ -134,6 +135,7 @@
     )
   )
 ;;2 is good
+;;
 (setq tab-width 2)
 ;;ui
 (use-package all-the-icons)

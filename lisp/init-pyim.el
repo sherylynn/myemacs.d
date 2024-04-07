@@ -5,6 +5,8 @@
   ;;默认输入法设置
   (setq default-input-method "pyim")
   (setq pyim-page-length 5)
+  (require 'pyim-dregcache)
+  (setq pyim-dcache-backend 'pyim-dregcache)
   )
 ;;使用原家产的悬浮选词窗
 (use-package posframe
