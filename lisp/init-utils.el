@@ -4,7 +4,7 @@
   (insert "- [ ]")
   (evil-escape )
   (org-update-checkbox-count-maybe )
-       )
+  )
 (defun insert-now-time()
   "insert now time"
   (interactive)
@@ -27,7 +27,7 @@
   ;;(insert "TODO")
   ;;(org-todo "t")
   (org-update-checkbox-count-maybe )
-       )
+  )
 (defun open-file-in-right-window (filename)
   "在右边窗口中打开指定的文件。"
   (interactive "FEnter file name: ")
