@@ -10,7 +10,7 @@
   ;;(use-package eshell-toggle)
   (defun toggle-terminal()
     (interactive)
-    (select-window (split-window-right))
+    (select-window (split-window-below))
     (eshell )
     ))
 (provide 'init-terminal)
