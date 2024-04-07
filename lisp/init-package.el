@@ -22,15 +22,19 @@
 (setq use-package-always-ensure t)
 
 ;; emacs 30有 自带的vc，不然只能用quelpa
-;;(when (< emacs-major-version 30)
-    ;;(use-package quelpa 
-    ;;:config ; 在 (require) 之后需要执行的表达式
-    ;;(use-package quelpa-use-package) ; 把 quelpa 嵌入 use-package 的宏扩展
-    ;;(quelpa-use-package-activate-advice)) ; 启用这个 advice
+(when (< emacs-major-version 30)
+    (use-package quelpa 
+      :init
+    ;;原来可以配置选项禁用傻逼的自动更新
+      ;;加快启动速度
+    (setq quelpa-update-melpa-p nil)
+    :config ; 在 (require) 之后需要执行的表达式
+    (use-package quelpa-use-package) ; 把 quelpa 嵌入 use-package 的宏扩展
+    (quelpa-use-package-activate-advice)) ; 启用这个 advice
 
     ;;但是要hack掉ensure的实现方式
-    ;;(setq use-package-ensure-function 'quelpa) ;;quelpa启动的时候还检查github上包是否有更新，我无语了,太慢了,而且还会检查自己，弃用
-  ;;)
+    (setq use-package-ensure-function 'quelpa) ;;quelpa启动的时候还检查github上包是否有更新，我无语了,太慢了,而且还会检查自己，弃用
+  )
 
 ;; 让 use-package 永远按需加载软件包 ;;结果全没加载，无语
 ;;(setq use-package-always-defer t)

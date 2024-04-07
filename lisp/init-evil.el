@@ -36,6 +36,8 @@
     (setq evil-want-keybinding nil)
     :config
     (evil-mode 1)
+    ;;使用emacs自带的undo
+    (setq evil-undo-system "undo-redo")
     ;; evil也自带 leader模式
     (when (equal my-use-package-leader "evil")
       (evil-set-leader nil (kbd "SPC"))

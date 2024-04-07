@@ -18,4 +18,15 @@
   :config
   (pyim-basedict-enable)
   )
+;;自动括号 29.3 的 emacs 还不支持:vc 的命令
+(when (< emacs-major-version 30)
+  (use-package pyim-tsinghua-dict
+    :quelpa (pyim-tsinghua-dict :fetcher github :repo "redguardtoo/pyim-tsinghua-dict")
+    :config
+    (pyim-tsinghua-dict-enable)
+    )
+  )
+;;(use-package awesome-pair
+;;:vc (:url "" :rev :newest)
+;;)
 (provide 'init-pyim)
