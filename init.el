@@ -11,12 +11,18 @@
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
 
+;;加快启动速度
+(setq my-init-config-timeup "fast")
+;;(setq my-init-config-timeup "debug")
+
 ;;加载 use-package 和源 （把设置分离出去了，因为很少动)
 (require 'init-package)
 ;;为了更好的测试一下启动时间
-(use-package benchmark-init
-  :config
-  (add-hook 'after-init-hook 'benchmark-init/deactivate)
+(when (equal my-init-config-timeup "debug")
+  (use-package benchmark-init
+    :config
+    (add-hook 'after-init-hook 'benchmark-init/deactivate)
+    )
   )
 
 ;;load terminal, 跟据 my-use-package-terminal 决定终端
@@ -121,10 +127,12 @@
   :config
   (setq doom-modeline-project-detection 'project))
 ;;直接用 doom 的 dashboard
-(use-package dashboard
-  :config
-  (progn
-    (dashboard-setup-startup-hook)))
+(when (equal my-init-config-timeup "debug")
+  (use-package dashboard
+    :config
+    (progn
+      (dashboard-setup-startup-hook)))
+  )
 ;;熟悉的文件栏
 (use-package neotree
   ;;需要 all the icon 包
@@ -165,9 +173,9 @@
 
 ;;(use-package fingertip) ;;又是 github 包
 ;;lsp 客户端
-(use-package eglot
-  :hook (prog-mode . eglot-ensure)
-  :bind ("C-c e f" . eglot-format))
+;;(use-package eglot
+;;:hook (prog-mode . eglot-ensure)
+;;:bind ("C-c e f" . eglot-format))
 ;;加载快捷键
 (require 'init-key)
 ;;加载补全配置
