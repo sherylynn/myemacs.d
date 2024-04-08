@@ -66,6 +66,8 @@
     ;;一些包括evil for magit的操作合集
     (use-package evil-collection
     :after evil
+    ;;:custom
+    ;;()
     :config
         (evil-collection-init))
     ;;退出evil的快捷方式
