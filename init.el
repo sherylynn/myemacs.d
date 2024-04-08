@@ -138,6 +138,15 @@
   ;;需要 all the icon 包
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+;;熟悉的tab栏
+(when (< emacs-major-version 30)
+  (use-package awesome-tab
+    :quelpa (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")
+    :config
+    (awesome-tab-mode t)
+    )
+  )
+
 ;;elisp ()括号🌈彩虹
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))

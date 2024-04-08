@@ -40,7 +40,8 @@
   (interactive)
   ;;(find-file "~/.emacs.d_my/packages.el")
   (find-file "~/.emacs.d_my/init.el")
-  (open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
+  ;;配置模块化，就不主打打开这个了
+  ;;(open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
   )
 (defun reload-emacs ()
   "reload emacs"

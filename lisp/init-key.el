@@ -58,10 +58,14 @@
      ;;run func
      "x" '(:wk "exce func")
      "xx" 'vterm-other-window
-     ;;toggle
-     "t" '(:wk "toggle")
+     ;;toggle/tab
+     "t" '(:wk "toggle/tab")
      "tt" 'toggle-terminal
      "ti" 'toggle-input-method
+     "th" '(awesome-tab-backward-tab :wk "left tab")
+     "tl" '(awesome-tab-forward-tab :wk "right tab")
+     ;;"tj" '(awesome-tab-backward-tab :wk "close tab")
+
      )
     ))
 (when (equal my-use-package-vim "meow")
