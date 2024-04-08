@@ -33,7 +33,8 @@
     (quelpa-use-package-activate-advice)) ; 启用这个 advice
 
     ;;但是要hack掉ensure的实现方式
-    (setq use-package-ensure-function 'quelpa) ;;quelpa启动的时候还检查github上包是否有更新，我无语了,太慢了,而且还会检查自己，弃用
+    ;;(setq use-package-ensure-function 'quelpa) ;;quelpa启动的时候还检查github上包是否有更新，我无语了,太慢了,而且还会检查自己，弃用
+    ;;明显降低启动速度，不用use-package的ensure了
   )
 
 ;; 让 use-package 永远按需加载软件包 ;;结果全没加载，无语
