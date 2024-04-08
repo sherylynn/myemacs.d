@@ -15,58 +15,61 @@
       :non-normal-prefix "C-,")
     ;;定义键位时，可以用 :which-key 或简写 :wk 来指定 which-key 所显示的文字：
     (my-leader-def
-     ;;z about editor
-     "z" '(:wk "editor")
-     ;;org file
-     "zo" '(open-myorg :wk "open my orgfile")
-     ;;reload init.el
-     "zr" '(reload-emacs :wk "reload emacs")
-     ;;init.el
-     "ze" '(configure-emacs :wk "edit emacs configure")
-     ;;quit emacs
-     "zz" 'kill-emacs
-     ;;git pull
-     "zf" 'magit-pull-from-upstream
-     ;;neotree
-     "1" '(neotree-toggle :wk "toggle neotree")
-     ;;quit buffer
-     "q" '(kill-buffer-and-window :wk "quit buffer")
-     ;;magit-status
-     "g" '(:wk "git")
-     "gg" '(magit-status :wk "magit-status")
-     ;;redo reload restart
-     "r" '(:wk "re-do reload restart")
-     "rd" 'find-function
-     "rl" 'reload-emacs
-     "rr" 'restart-emacs
-     "rc" '(package-recompile-all :wk "recompile package")
-     ;;windows
-     "w" '(:wk "windows")
-     "wq" 'kill-buffer-and-window
-     "wh" 'evil-window-left ;;C-w h
-     "wj" 'evil-window-down ;;C-w j
-     "wk" 'evil-window-up ;;C-w k
-     "wl" 'evil-window-right ;;C-w l
-     ;;help
-     "h" '(:wk "help")
-     "hf" 'describe-function ;;"hf" 'find-function
-     "hv" 'describe-variable ;;"hv" 'find-variable
-     "hk" 'find-function-on-key
-     ;;buffer func
-     "b" '(:wk "buffer func")
-     "bf" 'format-all-region-or-buffer
-     ;;run func
-     "x" '(:wk "exce func")
-     "xx" 'vterm-other-window
-     ;;toggle/tab
-     "t" '(:wk "toggle/tab")
-     "tt" 'toggle-terminal
-     "ti" 'toggle-input-method
-     "th" '(awesome-tab-backward-tab :wk "left tab")
-     "tl" '(awesome-tab-forward-tab :wk "right tab")
-     ;;"tj" '(awesome-tab-backward-tab :wk "close tab")
+      ;;z about editor
+      "z" '(:wk "editor")
+      ;;org file
+      "zo" '(open-myorg :wk "open my orgfile")
+      ;;reload init.el
+      "zr" '(reload-emacs :wk "reload emacs")
+      ;;init.el
+      "ze" '(configure-emacs :wk "edit emacs configure")
+      ;;quit emacs
+      "zz" 'kill-emacs
+      ;;git pull
+      "zf" 'magit-pull-from-upstream
+      ;;neotree
+      "1" '(neotree-toggle :wk "toggle neotree")
+      ;;quit buffer
+      "q" '(kill-buffer-and-window :wk "quit buffer")
+      ;;magit-status
+      "g" '(:wk "git")
+      "gg" '(magit-status :wk "magit-status")
+      ;;redo reload restart
+      "r" '(:wk "re-do reload restart")
+      "rd" 'find-function
+      "rl" 'reload-emacs
+      "rr" 'restart-emacs
+      "rc" '(package-recompile-all :wk "recompile package")
+      ;;windows
+      "w" '(:wk "windows")
+      "wq" 'kill-buffer-and-window
+      "wh" 'evil-window-left ;;C-w h
+      "wj" 'evil-window-down ;;C-w j
+      "wk" 'evil-window-up ;;C-w k
+      "wl" 'evil-window-right ;;C-w l
+      ;;help
+      "h" '(:wk "help")
+      "hf" 'describe-function ;;"hf" 'find-function
+      "hv" 'describe-variable ;;"hv" 'find-variable
+      "hk" 'find-function-on-key
+      ;;buffer func
+      "b" '(:wk "buffer func")
+      "bf" 'format-all-region-or-buffer
+      ;;edit
+      "e" '(:wk "edit")
+      "ef" '(format-all-buffer :wk "edit format")
+      ;;run func
+      "x" '(:wk "exce func")
+      "xx" 'vterm-other-window
+      ;;toggle/tab
+      "t" '(:wk "toggle/tab")
+      "tt" 'toggle-terminal
+      "ti" 'toggle-input-method
+      "th" '(awesome-tab-backward-tab :wk "left tab")
+      "tl" '(awesome-tab-forward-tab :wk "right tab")
+      ;;"tj" '(awesome-tab-backward-tab :wk "close tab")
 
-     )
+      )
     ))
 (when (equal my-use-package-vim "meow")
   (use-package meow
