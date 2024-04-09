@@ -9,9 +9,9 @@
   (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
     (setenv "PATH" (concat (getenv "PATH") ":" termuxpath))
     (setq exec-path (append exec-path (list termuxpath)))))
-(unless (string-equal system-type "android")
+(when (string-equal system-type "windows-nt")
   ;; 需要全局变量来操作
   (make-variable-buffer-local 'my-use-package-terminal)
-  (set 'my-use-package-terminal "vterm")
+  (set 'my-use-package-terminal "eshell")
   )
-(provide 'init-termux)
+(provide 'init-system)

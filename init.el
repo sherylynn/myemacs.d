@@ -4,9 +4,9 @@
 ;;默认终端 vterm
 ;;(setq my-use-package-terminal "eshell")
 ;;需要全局变量
-(defvar my-use-package-terminal "eshell")
-;;init-termux 中会改默认终端
-(require 'init-termux)
+(defvar my-use-package-terminal "vterm")
+;;init-system 中会改默认终端
+(require 'init-system)
 (require 'init-utils)
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
