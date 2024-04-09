@@ -68,6 +68,9 @@
       "th" '(awesome-tab-backward-tab :wk "left tab")
       "tl" '(awesome-tab-forward-tab :wk "right tab")
       ;;"tj" '(awesome-tab-backward-tab :wk "close tab")
+      ;;-
+      "-" 'text-scale-decrease
+      "=" 'text-scale-increase
 
       )
     ))
