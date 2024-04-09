@@ -19,7 +19,7 @@
 ;;)
 
 ;;换一个包试试, 这个包写的不好
-;;太丑了这个包
+;;太丑了这个包,终端下效果不好，表格竖线太粗
 ;;(when (< emacs-major-version 30)
 ;;(use-package org-visual-outline
 ;;:quelpa (org-visual-outline :fetcher github :repo "legalnonsense/org-visual-outline")
@@ -43,6 +43,7 @@
 
 ;;用一个写了corfu的作者的包
 ;;可以终端下进行渲染，但是没有缩进对齐
+;;终端下面还是丑陋的竖线，实在是太粗了
 (use-package org-modern
   ;;:custom
   ;; Org modern settings

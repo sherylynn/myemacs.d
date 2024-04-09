@@ -69,10 +69,11 @@
 ;;(use-package default-text-scale)
 ;;也能实现全局大小调整
 ;;中文英文等宽
-(use-package cnfonts
-  :config
-  (cnfonts-mode 1)
-  ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
+(when (display-graphic-p)
+  (use-package cnfonts
+    :config
+    (cnfonts-mode 1)
+    ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
+    )
   )
-
 (provide 'init-ui)
