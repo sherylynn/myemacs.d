@@ -7,6 +7,8 @@
 (defvar my-use-package-terminal "vterm")
 ;;init-system 中会改默认终端
 (require 'init-system)
+
+;;加载一些init-key and init command 可能用到的方法
 (require 'init-utils)
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
@@ -185,6 +187,7 @@
 ;;(use-package eglot
 ;;:hook (prog-mode . eglot-ensure)
 ;;:bind ("C-c e f" . eglot-format))
+
 ;;加载快捷键
 (require 'init-key)
 ;;加载补全配置
