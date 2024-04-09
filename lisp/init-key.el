@@ -73,8 +73,10 @@
       ;;
       ;;"-" 'text-scale-decrease ;;这个是默认自带的方法
       ;;"=" 'text-scale-increase ;;这个是默认自带的方法，还可以直接ctrl和滚轮配合调整
-      "-" 'default-text-scale-decrease
-      "=" 'default-text-scale-increase
+      ;;"-" 'default-text-scale-decrease ;; purcell 的default-text-scale 和 cnfonts 有冲突
+      ;;"=" 'default-text-scale-increase ;; 直接用 cnfonts的 方法
+      "-" 'cnfonts-decrease-fontsize
+      "=" 'cnfonts-increase-fontsize
 
       )
     ))

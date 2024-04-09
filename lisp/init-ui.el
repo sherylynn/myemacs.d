@@ -66,8 +66,8 @@
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
 ;;全局字体大小调整
-(use-package default-text-scale)
-
+;;(use-package default-text-scale)
+;;也能实现全局大小调整
 ;;中文英文等宽
 (use-package cnfonts
   :config
