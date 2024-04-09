@@ -65,7 +65,7 @@
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
-;;字体调整
+;;全局字体大小调整
 (use-package default-text-scale)
 
 (provide 'init-ui)

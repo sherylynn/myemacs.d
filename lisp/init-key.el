@@ -67,10 +67,14 @@
       "ti" 'toggle-input-method
       "th" '(awesome-tab-backward-tab :wk "left tab")
       "tl" '(awesome-tab-forward-tab :wk "right tab")
+      "t-" '(awesome-tab-forward-tab :wk "right tab")
+      "t=" '(awesome-tab-forward-tab :wk "right tab")
       ;;"tj" '(awesome-tab-backward-tab :wk "close tab")
-      ;;-
-      "-" 'text-scale-decrease
-      "=" 'text-scale-increase
+      ;;
+      ;;"-" 'text-scale-decrease ;;这个是默认自带的方法
+      ;;"=" 'text-scale-increase ;;这个是默认自带的方法，还可以直接ctrl和滚轮配合调整
+      "-" 'default-text-scale-decrease
+      "=" 'default-text-scale-increase
 
       )
     ))
