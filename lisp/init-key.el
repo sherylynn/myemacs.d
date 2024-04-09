@@ -58,6 +58,8 @@
       ;;edit
       "e" '(:wk "edit")
       "ef" '(format-all-buffer :wk "edit format")
+      ;;配置中文字体
+      "ec" '(cnfonts-edit-profile :wk "edit chinese fonts")
       ;;run func
       "x" '(:wk "exce func")
       "xx" 'vterm-other-window
