@@ -21,6 +21,8 @@
       "zo" '(open-myorg :wk "open my orgfile")
       ;;reload init.el
       "zr" '(reload-emacs :wk "reload emacs")
+      ;;configure zsh
+      "zs" '(configure-zsh :wk "edit zsh configure")
       ;;init.el
       "ze" '(configure-emacs :wk "edit emacs configure")
       ;;quit emacs
@@ -60,6 +62,9 @@
       "ef" '(format-all-buffer :wk "edit format")
       ;;配置中文字体
       "ec" '(cnfonts-edit-profile :wk "edit chinese fonts")
+      ;;file
+      "f" '(:wk "find or file")
+      "ff" 'find-file
       ;;run func
       "x" '(:wk "exce func")
       "xx" 'vterm-other-window
