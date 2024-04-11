@@ -73,6 +73,9 @@
       "it" 'insert-todo
       "in" 'insert-now-time 
       "id" 'insert-now-schedule
+      ;;change
+      "c" '(:wk "change")
+      "ct" 'change-todo
       ;;run func
       "x" '(:wk "exce func")
       "xx" 'vterm-other-window

@@ -15,6 +15,11 @@
   (interactive)
   (set-input-method 'rime)
   )
+(defun change-todo()
+  "insert now schedule"
+  (interactive)
+  (org-todo )
+  )
 (defun insert-now-schedule()
   "insert now schedule"
   (interactive)
