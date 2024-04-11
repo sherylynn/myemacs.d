@@ -58,6 +58,12 @@
     :quelpa (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")
     :config
     (awesome-tab-mode t)
+    ;;适配一下黑色主题
+    (setq frame-background-mode 'dark)
+    ;;搞了个紫色背景的标签栏
+    (setq awesome-tab-terminal-dark-select-background-color "#5300f6")
+    ;;搞了白色的标签栏字体
+    (setq awesome-tab-terminal-dark-select-foreground-color "#ffffff")
     )
   )
 
