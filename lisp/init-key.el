@@ -27,6 +27,8 @@
       "ze" '(configure-emacs :wk "edit emacs configure")
       ;;quit emacs
       "zz" 'kill-emacs
+      ;;show todo tree
+      "zt" 'org-show-todo-tree
       ;;git pull
       "zf" 'magit-pull-from-upstream
       ;;neotree
@@ -65,6 +67,12 @@
       ;;file
       "f" '(:wk "find or file")
       "ff" 'find-file
+      ;;insert ;;插入
+      "i" '(:wk "insert")
+      "ic" 'insert-checkbox
+      "it" 'insert-todo
+      "in" 'insert-now-time 
+      "id" 'insert-now-schedule
       ;;run func
       "x" '(:wk "exce func")
       "xx" 'vterm-other-window
@@ -74,8 +82,8 @@
       "ti" 'toggle-input-method
       "th" '(awesome-tab-backward-tab :wk "left tab")
       "tl" '(awesome-tab-forward-tab :wk "right tab")
-      "t-" '(awesome-tab-forward-tab :wk "right tab")
-      "t=" '(awesome-tab-forward-tab :wk "right tab")
+      ;;"t-" '(awesome-tab-forward-tab :wk "right tab")
+      ;;"t=" '(awesome-tab-forward-tab :wk "right tab")
       ;;"tj" '(awesome-tab-backward-tab :wk "close tab")
       ;;
       ;;"-" 'text-scale-decrease ;;这个是默认自带的方法

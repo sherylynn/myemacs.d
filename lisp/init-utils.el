@@ -1,4 +1,4 @@
-(defun checkbox-insert ()
+(defun insert-checkbox ()
   "insert checkbox" ;;need desc
   (interactive) ;;need interactive
   (insert "- [ ]")
@@ -20,7 +20,7 @@
   (interactive)
   (org-schedule "HH:MM")
   )
-(defun todo-insert ()
+(defun insert-todo ()
   "insert todo" ;;need desc
   (interactive) ;;need interactive
   (org-insert-todo-heading t)
