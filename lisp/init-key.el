@@ -67,22 +67,25 @@
       ;;file
       "f" '(:wk "find or file")
       "ff" 'find-file
-      ;;insert ;;插入
+      ;;insert input ;;插入
       "i" '(:wk "insert")
       "ic" 'insert-checkbox
       "it" 'insert-todo
       "in" 'insert-now-time 
       "id" 'insert-now-schedule
+      "it" 'toggle-input-method
       ;;change
       "c" '(:wk "change")
       "ct" 'change-todo
+      "ci" 'toggle-input-method
       ;;run func
       "x" '(:wk "exce func")
-      "xx" 'vterm-other-window
-      ;;toggle/tab
-      "t" '(:wk "toggle/tab")
+      "xx" 'execute-extended-command
+      ;;toggle/tab/todo
+      "t" '(:wk "toggle/tab/todo")
       "tt" 'toggle-terminal
-      "ti" 'toggle-input-method
+      "tc" 'org-todo
+      "ti" 'insert-todo
       "th" '(awesome-tab-backward-tab :wk "left tab")
       "tl" '(awesome-tab-forward-tab :wk "right tab")
       ;;"t-" '(awesome-tab-forward-tab :wk "right tab")
