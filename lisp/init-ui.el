@@ -56,6 +56,11 @@
 (when (< emacs-major-version 30)
   (use-package awesome-tab
     :quelpa (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")
+    :custom
+    ;;搞了个紫色背景的标签栏
+    (awesome-tab-dark-selected-background-color "#5300f6")
+    ;;搞了白色的标签栏字体
+    (awesome-tab-dark-selected-foreground-color "#ffffff")
     :config
     (awesome-tab-mode t)
     ;;适配一下黑色主题
