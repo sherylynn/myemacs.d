@@ -73,7 +73,9 @@
 (defun open-myorg()
   "configure emacs"
   (interactive)
+  (tab-bar-new-tab)
   (find-file "~/work/todo.org")
+  (neotree-dir "~/work/")
   )
 (defun async-shell-command-no-window
     (command)
