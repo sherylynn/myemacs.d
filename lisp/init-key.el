@@ -84,12 +84,12 @@
       ;;toggle/tab/todo
       "t" '(:wk "toggle/tab/todo")
       "tt" 'toggle-terminal
-      "tc" 'org-todo
-      "ti" 'insert-todo
       "th" '(my-left-tab :wk "left tab")
       "tl" '(my-right-tab :wk "right tab")
-      "tj" '(tab-bar-close-tab :wk "close tab")
-      "tk" '(tab-bar-new-tab :wk "close tab")
+      "tj" '(my-prev-tab :wk "LEFT tab")
+      "tk" '(my-next-tab :wk "RIGHT tab")
+      "tc" '(tab-bar-close-tab :wk "close tab")
+      "tn" '(tab-bar-new-tab :wk "new tab")
 
       ;;"t-" '(awesome-tab-forward-tab :wk "right tab")
       ;;"t=" '(awesome-tab-forward-tab :wk "right tab")

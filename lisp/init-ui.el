@@ -72,7 +72,7 @@
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 ;;熟悉的tab栏
-(when (equal my-use-package-tab-bar "tab-bar" )
+(unless (equal my-use-package-tab-bar "awesome-tab" )
   (use-package tab-bar
     :custom
     (tab-bar-separator "")
@@ -84,16 +84,16 @@
     :config
     (tab-bar-mode 1)
     )
-  (defun my-left-tab()
+  (defun my-prev-tab()
     (interactive)
     (tab-bar-switch-to-prev-tab)
     )
-  (defun my-right-tab()
+  (defun my-next-tab()
     (interactive)
     (tab-bar-switch-to-next-tab)
     )
   )
-(when (equal my-use-package-tab-bar "awesome-tab" )
+(unless (equal my-use-package-tab-bar "tab-bar" )
   ;;awesome-tab ;;gui下面激活的不明显，试试官方包
   (when (< emacs-major-version 30)
     (use-package awesome-tab

@@ -47,7 +47,9 @@
 
 
 ;;我用的tab-bar
-(setq my-use-package-tab-bar "tab-bar") ;;自带的
+;;发现这俩包不冲突
+(setq my-use-package-tab-bar "all-bar") ;;自带的
+;;(setq my-use-package-tab-bar "tab-bar") ;;自带的
 ;;(setq my-use-package-tab-bar "awesome-tab") ;;第三方
 
 ;; package switch
