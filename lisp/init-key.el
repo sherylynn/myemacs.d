@@ -72,6 +72,7 @@
       "ic" 'insert-checkbox
       "it" 'insert-todo
       "in" 'insert-now-time 
+      "ih" 'org-insert-heading-respect-content
       "id" 'insert-now-schedule
       ;;"it" 'toggle-input-method
       ;;change
