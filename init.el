@@ -45,6 +45,11 @@
   (gcmh-mode 1)
   )
 
+
+;;我用的tab-bar
+(setq my-use-package-tab-bar "tab-bar") ;;自带的
+;;(setq my-use-package-tab-bar "awesome-tab") ;;第三方
+
 ;; package switch
 (setq my-use-package-vim "evil")
 ;;(setq my-use-package-vim "meow")
