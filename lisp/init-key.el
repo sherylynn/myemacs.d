@@ -73,7 +73,7 @@
       "it" 'insert-todo
       "in" 'insert-now-time 
       "id" 'insert-now-schedule
-      "it" 'toggle-input-method
+      ;;"it" 'toggle-input-method
       ;;change
       "c" '(:wk "change")
       "ct" 'change-todo
