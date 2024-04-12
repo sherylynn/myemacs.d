@@ -4,6 +4,25 @@
 (global-display-line-numbers-mode 1)
 ;;相对行号
 (setq display-line-numbers-type 'relative)
+
+(add-hook
+ 'vterm-mode-hook
+ (
+  ;;当启动vterm的时候关闭行号,关闭tabs
+  lambda()
+  (display-line-numbers-mode 0)
+  ;;没有当前窗口关闭的tab，算了
+  ;;(awesome-tab-mode 0)
+  ))
+(add-hook
+ 'org-mode-hook
+ (
+  ;;当启动org的时候关闭行号
+  lambda()
+  (display-line-numbers-mode 0)
+  ;;没有当前窗口关闭的tab，算了
+  ;;(awesome-tab-mode 0)
+  ))
 ;;better-defaults 比如关闭工具栏等有趣的行为
 ;;(use-package better-defaults)
 ;;手动控制上述行为
@@ -53,6 +72,7 @@
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 ;;熟悉的tab栏
+;;可以考虑用官方的tab-bar-mode代替看看
 (when (< emacs-major-version 30)
   (use-package awesome-tab
     :quelpa (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")

@@ -29,9 +29,9 @@
   "insert todo" ;;need desc
   (interactive) ;;need interactive
   ;;另起一行
-  (newline)
+  ;;(newline)
   ;;使用官方的插入
-  (org-insert-todo-heading t)
+  (org-insert-todo-heading-respect-content t)
   ;;(insert "TODO")
   ;;(org-todo "t")
   (org-update-checkbox-count-maybe )

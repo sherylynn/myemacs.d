@@ -10,7 +10,8 @@
       (display-line-numbers-mode 0)
       ;;没有当前窗口关闭的tab，算了
       ;;(awesome-tab-mode 0)
-      )))
+      ))
+    )
   (defun toggle-terminal()
     (interactive)
     (vterm-other-window )
