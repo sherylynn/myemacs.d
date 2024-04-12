@@ -28,6 +28,9 @@
 (defun insert-todo ()
   "insert todo" ;;need desc
   (interactive) ;;need interactive
+  ;;另起一行
+  (newline)
+  ;;使用官方的插入
   (org-insert-todo-heading t)
   ;;(insert "TODO")
   ;;(org-todo "t")
