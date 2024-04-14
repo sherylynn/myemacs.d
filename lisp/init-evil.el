@@ -34,10 +34,11 @@
     :init
     ;;evil-collection 的 warning
     (setq evil-want-keybinding nil)
+    :custom
+    ;;使用emacs自带的undo
+    (evil-undo-system 'undo-redo)
     :config
     (evil-mode 1)
-    ;;使用emacs自带的undo
-    (setq evil-undo-system "undo-redo")
     ;; evil也自带 leader模式
     (when (equal my-use-package-leader "evil")
       (evil-set-leader nil (kbd "SPC"))

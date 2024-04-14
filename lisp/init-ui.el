@@ -27,10 +27,10 @@
 ;;(use-package better-defaults)
 ;;手动控制上述行为
 (when (display-graphic-p)
-  (menu-bar-mode -1) ;;关闭菜单栏
   (scroll-bar-mode -1) ;;关闭滚动栏
   (tool-bar-mode -1) ;;取消工具栏
   )
+(menu-bar-mode -1) ;;关闭菜单栏
 ;;自动换行
 (auto-fill-mode 1)
 ;;高亮当前行
