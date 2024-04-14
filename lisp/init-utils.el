@@ -52,7 +52,7 @@
   ;;配置模块化，就不主打打开这个了
   ;;(open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
   ;;因为配置模块化，所以直接打开lisp下面的侧边栏让自己选择
-  (neotree-dir "~/.emacs.d_my/lisp/")
+  ;;(neotree-dir "~/.emacs.d_my/lisp/")
   )
 (defun configure-zsh ()
   "configure zsh"
@@ -62,7 +62,7 @@
   ;;配置模块化，就不主打打开这个了
   ;;(open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
   ;;因为配置模块化，所以直接打开lisp下面的侧边栏让自己选择
-  (neotree-dir "~/sh/")
+  ;;(neotree-dir "~/sh/")
   )
 (defun reload-emacs ()
   "reload emacs"
@@ -75,7 +75,7 @@
   (interactive)
   (tab-bar-new-tab)
   (find-file "~/work/todo.org")
-  (neotree-dir "~/work/")
+  ;;(neotree-dir "~/work/")
   )
 (defun async-shell-command-no-window
     (command)

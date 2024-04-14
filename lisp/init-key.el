@@ -32,7 +32,8 @@
       ;;git pull
       "zf" 'magit-pull-from-upstream
       ;;neotree
-      "1" '(neotree-toggle :wk "toggle neotree")
+      ;;"1" '(neotree-toggle :wk "toggle neotree")
+      "1" '(treemacs :wk "toggle treemacs")
       ;;quit buffer
       "q" '(kill-buffer-and-window :wk "quit buffer")
       ;;magit-status

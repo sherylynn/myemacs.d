@@ -29,3 +29,4 @@ tree-sitter/
 cnfonts/
 
 projects
+.cache

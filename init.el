@@ -5,6 +5,9 @@
 ;;(setq my-use-package-terminal "eshell")
 ;;需要全局变量
 (defvar my-use-package-terminal "vterm")
+;;使用更灵活的treemacs
+;;(defvar my-use-package-filetree "neotree")
+(defvar my-use-package-filetree "treemacs")
 ;;init-system 中会改默认终端
 (require 'init-system)
 
