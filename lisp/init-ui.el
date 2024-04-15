@@ -62,7 +62,7 @@
   :config
   (setq doom-modeline-project-detection 'project))
 ;;直接用 doom 的 dashboard
-(when (equal my-init-config-timeup "debug")
+(when (equal my-init-config-timeup "normal")
   (use-package dashboard
     :config
     (progn
