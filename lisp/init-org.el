@@ -1,3 +1,7 @@
+;;个人日程列表文件
+(setq org-agenda-files (list "~/work/todo.org"))
+
+
 ;;evil下一些快捷键的绑定
 (use-package evil-org
   :after org
