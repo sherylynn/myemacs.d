@@ -99,6 +99,7 @@
             treemacs-goto-tag-strategy               'refetch-index
             treemacs-header-scroll-indicators        '(nil . "^^^^^^")
             treemacs-hide-dot-git-directory          t
+	    ;;文件之间的缩进
             treemacs-indentation                     2
             treemacs-indentation-string              " "
             treemacs-is-never-other-window           nil
@@ -119,6 +120,7 @@
             treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
             treemacs-project-follow-into-home        nil
             treemacs-show-cursor                     nil
+	    ;;显示隐藏文件
             treemacs-show-hidden-files               t
             treemacs-silent-filewatch                nil
             treemacs-silent-refresh                  nil
@@ -131,7 +133,9 @@
             treemacs-user-mode-line-format           nil
             treemacs-user-header-line-format         nil
             treemacs-wide-toggle-width               70
-            treemacs-width                           35
+	    ;;窗口宽度
+            treemacs-width                           20
+	    ;;窗口调整宽度
             treemacs-width-increment                 1
             treemacs-width-is-initially-locked       t
             treemacs-workspace-switch-cleanup        nil)
