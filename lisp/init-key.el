@@ -84,6 +84,7 @@
       "p" '(:wk "project/projectile")
       "pf" 'projectile-find-file
       "ps" 'projectile-switch-project
+      "pg" 'projectile-grep
       ;;run func
       "x" '(:wk "exce func")
       "xx" 'execute-extended-command
