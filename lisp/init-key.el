@@ -80,6 +80,10 @@
       "c" '(:wk "change")
       "ct" 'change-todo
       "ci" 'toggle-input-method
+      ;;project/projectile
+      "p" '(:wk "project/projectile")
+      "pf" 'projectile-find-file
+      "ps" 'projectile-switch-project
       ;;run func
       "x" '(:wk "exce func")
       "xx" 'execute-extended-command

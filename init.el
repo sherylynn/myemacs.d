@@ -133,6 +133,9 @@
 ;;:hook (prog-mode . eglot-ensure)
 ;;:bind ("C-c e f" . eglot-format))
 
+;;加载filetree
+(require 'init-filetree)
+
 ;;加载UI界面
 (require 'init-ui)
 
