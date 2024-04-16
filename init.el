@@ -17,8 +17,8 @@
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
 
 ;;加快启动速度
-(setq my-init-config-timeup "normal")
-;;(setq my-init-config-timeup "fast")
+;;(setq my-init-config-timeup "normal")
+(setq my-init-config-timeup "fast")
 ;;(setq my-init-config-timeup "debug")
 
 ;;加载 use-package 和源 （把设置分离出去了，因为很少动)

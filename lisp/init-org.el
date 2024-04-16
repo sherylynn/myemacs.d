@@ -9,6 +9,21 @@
 	("WAIT" . (:foreground "yellow" :weight bold))
 	("DONE" . (:foreground "grey" :weight bold))
 	))
+(setq
+ ;;跨越10天
+ org-agenda-span 10)
+(setq org-agenda-start-on-weekday nil)
+(setq org-agenda-start-day "-3d")
+;;agenda的时候就不提示不想要的状态
+(setq org-agenda-custom-commands
+      '(
+        ("w" "Agenda for work"
+         ((agenda "" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo '("TODO")))))
+          (todo "WAIT")
+          ;;(alltodo "")
+          (tags "note"))
+         )
+        ("n" todo "NOTE")))
 ;;evil下一些快捷键的绑定
 (use-package evil-org
   :after org
@@ -60,15 +75,15 @@
   ;;把竖线弄最小了
   (org-modern-table-vertical 1)
   ;;是否覆盖默认todoword颜色
-  (org-modern-todo nil) ;;定制化死活不生效，直接关了
+  ;;(org-modern-todo nil) ;;定制化死活不生效，直接关了
   ;;定制化todo字样并未生效
-  ;;(org-modern-todo-faces
-  ;; '(
-  ;;   (\"TODO\" :background \"green\" :foreground \"black\")
-  ;;  (\"KILL\" :background \"red\" :foreground \"yellow\")
-  ;; (\"WAIT\" :background \"yellow\" :foreground \"green\")
-  ;; (\"DONE\" :background \"black\" :foreground \"white\")
-  ;; ))
+  (org-modern-todo-faces
+   '(
+     ("TODO" :background "blue" :foreground "green")
+     ("KILL" :background "red" :foreground "yellow")
+     ("WAIT" :background "yellow" :foreground "green")
+     ("DONE" :background "black" :foreground "white")
+     ))
   ;; Org modern settings
   ;;(org-modern-star nil)
   ;;(org-modern-priority nil)

@@ -83,10 +83,13 @@
       ;;org-agenda
       "o" '(:wk "org")
       "oa" 'org-agenda
+      "ow" 'my-org-agenda-week-view
+      "ot" 'org-agenda-todo-list
       ;;"ow" 'org-agenda-date-weekend
       ;;project/projectile
       "p" '(:wk "project/projectile")
-      "pf" 'projectile-find-file
+      "pf" 'project-find-file
+      ;;"pf" 'projectile-find-file ;;速度太慢
       "ps" 'projectile-switch-project
       "pg" 'projectile-grep
       ;;run func

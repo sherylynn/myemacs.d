@@ -69,6 +69,7 @@
   (interactive)
   ;;重新加载
   (load-file "~/.emacs.d_my/init.el")
+  (eval-buffer)
   )
 (defun open-myorg()
   "configure emacs"
@@ -88,5 +89,9 @@
           (cons #'display-buffer-no-window nil)))))
     (async-shell-command
      command)))
+(defun my-org-agenda-week-view()
+  "agenda w"
+    (interactive)
+  (org-agenda nil "w"))
 
 (provide 'init-utils)
