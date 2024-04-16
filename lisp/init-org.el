@@ -2,11 +2,12 @@
 (setq org-agenda-files (list "~/work/todo.org"))
 (setq org-todo-keywords
       '((sequence "TODO(t)" "KILL(k)" "WAIT(w)" "DONE(d)" )))
+
 (setq org-todo-keyword-faces
-      '(("TODO" . (:foreground "red" :weight bold))
-        ("KILL" . (:foreground "orange" :weight bold))
-        ("WAIT" . (:foreground "blue" :weight bold))
-        ("DONE" . (:foreground "green" :weight bold))
+      '(("TODO" . (:foreground "green" :weight bold))
+	("KILL" . (:foreground "red" :weight bold))
+	("WAIT" . (:foreground "yellow" :weight bold))
+	("DONE" . (:foreground "grey" :weight bold))
 	))
 ;;evil下一些快捷键的绑定
 (use-package evil-org
@@ -58,6 +59,16 @@
   :custom
   ;;把竖线弄最小了
   (org-modern-table-vertical 1)
+  ;;是否覆盖默认todoword颜色
+  (org-modern-todo nil) ;;定制化死活不生效，直接关了
+  ;;定制化todo字样并未生效
+  ;;(org-modern-todo-faces
+  ;; '(
+  ;;   (\"TODO\" :background \"green\" :foreground \"black\")
+  ;;  (\"KILL\" :background \"red\" :foreground \"yellow\")
+  ;; (\"WAIT\" :background \"yellow\" :foreground \"green\")
+  ;; (\"DONE\" :background \"black\" :foreground \"white\")
+  ;; ))
   ;; Org modern settings
   ;;(org-modern-star nil)
   ;;(org-modern-priority nil)

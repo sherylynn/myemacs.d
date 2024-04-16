@@ -80,6 +80,10 @@
       "c" '(:wk "change")
       "ct" 'change-todo
       "ci" 'toggle-input-method
+      ;;org-agenda
+      "o" '(:wk "org")
+      "oa" 'org-agenda
+      ;;"ow" 'org-agenda-date-weekend
       ;;project/projectile
       "p" '(:wk "project/projectile")
       "pf" 'projectile-find-file
