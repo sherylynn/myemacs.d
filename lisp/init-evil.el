@@ -82,6 +82,7 @@
     :config
     (evil-escape-mode)
     (setq-default evil-escape-key-sequence "jk")
+    (setq-default evil-escape-delay 0.2)
     )
   ;;其他全局按键
   (global-set-key (kbd "C-g") 'evil-escape)
