@@ -29,5 +29,6 @@ tree-sitter/
 cnfonts/
 
 projects
+projectile.cache
 .cache
 projectile-bookmarks.eld

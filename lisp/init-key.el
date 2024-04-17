@@ -75,7 +75,7 @@
      "f" '(:wk "find or file")
      "ff" 'find-file
      ;;SPC SPC
-     "SPC" 'find-file
+     "SPC" 'projectile-find-file
      ;;insert input ;;插入
      "i" '(:wk "insert")
      "ic" 'insert-checkbox
