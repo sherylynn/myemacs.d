@@ -12,9 +12,11 @@
     ;;这样就指定了 normal state 下的 leader 键是 SPC、其余的 insert / visual /emacs state 下是 C-,。之后用这个新创建的 definer 分配键位就好：
     (general-create-definer my-leader-def
       ;; 分不清什么状态好，直接全上看看会不会好一点,这样全部都能用 leader 模式了
-      ;;:states '(normal insert visual emacs magit)
+      :states '(normal insert visual emacs hybrid motion operater)
+      :keymaps 'override
       :prefix "SPC"
-      ;;:non-normal-prefix "C-,"
+      ;;非normal情况下的按键
+      :non-normal-prefix "C-SPC"
       )
     ;;定义键位时，可以用 :which-key 或简写 :wk 来指定 which-key 所显示的文字：
     (my-leader-def
