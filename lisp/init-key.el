@@ -94,8 +94,8 @@
      ;;"ow" 'org-agenda-date-weekend
      ;;project/projectile
      "p" '(:wk "project/projectile")
-     "pf" 'project-find-file
-     ;;"pf" 'projectile-find-file ;;速度太慢
+     ;;"pf" 'project-find-file ;;这个有时候不能用
+     "pf" 'projectile-find-file ;;速度太慢
      "ps" 'projectile-switch-project
      "pg" 'projectile-grep
      ;;run func

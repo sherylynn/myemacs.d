@@ -9,6 +9,10 @@
   (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
     (setenv "PATH" (concat (getenv "PATH") ":" termuxpath))
     (setq exec-path (append exec-path (list termuxpath)))))
+
+;;如果遇上了android，设置默认为insert以方便唤出键盘
+(setq evil-default-state 'insert)
+
 (when (string-equal system-type "windows-nt")
   ;; 需要全局变量来操作
   (make-variable-buffer-local 'my-use-package-terminal)
