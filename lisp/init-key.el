@@ -74,6 +74,8 @@
      ;;file
      "f" '(:wk "find or file")
      "ff" 'find-file
+     ;;SPC SPC
+     "SPC" 'find-file
      ;;insert input ;;插入
      "i" '(:wk "insert")
      "ic" 'insert-checkbox
@@ -96,7 +98,8 @@
      "p" '(:wk "project/projectile")
      ;;"pf" 'project-find-file ;;这个有时候不能用
      "pf" 'projectile-find-file ;;速度太慢
-     "ps" 'projectile-switch-project
+     ;;"ps" 'projectile-switch-project
+     "ps" 'project-switch-project
      "pg" 'projectile-grep
      ;;run func
      "x" '(:wk "exce func")
