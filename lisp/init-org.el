@@ -101,12 +101,12 @@
   (global-org-modern-mode 1)
   )
 ;;解决上述包的缩进问题
-(when (< emacs-major-version 30)
-  (use-package org-modern-indent
-    :custom
-    (org-startup-indented t)
-    :quelpa  (org-modern-indent :fetcher github :repo "jdtsmith/org-modern-indent")
-    :config ; add late to hook
-    (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
-  )
+;;(when (< emacs-major-version 30)
+(use-package org-modern-indent
+  :custom
+  (org-startup-indented t)
+  :quelpa  (org-modern-indent :fetcher github :repo "jdtsmith/org-modern-indent")
+  :config ; add late to hook
+  (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
+;; )
 (provide 'init-org)

@@ -1,9 +1,9 @@
 (setq package-native-compile t)
 ;;设置tuna源
 (setq package-archives '(
-  ("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-  ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
-  ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+			 ("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+			 ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+			 ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 ;; emacs 29以后use-package 已经内置
 (when (< emacs-major-version 29)
@@ -22,20 +22,21 @@
 (setq use-package-always-ensure t)
 
 ;; emacs 30有 自带的vc，不然只能用quelpa
-(when (< emacs-major-version 30)
-    (use-package quelpa 
-      :init
-    ;;原来可以配置选项禁用傻逼的自动更新
-      ;;加快启动速度
-    (setq quelpa-update-melpa-p nil)
-    :config ; 在 (require) 之后需要执行的表达式
-    (use-package quelpa-use-package) ; 把 quelpa 嵌入 use-package 的宏扩展
-    (quelpa-use-package-activate-advice)) ; 启用这个 advice
+;; emacs 30 还没出，出了再说吧
+;;(when (< emacs-major-version 30)
+(use-package quelpa
+  :init
+  ;;原来可以配置选项禁用傻逼的自动更新
+  ;;加快启动速度
+  (setq quelpa-update-melpa-p nil)
+  :config ; 在 (require) 之后需要执行的表达式
+  (use-package quelpa-use-package) ; 把 quelpa 嵌入 use-package 的宏扩展
+  (quelpa-use-package-activate-advice)) ; 启用这个 advice
 
-    ;;但是要hack掉ensure的实现方式
-    ;;(setq use-package-ensure-function 'quelpa) ;;quelpa启动的时候还检查github上包是否有更新，我无语了,太慢了,而且还会检查自己，弃用
-    ;;明显降低启动速度，不用use-package的ensure了
-  )
+;;但是要hack掉ensure的实现方式
+;;(setq use-package-ensure-function 'quelpa) ;;quelpa启动的时候还检查github上包是否有更新，我无语了,太慢了,而且还会检查自己，弃用
+;;明显降低启动速度，不用use-package的ensure了
+;;)
 
 ;; 让 use-package 永远按需加载软件包 ;;结果全没加载，无语
 ;;(setq use-package-always-defer t)
