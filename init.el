@@ -52,7 +52,7 @@
 
 ;;我用的tab-bar
 ;;发现这俩包不冲突
-(setq my-use-package-tab-bar "all-bar") ;;自带的
+(setq my-use-package-tab-bar "all-bar") ;;全部都用
 ;;(setq my-use-package-tab-bar "tab-bar") ;;自带的
 ;;(setq my-use-package-tab-bar "awesome-tab") ;;第三方
 
