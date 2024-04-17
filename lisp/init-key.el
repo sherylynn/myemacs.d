@@ -8,11 +8,21 @@
 (when (equal my-use-package-leader "general")
   (use-package general
     ;;https://github.com/noctuid/general.el
+    :init
+    ;;覆盖掉evil-collection的SPC绑定
+    (setq general-override-states '(insert
+                                  emacs
+                                  hybrid
+                                  normal
+                                  visual
+                                  motion
+                                  operator
+                                  replace))
     :config
     ;;这样就指定了 normal state 下的 leader 键是 SPC、其余的 insert / visual /emacs state 下是 C-,。之后用这个新创建的 definer 分配键位就好：
     (general-create-definer my-leader-def
       ;; 分不清什么状态好，直接全上看看会不会好一点,这样全部都能用 leader 模式了
-      :states '(normal insert visual emacs hybrid motion operater)
+      :states '(normal insert visual emacs hybrid motion operater replace)
       :keymaps 'override
       :prefix "SPC"
       ;;非normal情况下的按键

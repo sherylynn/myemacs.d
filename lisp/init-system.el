@@ -1,9 +1,10 @@
-(defun my-scratch-hook ()
-  ;; 在这里编写您要执行的操作
-  (evil-insert-state))
-
-;;会影响我的整个主题
-;;(add-hook 'initial-major-mode 'my-scratch-hook)
+(defun android-insert()
+  ;; 在这里添加您要执行的命令或配置
+  (when (equal (buffer-name) "*scratch*")
+    (evil-insert-state)
+    (message "default insert in scratch")
+    )
+  )
 
 (when (string-equal system-type "android")
   ;; set terminal eshell because of vterm bug in android
@@ -12,12 +13,6 @@
   (set 'my-use-package-terminal "eshell")
   ;;果然想象力才是限制，直接在启动完后，只在具体的buffer执行就行
   (add-hook 'emacs-startup-hook 'android-insert)
-  (defun android-insert()
-    ;; 在这里添加您要执行的命令或配置
-    (when (equal (buffer-name) "*scratch*")
-      (evil-insert-state)
-      )
-    )
   ;;如果遇上了android，设置默认为insert以方便唤出键盘
   ;;(add-hook 'evil-initialize
   ;;(lambda ()
@@ -40,6 +35,7 @@
   )
 
 (when (string-equal system-type "gnu/linux")
+  (add-hook 'emacs-startup-hook 'android-insert)
   ;;说明在这里面设置会被覆盖掉
   ;; (add-hook 'evil-mode-hook
   ;;    (lambda ()
