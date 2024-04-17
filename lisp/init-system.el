@@ -4,7 +4,7 @@
   (make-variable-buffer-local 'use-my-package-terminal)
   (set 'my-use-package-terminal "eshell")
   ;;如果遇上了android，设置默认为insert以方便唤出键盘
-  (add-hook 'evil-mode-hook
+  (add-hook 'evil-initialize
 	    (lambda ()
 	      (setq evil-default-state 'insert)
 	      )
@@ -31,4 +31,5 @@
 	      )
 	    )
   )
+(setq evil-default-state 'insert)
 (provide 'init-system)
