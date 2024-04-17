@@ -1,3 +1,10 @@
+(defun my-scratch-hook ()
+  ;; 在这里编写您要执行的操作
+  (evil-insert-state))
+
+;;会影响我的整个主题
+;;(add-hook 'initial-major-mode 'my-scratch-hook)
+
 (when (string-equal system-type "android")
   ;; set terminal eshell because of vterm bug in android
   ;; 需要全局变量来操作
