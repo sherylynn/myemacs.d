@@ -33,8 +33,12 @@
 (menu-bar-mode -1) ;;关闭菜单栏
 ;;自动换行
 (auto-fill-mode 1)
+
 ;;高亮当前行
 (global-hl-line-mode 1)
+;;改变一下高亮覆盖的效果，免得影响当前行的颜色大变
+;;(custom-set-faces '(hl-line ((t (:background "#DCFFFA"))))) ;;难调
+
 ;;关闭烦人的 warning,和我有毛线关系？
 (setq warning-minimum-level :error)
 
@@ -122,7 +126,13 @@
   )
 ;;elisp ()括号🌈彩虹
 (use-package rainbow-delimiters
-  :hook ((prog-mode . rainbow-delimiters-mode)))
+  :hook (prog-mode . rainbow-delimiters-mode)
+  )
+
+;;elisp 直接显示字符串color code🌈彩虹
+(use-package rainbow-mode
+  :hook (prog-mode . rainbow-mode)
+  )
 
 ;;全局字体大小调整
 ;;(use-package default-text-scale)
