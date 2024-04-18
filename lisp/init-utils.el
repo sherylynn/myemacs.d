@@ -47,9 +47,9 @@
 (defun my-org-show-todo-tree()
   ;;配置个性化的筛选todo关键字
   (interactive)
-  (org-show-todo-tree 1) ;;第一个todo词，TODO
+  ;;(org-show-todo-tree 1) ;;第一个todo词，TODO
   ;;(org-show-todo-tree 2) ;;第一个todo词，KILL
-  ;;(org-show-todo-tree '(4) ) ;;手动选词
+  (org-show-todo-tree '(4) ) ;;手动选词
   )
 
 (defun configure-emacs ()
