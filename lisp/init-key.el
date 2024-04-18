@@ -43,7 +43,8 @@
      ;;quit emacs
      "zz" 'kill-emacs
      ;;show todo tree
-     "zt" 'org-show-todo-tree
+     ;;"zt" 'org-show-todo-tree
+     "zt" 'my-org-show-todo-tree
      ;;git pull
      "zf" 'magit-pull-from-upstream
      ;;neotree
