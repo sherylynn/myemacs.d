@@ -1,12 +1,14 @@
 ;;个人日程列表文件
 (setq org-agenda-files (list "~/work/todo.org"))
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "KILL(k)" "WAIT(w)" "DONE(d)" )))
+      ;;无语了居然是用分隔符号来区分是否完成
+      '((sequence "TODO(t)"  "WAIT(w)" "|" "KILL(k)" "DONE(d)" )))
+(setq org-not-done-keywords '("TODO"))
 
 (setq org-todo-keyword-faces
       '(("TODO" . (:foreground "green" :weight bold))
-	("KILL" . (:foreground "red" :weight bold))
 	("WAIT" . (:foreground "yellow" :weight bold))
+	("KILL" . (:foreground "red" :weight bold))
 	("DONE" . (:foreground "grey" :weight bold))
 	))
 (setq

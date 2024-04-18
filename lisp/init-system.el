@@ -35,7 +35,7 @@
   )
 
 (when (string-equal system-type "gnu/linux")
-  (add-hook 'emacs-startup-hook 'android-insert)
+  ;;(add-hook 'emacs-startup-hook 'android-insert)
   ;;说明在这里面设置会被覆盖掉
   ;; (add-hook 'evil-mode-hook
   ;;    (lambda ()
