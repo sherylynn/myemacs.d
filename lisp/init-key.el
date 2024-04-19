@@ -20,7 +20,7 @@
                                   replace))
     :config
     ;;这样就指定了 normal state 下的 leader 键是 SPC、其余的 insert / visual /emacs state 下是 C-,。之后用这个新创建的 definer 分配键位就好：
-    (general-create-definer my-leader-def
+    (general-create-definer my-SPC-leader-def
       ;; 分不清什么状态好，直接全上看看会不会好一点,这样全部都能用 leader 模式了
       :states '(normal insert visual emacs hybrid motion operater replace)
       :keymaps 'override
@@ -29,7 +29,7 @@
       :non-normal-prefix "C-SPC"
       )
     ;;定义键位时，可以用 :which-key 或简写 :wk 来指定 which-key 所显示的文字：
-    (my-leader-def
+    (my-SPC-leader-def
      ;;z about editor
      "z" '(:wk "editor")
      ;;org file
@@ -105,6 +105,11 @@
      "oa" 'org-agenda
      "ow" 'my-org-agenda-week-view
      "ot" 'org-agenda-todo-list
+     ;;move item
+     "ol" '(org-demote-subtree :wk "item demote")
+     "oh" '(org-promote-subtree :wk "item promote")
+     "oj" '(outline-move-subtree-down :wk "item down")
+     "ok" '(outline-move-subtree-up :wk "item up")
      ;;"ow" 'org-agenda-date-weekend
      ;;project/projectile
      "p" '(:wk "project/projectile")
