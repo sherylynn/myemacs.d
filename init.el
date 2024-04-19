@@ -15,6 +15,8 @@
 (require 'init-utils)
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
+;;完成我其他的项目
+(async-shell-command-no-window "git -C ~/work pull")
 
 ;;加快启动速度
 ;;(setq my-init-config-timeup "normal")
