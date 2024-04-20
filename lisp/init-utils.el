@@ -51,7 +51,12 @@
   ;;(org-show-todo-tree 2) ;;第一个todo词，KILL
   (org-show-todo-tree '(4) ) ;;手动选词
   )
-
+(defun my-org-insert-subheading()
+  "insert subheading"
+  (interactive)
+  (org-insert-heading-respect-content)
+  (org-demote-subtree)
+  )
 (defun configure-emacs ()
   "configure emacs"
   (interactive)

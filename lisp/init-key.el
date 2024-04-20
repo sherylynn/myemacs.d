@@ -93,7 +93,7 @@
      "it" 'insert-todo
      "in" 'insert-now-time
      "ih" 'org-insert-heading-respect-content
-     "is" 'org-insert-subheading
+     "is" 'my-org-insert-subheading
      "id" 'insert-now-schedule
      ;;"it" 'toggle-input-method
      ;;change

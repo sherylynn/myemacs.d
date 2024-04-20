@@ -24,7 +24,7 @@
   ;; be used globally (M-/).  See also the customization variable
   ;; `global-corfu-modes' to exclude certain modes.
   ;;开全局会影响org下面的便捷输入,结果发现是evil里绑定的
-  ;;:init
+  :init
   (global-corfu-mode))
 
   ;; A few more useful configurations...
