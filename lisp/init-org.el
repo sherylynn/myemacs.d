@@ -83,7 +83,7 @@
    '(
      ("TODO" :background "blue" :foreground "green")
      ("KILL" :background "red" :foreground "yellow")
-     ("WAIT" :background "#3498D8" :foreground "#ECECEC")
+     ("WAIT" :background "#3498D8" :foreground "#ffc500")
      ("DONE" :background "black" :foreground "white")
      ))
   ;; Org modern settings

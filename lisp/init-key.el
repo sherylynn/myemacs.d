@@ -85,7 +85,7 @@
      ;;file
      "f" '(:wk "find or file")
      "ff" 'find-file
-     ;;SPC SPC
+     ;;SPC SPC ;;apt remove fd-find ;;brew install fd
      "SPC" 'projectile-find-file
      ;;insert input ;;插入
      "i" '(:wk "insert")
