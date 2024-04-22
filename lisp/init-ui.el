@@ -145,4 +145,10 @@
     ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
     )
   )
+
+(use-package pangu-spacing
+  :init
+  (global-pangu-spacing-mode 1)
+  (setq pangu-spacing-real-insert-separtor t)
+  )
 (provide 'init-ui)
