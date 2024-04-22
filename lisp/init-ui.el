@@ -20,8 +20,12 @@
   ;;当启动 org 的时候关闭行号
   lambda()
   (display-line-numbers-mode 0)
+
+  ;;打开 buffer 大小
+  (size-indication-mode)
   ;;没有当前窗口关闭的 tab，算了
   ;;(awesome-tab-mode 0)
+
   ;;开启 org 下面自动换行
   (setq truncate-lines nil)
 
@@ -66,8 +70,14 @@
 (use-package doom-modeline
   :hook
   (after-init . doom-modeline-mode)
+  :custom
+  ;;显示时间
+  (doom-modeline-time t)
+  ;;显示电量
+  (doom-modeline-battery t)
   :config
-  (setq doom-modeline-project-detection 'project))
+  (setq doom-modeline-project-detection 'project)
+  )
 ;;直接用 doom 的 dashboard
 (when (equal my-init-config-timeup "normal")
   (use-package dashboard
@@ -150,8 +160,10 @@
   )
 
 (use-package pangu-spacing
+  :hook
+  ;;别改我的普通的编程文件，避免搞坏我的字符串
+  (org-mode-hook . '(setq pangu-spacing-real-insert-separtor t))
   :init
   (global-pangu-spacing-mode 1)
-  (setq pangu-spacing-real-insert-separtor t)
   )
 (provide 'init-ui)
