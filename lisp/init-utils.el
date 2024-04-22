@@ -107,4 +107,21 @@
   (interactive)
   (org-agenda nil "w"))
 
+(defun my/git-pull-if-repo ()
+  "Check if the current directory is a Git repository and pull it."
+  (when (file-exists-p (locate-dominating-file default-directory ".git"))
+             
+    (async-shell-command-no-window "git pull")))
+
+(add-hook 'find-file-hook 'my/git-pull-if-repo)
+
+
+;;(async-shell-command "git -C ~/work pull")
+;;(make-process
+;;        :name "my_work"
+;;       :buffer "*work*"
+;;不知道为啥切换不过去
+;;      :command (list "git" "-C" "~/work" "pull")
+;;     :noquery t)
+
 (provide 'init-utils)
