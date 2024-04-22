@@ -96,6 +96,7 @@
   (interactive)
   ;;设置新命令时直接 new buffer
   (setq async-shell-command-buffer "new-buffer")
+  ;;执行命令时候不显示窗口
   (let
       ((display-buffer-alist
         (list
@@ -126,6 +127,7 @@
     ;;(magit-pull-from-upstream)
     ))
 
+;;判断有 git 的时候进行 git pull
 (add-hook 'find-file-hook 'my/git-pull-if-repo)
 
 
