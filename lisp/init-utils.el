@@ -45,10 +45,10 @@
     (set-window-buffer (selected-window) new-buffer)))
 
 (defun my-org-show-todo-tree()
-  ;;配置个性化的筛选todo关键字
+  ;;配置个性化的筛选 todo 关键字
   (interactive)
-  ;;(org-show-todo-tree 1) ;;第一个todo词，TODO
-  ;;(org-show-todo-tree 2) ;;第一个todo词，KILL
+  ;;(org-show-todo-tree 1) ;;第一个 todo 词，TODO
+  ;;(org-show-todo-tree 2) ;;第一个 todo 词，KILL
   (org-show-todo-tree '(4) ) ;;手动选词
   )
 (defun my-org-insert-subheading()
@@ -64,7 +64,7 @@
   (find-file "~/.emacs.d_my/init.el")
   ;;配置模块化，就不主打打开这个了
   ;;(open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
-  ;;因为配置模块化，所以直接打开lisp下面的侧边栏让自己选择
+  ;;因为配置模块化，所以直接打开 lisp 下面的侧边栏让自己选择
   ;;(neotree-dir "~/.emacs.d_my/lisp/")
   )
 (defun configure-zsh ()
@@ -74,7 +74,7 @@
   ;;(find-file "~/.emacs.d_my/init.el")
   ;;配置模块化，就不主打打开这个了
   ;;(open-file-in-right-window "~/.emacs.d_my/lisp/init-utils.el")
-  ;;因为配置模块化，所以直接打开lisp下面的侧边栏让自己选择
+  ;;因为配置模块化，所以直接打开 lisp 下面的侧边栏让自己选择
   ;;(neotree-dir "~/sh/")
   )
 (defun reload-emacs ()
@@ -94,6 +94,8 @@
 (defun async-shell-command-no-window
     (command)
   (interactive)
+  ;;设置新命令时直接 new buffer
+  (setq async-shell-command-buffer "new-buffer")
   (let
       ((display-buffer-alist
         (list
@@ -102,6 +104,13 @@
           (cons #'display-buffer-no-window nil)))))
     (async-shell-command
      command)))
+;;换一种实现
+;;(defun async-shell-command-minibuffer
+;;   (my_command)
+;; (interactive)
+;; (let ((output (async-shell-command my_command)));;结果还是会有窗口
+;;   (message "Command output: %s" output))
+;; )
 (defun my-org-agenda-week-view()
   "agenda w"
   (interactive)
@@ -109,9 +118,13 @@
 
 (defun my/git-pull-if-repo ()
   "Check if the current directory is a Git repository and pull it."
+  ;;检查是否目录下有.git 文件夹
   (when (file-exists-p (locate-dominating-file default-directory ".git"))
-             
-    (async-shell-command-no-window "git pull")))
+    ;;(async-shell-command-minibuffer "git pull" )
+    (async-shell-command-no-window "git pull")
+    ;;尝试使用 magit 的 pull，但是对 magit 有依赖
+    ;;(magit-pull-from-upstream)
+    ))
 
 (add-hook 'find-file-hook 'my/git-pull-if-repo)
 

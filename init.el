@@ -5,13 +5,13 @@
 ;;(setq my-use-package-terminal "eshell")
 ;;需要全局变量
 (defvar my-use-package-terminal "vterm")
-;;使用更灵活的treemacs
+;;使用更灵活的 treemacs
 ;;(defvar my-use-package-filetree "neotree")
 (defvar my-use-package-filetree "treemacs")
 ;;init-system 中会改默认终端
 (require 'init-system)
 
-;;加载一些init-key and init command 可能用到的方法
+;;加载一些 init-key and init command 可能用到的方法
 (require 'init-utils)
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
@@ -54,7 +54,7 @@
   )
 
 
-;;我用的tab-bar
+;;我用的 tab-bar
 ;;发现这俩包不冲突
 (setq my-use-package-tab-bar "all-bar") ;;全部都用
 ;;(setq my-use-package-tab-bar "tab-bar") ;;自带的
@@ -138,10 +138,10 @@
 ;;:hook (prog-mode . eglot-ensure)
 ;;:bind ("C-c e f" . eglot-format))
 
-;;加载filetree
+;;加载 filetree
 (require 'init-filetree)
 
-;;加载UI界面
+;;加载 UI 界面
 (require 'init-ui)
 
 ;;加载快捷键
@@ -151,6 +151,8 @@
 
 ;;pyim
 (require 'init-pyim)
+
+;;my
 
 
 ;;关闭 emacs 的 custom 在 init 文件里瞎下蛋拉屎

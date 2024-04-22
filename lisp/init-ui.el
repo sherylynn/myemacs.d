@@ -8,20 +8,23 @@
 (add-hook
  'vterm-mode-hook
  (
-  ;;当启动vterm的时候关闭行号,关闭tabs
+  ;;当启动 vterm 的时候关闭行号,关闭 tabs
   lambda()
   (display-line-numbers-mode 0)
-  ;;没有当前窗口关闭的tab，算了
+  ;;没有当前窗口关闭的 tab，算了
   ;;(awesome-tab-mode 0)
   ))
 (add-hook
  'org-mode-hook
  (
-  ;;当启动org的时候关闭行号
+  ;;当启动 org 的时候关闭行号
   lambda()
   (display-line-numbers-mode 0)
-  ;;没有当前窗口关闭的tab，算了
+  ;;没有当前窗口关闭的 tab，算了
   ;;(awesome-tab-mode 0)
+  ;;开启 org 下面自动换行
+  (setq truncate-lines nil)
+
   ))
 ;;better-defaults 比如关闭工具栏等有趣的行为
 ;;(use-package better-defaults)
@@ -72,7 +75,7 @@
     (progn
       (dashboard-setup-startup-hook)))
   )
-;;熟悉的tab栏
+;;熟悉的 tab 栏
 (unless (equal my-use-package-tab-bar "awesome-tab" )
   (use-package tab-bar
     :custom
@@ -95,7 +98,7 @@
     )
   )
 (unless (equal my-use-package-tab-bar "tab-bar" )
-  ;;awesome-tab ;;gui下面激活的不明显，试试官方包
+  ;;awesome-tab ;;gui 下面激活的不明显，试试官方包
   ;;(when (< emacs-major-version 30)
   (use-package awesome-tab
     :quelpa (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")
@@ -129,7 +132,7 @@
   :hook (prog-mode . rainbow-delimiters-mode)
   )
 
-;;elisp 直接显示字符串color code🌈彩虹
+;;elisp 直接显示字符串 color code🌈彩虹
 (use-package rainbow-mode
   :hook (prog-mode . rainbow-mode)
   )
