@@ -89,12 +89,15 @@
 (unless (equal my-use-package-tab-bar "awesome-tab" )
   (use-package tab-bar
     :custom
-    (tab-bar-separator "")
-    (tab-bar-new-tab-to 'rightmost)
-    (tab-bar-show 1)
-    (tab-bar-close-button-show t)
-    (tab-bar-new-tab-choice "*scratch*")
-    (tab-bar-tab-hints t)
+    (tab-bar-separator "|")
+    (tab-bar-new-tab-to 'rightmost) ;;open tabs in right
+    (tab-bar-show 1) ;;hide bar if <= 1 tabs open
+    (tab-bar-auto-width t) ;;自动宽度
+    (tab-bar-close-button-show t) ;;显示关闭按钮
+    (tab-bar-new-tab-choice "*scratch*") ;;新tab的buffer
+    (tab-bar-tab-hints t) ;;显示tab-bar 序号
+    ;;(tab-bar-format '(tab-bar-format-menu-bar tab-bar-format-tabs tab-bar-separator))
+    (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
     :config
     (tab-bar-mode 1)
     )
