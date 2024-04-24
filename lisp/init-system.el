@@ -24,6 +24,14 @@
     ;;果然想象力才是限制，直接在启动完后，只在具体的buffer执行就行
     (add-hook 'emacs-startup-hook 'android-insert)
 
+    ;;触屏屏幕和鼠标适配
+    ;;原本evil会在down-mouse-1下默认绑定evil-mouse-drag-region
+    ;;严重影响触摸屏使用，原来的visual依然可以用键盘实现
+    (evil-define-key 'visual 'global
+      (kbd "<down-mouse-1>") 'touch-screen-scroll)
+
+    (evil-define-key 'normal 'global
+      (kbd "<down-mouse-1>") 'touch-screen-scroll)
     )
 
   ;;如果遇上了android，设置默认为insert以方便唤出键盘
