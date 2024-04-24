@@ -32,6 +32,9 @@
   (set 'my-use-package-terminal "eshell")
   (make-variable-buffer-local 'use-my-package-tab-bar)
   (set 'my-use-package-tab-bar "tab-bar")
+  (make-variable-buffer-local 'use-my-package-filetree)
+  ;;都不好用
+  (set 'my-use-package-filetree nil)
 
   ;; disable because of elpa bug in android
   (setq package-check-signature nil)
