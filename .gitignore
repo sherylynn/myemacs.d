@@ -11,6 +11,7 @@
 *.~undo-tree
 
 eln-cache/
+eshell/
 elpa/
 history
 pyim/

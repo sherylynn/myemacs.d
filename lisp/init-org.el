@@ -87,8 +87,10 @@
      ("DONE" :background "black" :foreground "white")
      ))
   ;; Org modern settings
-  ;;(org-modern-star nil)
+  ;; android native
   ;;(org-modern-priority nil)
+  (org-modern-star nil)
+  (org-modern-progress nil)
   ;;(org-modern-list nil)
   ;;(org-modern-checkbox nil)
   ;;(org-modern-todo nil)

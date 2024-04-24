@@ -62,7 +62,10 @@
 	      'evil-from-mouse-to-touch
 	      )
 
-    ))
+    )
+
+
+  )
 
 (when (string-equal system-type "windows-nt")
   ;; 需要全局变量来操作
