@@ -12,7 +12,8 @@
   (make-variable-buffer-local 'use-my-package-terminal)
   (set 'my-use-package-terminal "eshell")
   ;;果然想象力才是限制，直接在启动完后，只在具体的buffer执行就行
-  (add-hook 'emacs-startup-hook 'android-insert)
+  ;;(add-hook 'emacs-startup-hook 'android-insert)
+  ;;还是会引入很多问题
   ;;如果遇上了android，设置默认为insert以方便唤出键盘
   ;;(add-hook 'evil-initialize
   ;;(lambda ()
