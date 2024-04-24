@@ -51,7 +51,9 @@
      ;;"1" '(neotree-toggle :wk "toggle neotree")
      "1" '(treemacs :wk "toggle treemacs")
      ;;quit buffer
-     "q" '(kill-buffer-and-window :wk "quit buffer")
+     ;;"q" '(kill-buffer-and-window :wk "quit buffer")
+     "q" '(delete-window :wk "delete window")
+     
      ;;magit-status
      "g" '(:wk "git")
      "gg" '(magit-status :wk "magit-status")
