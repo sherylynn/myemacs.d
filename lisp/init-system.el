@@ -5,6 +5,17 @@
     (message "default insert in scratch")
     )
   )
+(defun evil-from-mouse-to-touch()
+  ;;触屏屏幕和鼠标适配
+  ;;原本evil会在down-mouse-1下默认绑定evil-mouse-drag-region
+  ;;严重影响触摸屏使用，原来的visual依然可以用键盘实现
+  (evil-define-key 'visual 'global
+    (kbd "<down-mouse-1>") 'touch-screen-scroll)
+
+  (evil-define-key 'normal 'global
+    (kbd "<down-mouse-1>") 'touch-screen-scroll)
+
+  )
 
 (when (string-equal system-type "android")
   ;; set terminal eshell because of vterm bug in android
@@ -24,30 +35,19 @@
     ;;果然想象力才是限制，直接在启动完后，只在具体的buffer执行就行
     (add-hook 'emacs-startup-hook 'android-insert)
 
-    ;;触屏屏幕和鼠标适配
-    ;;原本evil会在down-mouse-1下默认绑定evil-mouse-drag-region
-    ;;严重影响触摸屏使用，原来的visual依然可以用键盘实现
-    (evil-define-key 'visual 'global
-      (kbd "<down-mouse-1>") 'touch-screen-scroll)
 
-    (evil-define-key 'normal 'global
-      (kbd "<down-mouse-1>") 'touch-screen-scroll)
-    )
+    ;;如果遇上了android，设置默认为insert以方便唤出键盘
+    (add-hook 'evil-initialize
+	      'evil-from-mouse-to-touch
+	      )
 
-  ;;如果遇上了android，设置默认为insert以方便唤出键盘
-  ;;(add-hook 'evil-initialize
-  ;;(lambda ()
-  ;;(setq evil-default-state 'insert)
-  ;;)
-  ;;)
-
-  ;; disable because of elpa bug in android
-  (setq package-check-signature nil)
-  ;; Add Termux binaries to PATH environment
-  (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
-    (setenv "PATH" (concat (getenv "PATH") ":" termuxpath))
-    (setq exec-path (append exec-path (list termuxpath)))))
-
+    ;; disable because of elpa bug in android
+    (setq package-check-signature nil)
+    ;; Add Termux binaries to PATH environment
+    (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
+      (setenv "PATH" (concat (getenv "PATH") ":" termuxpath))
+      (setq exec-path (append exec-path (list termuxpath)))))
+  )
 
 (when (string-equal system-type "windows-nt")
   ;; 需要全局变量来操作
