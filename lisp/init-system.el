@@ -16,7 +16,7 @@
     ;;(emacs-startup-hook . (lambda() android-insert))
     :custom
     ;;可以设置这个变量打开键盘
-    (touch-screen-display-keyboard t) ;;然而还是没生效
+    (touch-screen-display-keyboard t);;还是得配合scatch 一开始的插入，等后面就能不断的最小化窗口和重新进入来输出键盘了
 
     :init
     ;;还是会引入很多问题,问题的来源其实是因为android 输入法和emacs本身实现的问题，会导致evil的normal模式下还是会不断键入hjkl ，可以通过下面这个来关闭输入转译
