@@ -22,7 +22,10 @@
 
   (evil-define-key 'normal 'global
     (kbd "<down-mouse-1>") 'touch-screen-scroll)
+  ;;(describe-key-briefly (kbd "<down-mouse-1>"))
 
+  (evil-define-key 'normal 'global
+    (kbd "<down-mouse-1>") 'mouse-drag-region)
   )
 
 (when (string-equal system-type "android")
