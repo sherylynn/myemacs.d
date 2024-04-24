@@ -33,6 +33,7 @@
 ;;better-defaults 比如关闭工具栏等有趣的行为
 ;;(use-package better-defaults)
 ;;手动控制上述行为
+
 (when (display-graphic-p)
   (scroll-bar-mode -1) ;;关闭滚动栏
   (tool-bar-mode -1) ;;取消工具栏

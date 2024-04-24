@@ -124,6 +124,7 @@
      ;;toggle/tab/todo
      "t" '(:wk "toggle/tab/todo")
      "tt" 'toggle-terminal
+     "ta" 'toggle-android
      "th" '(my-left-tab :wk "left tab")
      "tl" '(my-right-tab :wk "right tab")
      "tj" '(my-prev-tab :wk "LEFT tab")

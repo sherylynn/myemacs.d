@@ -5,10 +5,18 @@
     (message "default insert in scratch")
     )
   )
+(defun toggle-android()
+  (interactive)
+  (modifier-bar-mode)
+  ;;(tool-bar-mode)
+  (toggle-tool-bar-mode-from-frame)
+  )
 (defun evil-from-mouse-to-touch()
+  (interactive)
   ;;触屏屏幕和鼠标适配
   ;;原本evil会在down-mouse-1下默认绑定evil-mouse-drag-region
   ;;严重影响触摸屏使用，原来的visual依然可以用键盘实现
+  ;;好像这个绑定还是有问题的
   (evil-define-key 'visual 'global
     (kbd "<down-mouse-1>") 'touch-screen-scroll)
 
@@ -22,12 +30,23 @@
   ;; 需要全局变量来操作
   (make-variable-buffer-local 'use-my-package-terminal)
   (set 'my-use-package-terminal "eshell")
+  ;; disable because of elpa bug in android
+  (setq package-check-signature nil)
+
+  ;; Add Termux binaries to PATH environment
+  (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
+    (setenv "PATH" (concat (getenv "PATH") ":" termuxpath))
+    (setq exec-path (append exec-path (list termuxpath))))
+
+
   (use-package emacs
     ;;:hook
     ;;(emacs-startup-hook . (lambda() android-insert))
     :custom
     ;;可以设置这个变量打开键盘
     (touch-screen-display-keyboard t);;还是得配合scatch 一开始的插入，等后面就能不断的最小化窗口和重新进入来输出键盘了
+    ;;把tool-bar 位置靠近键盘
+    (tool-bar-position 'bottom)
 
     :init
     ;;还是会引入很多问题,问题的来源其实是因为android 输入法和emacs本身实现的问题，会导致evil的normal模式下还是会不断键入hjkl ，可以通过下面这个来关闭输入转译
@@ -41,13 +60,7 @@
 	      'evil-from-mouse-to-touch
 	      )
 
-    ;; disable because of elpa bug in android
-    (setq package-check-signature nil)
-    ;; Add Termux binaries to PATH environment
-    (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
-      (setenv "PATH" (concat (getenv "PATH") ":" termuxpath))
-      (setq exec-path (append exec-path (list termuxpath)))))
-  )
+    ))
 
 (when (string-equal system-type "windows-nt")
   ;; 需要全局变量来操作

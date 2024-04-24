@@ -11,6 +11,10 @@
 
 ;;加载一些 init-key and init command 可能用到的方法
 (require 'init-utils)
+
+;;init-system 中会改默认终端，改变mouse
+(require 'init-system)
+
 ;;异步获取自动更新
 (async-shell-command-no-window "git -C ~/.emacs.d_my pull")
 ;;完成我其他的项目
@@ -27,9 +31,6 @@
 
 ;;加载 use-package 和源 （把设置分离出去了，因为很少动)
 (require 'init-package)
-
-;;init-system 中会改默认终端
-(require 'init-system)
 
 ;;为了更好的测试一下启动时间
 (when (equal my-init-config-timeup "debug")
