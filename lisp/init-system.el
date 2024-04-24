@@ -18,10 +18,7 @@
   ;;严重影响触摸屏使用，原来的visual依然可以用键盘实现
   ;;好像这个绑定还是有问题的
   (evil-define-key 'visual 'global
-    (kbd "<down-mouse-1>") 'touch-screen-scroll)
-
-  (evil-define-key 'normal 'global
-    (kbd "<down-mouse-1>") 'touch-screen-scroll)
+    (kbd "<down-mouse-1>") 'mouse-drag-region)
   ;;(describe-key-briefly (kbd "<down-mouse-1>"))
 
   (evil-define-key 'normal 'global
@@ -58,7 +55,7 @@
 
 
     ;;如果遇上了android，设置默认为insert以方便唤出键盘
-    (add-hook 'evil-initialize
+    (add-hook 'evil-mode-hook
 	      'evil-from-mouse-to-touch
 	      )
 
