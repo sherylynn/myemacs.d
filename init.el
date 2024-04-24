@@ -8,8 +8,6 @@
 ;;使用更灵活的 treemacs
 ;;(defvar my-use-package-filetree "neotree")
 (defvar my-use-package-filetree "treemacs")
-;;init-system 中会改默认终端
-(require 'init-system)
 
 ;;加载一些 init-key and init command 可能用到的方法
 (require 'init-utils)
@@ -29,6 +27,10 @@
 
 ;;加载 use-package 和源 （把设置分离出去了，因为很少动)
 (require 'init-package)
+
+;;init-system 中会改默认终端
+(require 'init-system)
+
 ;;为了更好的测试一下启动时间
 (when (equal my-init-config-timeup "debug")
   (use-package benchmark-init
