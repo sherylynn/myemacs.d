@@ -9,6 +9,14 @@
 ;;(defvar my-use-package-filetree "neotree")
 (defvar my-use-package-filetree "treemacs")
 
+;;我用的 tab-bar
+;;发现这俩包不冲突
+;;但是awesome包在android下不能点击
+(defvar my-use-package-tab-bar "all-bar")
+;;(setq my-use-package-tab-bar "all-bar") ;;全部都用
+;;(setq my-use-package-tab-bar "tab-bar") ;;自带的
+;;(setq my-use-package-tab-bar "awesome-tab") ;;第三方
+
 ;;加载一些 init-key and init command 可能用到的方法
 (require 'init-utils)
 
@@ -59,11 +67,6 @@
   )
 
 
-;;我用的 tab-bar
-;;发现这俩包不冲突
-(setq my-use-package-tab-bar "all-bar") ;;全部都用
-;;(setq my-use-package-tab-bar "tab-bar") ;;自带的
-;;(setq my-use-package-tab-bar "awesome-tab") ;;第三方
 
 ;; package switch
 (setq my-use-package-vim "evil")

@@ -30,6 +30,9 @@
   ;; 需要全局变量来操作
   (make-variable-buffer-local 'use-my-package-terminal)
   (set 'my-use-package-terminal "eshell")
+  (make-variable-buffer-local 'use-my-package-tab-bar)
+  (set 'my-use-package-tab-bar "tab-bar")
+
   ;; disable because of elpa bug in android
   (setq package-check-signature nil)
 
