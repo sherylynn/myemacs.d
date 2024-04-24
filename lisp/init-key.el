@@ -78,8 +78,9 @@
      "b" '(:wk "buffer func")
      "bf" 'format-all-region-or-buffer
      ;;edit
-     "e" '(:wk "edit")
+     "e" '(:wk "edit/eval")
      "ef" '(format-all-buffer :wk "edit format")
+     "eb" '(eval-buffer :wk "eval-buffer")
      ;;配置中文字体
      "ec" '(cnfonts-edit-profile :wk "edit chinese fonts")
      ;;file
@@ -112,12 +113,14 @@
      "ok" '(outline-move-subtree-up :wk "item up")
      ;;"ow" 'org-agenda-date-weekend
      ;;project/projectile
-     "p" '(:wk "project/projectile")
+     "p" '(:wk "project/projectile/page")
      ;;"pf" 'project-find-file ;;这个有时候不能用
      "pf" 'projectile-find-file ;;速度太慢
      ;;"ps" 'projectile-switch-project
      "ps" 'project-switch-project
      "pg" 'projectile-grep
+     "pd" 'evil-scroll-down
+     "pu" 'evil-scroll-up
      ;;run func
      "x" '(:wk "exce func")
      "xx" 'execute-extended-command
