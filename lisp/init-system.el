@@ -5,6 +5,20 @@
     (message "default insert in scratch")
     )
   )
+(defun my_cnfonts_fonts()
+  (setq cnfonts-personal-fontnames
+	'(;;英文字体
+	  ("Pro")
+	  ;;中文字体
+	  ("Droid Sans Mono" "Source Sans Pro")
+	  ;;EXT-B 字体
+	  ("Droid Sans Mono" "Source Sans Pro")
+	  ;;Symbol 字符字体
+	  ("Droid Sans Mono" "Source Sans Pro")
+	  ;;装饰字体
+	  ("Droid Sans Mono" "Source Sans Pro")
+	  )
+	))
 (defun toggle-android()
   (interactive)
   (modifier-bar-mode)
@@ -71,14 +85,12 @@
     ;;果然想象力才是限制，直接在启动完后，只在具体的buffer执行就行
     ;;(add-hook 'emacs-startup-hook 'android-insert)
 
-
+    (my_cnfonts_fonts)
     ;;如果遇上了android，设置默认为insert以方便唤出键盘
     (add-hook 'evil-mode-hook
 	      'evil-for-android
 	      )
-
     )
-
 
   )
 
