@@ -6,11 +6,12 @@
     )
   )
 (defun my_cnfonts_fonts()
+  (interactive)
   (setq cnfonts-personal-fontnames
 	'(;;英文字体
-	  ("Pro")
+	  ("Symbols Nerd Font Mono")
 	  ;;中文字体
-	  ("Droid Sans Mono" "Source Sans Pro")
+	  ("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono")
 	  ;;EXT-B 字体
 	  ("Droid Sans Mono" "Source Sans Pro")
 	  ;;Symbol 字符字体
