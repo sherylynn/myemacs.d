@@ -45,7 +45,9 @@
   ;;tab是indent-for-tab-command
   ;;(define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
   ;;(define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
-  ;;(define-key key-translation-map (kbd "<volume-up>") (kbd "C-p"))
+  ;;(define-key key-translation-map (kbd "<volume-up>") (kbd "<tab>"))
+  (define-key key-translation-map (kbd "<volume-up>") (kbd "TAB"))
+  ;;(describe-key-briefly (kbd "TAB"))
   ;;(evil-define-key 'normal 'global (kbd "<volume-up>") ')
   (evil-define-key 'insert 'global (kbd "<volume-down>") 'evil-complete-next)
   )

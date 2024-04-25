@@ -126,6 +126,7 @@
      ;;run func
      "x" '(:wk "exce func")
      "xx" 'execute-extended-command
+     "xe" 'eval-last-sexp
      ;;toggle/tab/todo
      "t" '(:wk "toggle/tab/todo")
      "tt" 'toggle-terminal
