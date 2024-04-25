@@ -141,7 +141,7 @@
      ;;"t=" '(awesome-tab-forward-tab :wk "right tab")
      ;;
      ;;"-" 'text-scale-decrease ;;这个是默认自带的方法
-     ;;"=" 'text-scale-increase ;;这个是默认自带的方法，还可以直接 ctrl 和滚轮配合调整
+     ;;"=" 'text-scale-increase ;;这个是默认自带的方法，还可以直接 ctrl 和滚轮配合调整 
      ;;"-" 'default-text-scale-decrease ;; purcell 的 default-text-scale 和 cnfonts 有冲突
      ;;"=" 'default-text-scale-increase ;; 直接用 cnfonts 的 方法
      "-" 'cnfonts-decrease-fontsize

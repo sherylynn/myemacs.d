@@ -44,6 +44,11 @@
 			 (getenv "PATH")))
   (push "/data/data/com.termux/files/usr/bin" exec-path)
 
+  ;;绑定音量键
+  (define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
+  (define-key key-translation-map (kbd "<volume-up>") (kbd "C-p"))
+
+
   (use-package emacs
     ;;:hook
     ;;(emacs-startup-hook . (lambda() android-insert))
