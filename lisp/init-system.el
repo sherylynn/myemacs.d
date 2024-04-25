@@ -11,7 +11,7 @@
   ;;(tool-bar-mode)
   (toggle-tool-bar-mode-from-frame)
   )
-(defun evil-from-mouse-to-touch()
+(defun evil-for-android()
   (interactive)
   ;;触屏屏幕和鼠标适配
   ;;原本evil会在down-mouse-1下默认绑定evil-mouse-drag-region
@@ -23,6 +23,16 @@
 
   (evil-define-key 'normal 'global
     (kbd "<down-mouse-1>") 'mouse-drag-region)
+  ;;绑定音量键
+  ;;insert 模式下可以evil-complete-next
+  ;; evil-complete-previous
+  ;; normal 模式下可以 org-crcle
+  ;;tab是indent-for-tab-command
+  ;;(define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
+  ;;(define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
+  ;;(define-key key-translation-map (kbd "<volume-up>") (kbd "C-p"))
+  ;;(evil-define-key 'normal 'global (kbd "<volume-up>") ')
+  (evil-define-key 'insert 'global (kbd "<volume-down>") 'evil-complete-next)
   )
 
 (when (string-equal system-type "android")
@@ -44,9 +54,6 @@
 			 (getenv "PATH")))
   (push "/data/data/com.termux/files/usr/bin" exec-path)
 
-  ;;绑定音量键
-  (define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
-  (define-key key-translation-map (kbd "<volume-up>") (kbd "C-p"))
 
 
   (use-package emacs
@@ -67,7 +74,7 @@
 
     ;;如果遇上了android，设置默认为insert以方便唤出键盘
     (add-hook 'evil-mode-hook
-	      'evil-from-mouse-to-touch
+	      'evil-for-android
 	      )
 
     )
