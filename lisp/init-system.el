@@ -50,6 +50,7 @@
   ;;(describe-key-briefly (kbd "TAB"))
   ;;(evil-define-key 'normal 'global (kbd "<volume-up>") ')
   (evil-define-key 'insert 'global (kbd "<volume-down>") 'evil-complete-next)
+  (evil-define-key 'normal 'org-mode-map (kbd "<volume-down>") 'org-cycle)
   )
 
 (when (string-equal system-type "android")
