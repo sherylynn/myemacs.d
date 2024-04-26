@@ -83,8 +83,10 @@
     ;;:hook
     ;;(emacs-startup-hook . (lambda() android-insert))
     :custom
-    ;;可以设置这个变量打开键盘
-    (touch-screen-display-keyboard t);;还是得配合scatch 一开始的插入，等后面就能不断的最小化窗口和重新进入来输出键盘了
+    ;;可以设置这个变量打开关闭键盘
+    (touch-screen-display-keyboard t)
+    ;;还是得配合scatch 一开始的插入，等后面就能不断的最小化窗口和重新进入来输出键盘了
+    ;;不知道为啥后来就一直能弹出来，原来是改掉了evil的影响
     ;;把tool-bar 位置靠近键盘
     (tool-bar-position 'bottom)
 
@@ -95,10 +97,8 @@
     ;;(add-hook 'emacs-startup-hook 'android-insert)
 
     (my_cnfonts_fonts)
-    ;;如果遇上了android，设置默认为insert以方便唤出键盘
-    (add-hook 'evil-mode-hook
-	      'evil-for-android
-	      )
+    ;;如果遇上了android，设置默认为insert以方便唤出键盘 原来一直弹出的问题是来源于evil对mouse的绑定，所以touch键盘会影响
+    (add-hook 'evil-mode-hook 'evil-for-android)
     )
 
   )
