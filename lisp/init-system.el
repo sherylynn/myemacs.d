@@ -35,14 +35,18 @@
   (interactive)
   ;;触屏屏幕和鼠标适配
   ;;原本evil会在down-mouse-1下默认绑定evil-mouse-drag-region
+  ;;(describe-key-briefly (kbd "<down-mouse-1>"))
   ;;严重影响触摸屏使用，原来的visual依然可以用键盘实现
   ;;好像这个绑定还是有问题的
-  (evil-define-key 'visual 'global
-    (kbd "<down-mouse-1>") 'mouse-drag-region)
-  ;;(describe-key-briefly (kbd "<down-mouse-1>"))
 
-  (evil-define-key 'normal 'global
-    (kbd "<down-mouse-1>") 'mouse-drag-region)
+  ;;下面注释的代码和忽略的代码等效
+  ;;(evil-define-key 'visual 'global
+  ;; (kbd "<down-mouse-1>") 'mouse-drag-region)
+  ;;(evil-define-key 'normal 'global
+  ;; (kbd "<down-mouse-1>") 'mouse-drag-region)
+  ;;在鼠标事件中忽略evil的
+  (put 'evil-mouse-drag-region 'ignored-mouse-command t)
+
   ;;绑定音量键
   ;;insert 模式下可以evil-complete-next
   ;; evil-complete-previous
