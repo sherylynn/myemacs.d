@@ -94,6 +94,8 @@
     ;;:hook
     ;;(emacs-startup-hook . (lambda() android-insert))
     :custom
+    ;;better magit speed
+    (android-use-exec-loader nil)
     ;;可以设置这个变量打开关闭键盘
     (touch-screen-display-keyboard t)
     ;;还是得配合scatch 一开始的插入，等后面就能不断的最小化窗口和重新进入来输出键盘了
