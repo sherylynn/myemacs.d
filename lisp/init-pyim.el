@@ -1,6 +1,12 @@
 ;;来点基础词库
 (use-package pyim
   :demand t ;;等需要的时候加载
+  :bind (
+	 :map pyim-mode-map
+	 ("<left>" . pyim-previous-word)
+	 ("<right>" . pyim-next-word)
+	 ("<down>" . pyim-next-page)
+	 ("<up>" . pyim-previous-page))
   :config
   ;;默认输入法设置
   (setq default-input-method "pyim")

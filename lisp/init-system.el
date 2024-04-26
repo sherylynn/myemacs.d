@@ -48,14 +48,21 @@
   ;; evil-complete-previous
   ;; normal 模式下可以 org-crcle
   ;;tab是indent-for-tab-command
-  ;;(define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
-  ;;(define-key key-translation-map (kbd "<volume-down>") (kbd "C-n"))
+  ;;(define-key key-translation-map (kbd "<volume-down>") (kbd 'hyper))
+					;(define-key key-translation-map (kbd "<volume-down>") (kbd 'hyper))
+  ;;(define-key key-translation-map (kbd "<volume-down>") (kbd "C-/"))
+  ;;(define-key key-translation-map (kbd "<volume-down>-p") (kbd "C-p"))
   ;;(define-key key-translation-map (kbd "<volume-up>") (kbd "<tab>"))
-  (define-key key-translation-map (kbd "<volume-up>") (kbd "TAB"))
+  (define-key key-translation-map (kbd "<volume-down>") (kbd "TAB"))
+  ;;(define-key key-translation-map (kbd "<left>") (kbd "c-p"))
+  ;;(define-key key-translation-map (kbd "<right>") (kbd "C-n"))
   ;;(describe-key-briefly (kbd "TAB"))
   ;;(evil-define-key 'normal 'global (kbd "<volume-up>") ')
-  (evil-define-key 'insert 'global (kbd "<volume-down>") 'evil-complete-next)
-  (evil-define-key 'normal 'org-mode-map (kbd "<volume-down>") 'org-cycle)
+  ;;(evil-define-key 'insert 'global (kbd "<volume-down>-n") 'evil-complete-next)
+  (evil-define-key '(insert normal) 'global (kbd "<volume-up>") 'toggle-input-method)
+  ;;(evil-define-key 'normal 'org-mode-map (kbd "<volume-down>") 'org-cycle)
+  ;;(evil-define-key 'insert 'pyim-mode-map (kbd "<down>") 'pyim-next-page)
+  ;;(evil-define-key 'insert 'pyim-mode-map (kbd "<down>") (kbd "="))
   )
 
 (when (string-equal system-type "android")
