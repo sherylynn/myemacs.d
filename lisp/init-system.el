@@ -9,13 +9,14 @@
   (interactive)
   (setq cnfonts-personal-fontnames
 	'(;;英文字体
-	  ("Symbols Nerd Font Mono")
+	  ("Droid Sans Mono" "PingFang SC")
 	  ;;中文字体
-	  ("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono")
+	  ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
+	  ("PingFang SC")
 	  ;;EXT-B 字体
 	  ("Droid Sans Mono" "Source Sans Pro")
 	  ;;Symbol 字符字体
-	  ("Droid Sans Mono" "Source Sans Pro")
+	  ("Symbols Nerd Font Mono")
 	  ;;装饰字体
 	  ("Droid Sans Mono" "Source Sans Pro")
 	  )
@@ -25,6 +26,10 @@
   (modifier-bar-mode)
   ;;(tool-bar-mode)
   (toggle-tool-bar-mode-from-frame)
+  )
+(defun my-close-android-keyboard()
+  (interactive)
+  (setq touch-screen-display-keyboard nil)
   )
 (defun evil-for-android()
   (interactive)

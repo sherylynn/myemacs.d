@@ -100,9 +100,10 @@
      "id" 'insert-now-schedule
      ;;"it" 'toggle-input-method
      ;;change
-     "c" '(:wk "change")
+     "c" '(:wk "change/close")
      "ct" 'change-todo
      "ci" 'toggle-input-method
+     "ck" 'my-close-android-keyboard
      ;;org-agenda
      "o" '(:wk "org")
      "oa" 'org-agenda
