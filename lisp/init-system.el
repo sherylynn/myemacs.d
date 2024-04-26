@@ -9,7 +9,7 @@
   (interactive)
   (setq cnfonts-personal-fontnames
 	'(;;英文字体
-	  ("Droid Sans Mono" "PingFang SC")
+	  ("Droid Sans Mono" "PingFang SC" "Source Sans Pro")
 	  ;;中文字体
 	  ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
 	  ("PingFang SC")
@@ -73,7 +73,8 @@
   ;; set terminal eshell because of vterm bug in android
   ;; 需要全局变量来操作
   (make-variable-buffer-local 'use-my-package-terminal)
-  (set 'my-use-package-terminal "eshell")
+  ;;还是不如直接term方便
+  ;;(set 'my-use-package-terminal "eshell")
   (make-variable-buffer-local 'use-my-package-tab-bar)
   (set 'my-use-package-tab-bar "tab-bar")
   (make-variable-buffer-local 'use-my-package-filetree)
