@@ -87,7 +87,8 @@
       (dashboard-setup-startup-hook)))
   )
 ;;熟悉的 tab 栏
-(unless (equal my-use-package-tab-bar "awesome-tab" )
+(when (equal my-use-package-tab-bar t)
+  ;;(unless (equal my-use-package-tab-bar "awesome-tab" )
   (use-package tab-bar
     :custom
     (tab-bar-separator "|")
@@ -111,11 +112,12 @@
     (tab-bar-switch-to-next-tab)
     )
   )
-(unless (equal my-use-package-tab-bar "tab-bar" )
+(when (equal my-use-package-awesome-tab t)
+  ;;(unless (equal my-use-package-tab-bar "tab-bar" )
   ;;awesome-tab ;;gui 下面激活的不明显，试试官方包
   ;;(when (< emacs-major-version 30)
   (use-package awesome-tab
-    :unless (equal my-use-package-tab-bar "tab-bar")
+    ;;:unless (equal my-use-package-awesome-tab t)
     :quelpa (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")
     :custom
     ;;搞了个紫色激活背景的标签栏
@@ -141,6 +143,13 @@
     (awesome-tab-forward-tab )
     )
   ;;)
+  )
+(when (equal my-use-package-centaur-tabs t)
+  (use-package centaur-tabs
+    :demand
+    :config
+    (centaur-tabs-mode t)
+    )
   )
 ;;elisp ()括号🌈彩虹
 (use-package rainbow-delimiters

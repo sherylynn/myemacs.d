@@ -77,7 +77,7 @@
   ;;(set 'my-use-package-terminal "eshell")
   (setq vterm-shell "/data/data/com.termux/files/usr/bin/zsh")
   (make-variable-buffer-local 'use-my-package-tab-bar)
-  (set 'my-use-package-tab-bar "tab-bar")
+  (set 'my-use-package-tab-bar t)
   (make-variable-buffer-local 'use-my-package-filetree)
   ;;都不好用
   (set 'my-use-package-filetree nil)
