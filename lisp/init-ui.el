@@ -115,6 +115,7 @@
   ;;awesome-tab ;;gui 下面激活的不明显，试试官方包
   ;;(when (< emacs-major-version 30)
   (use-package awesome-tab
+    :unless (equal my-use-package-tab-bar "tab-bar")
     :quelpa (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")
     :custom
     ;;搞了个紫色激活背景的标签栏

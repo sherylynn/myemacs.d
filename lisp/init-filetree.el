@@ -4,14 +4,17 @@
   )
 ;;熟悉的文件栏
 (when (equal my-use-package-filetree "neotree")
+  (message "why load neotree")
   (use-package neotree
     ;;需要 all the icon 包
+    :if (equal my-use-package-filetree "neotree")
     :config
     (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
   )
 (when (equal my-use-package-filetree "treemacs")
   (use-package treemacs
     :defer t
+    :if (equal my-use-package-filetree "treemacs")
     :init
     (with-eval-after-load 'winum
       (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
