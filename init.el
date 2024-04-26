@@ -5,15 +5,16 @@
 ;;(setq my-use-package-terminal "eshell")
 ;;需要全局变量
 (defvar my-use-package-terminal "vterm")
-;;使用更灵活的 treemacs
-;;(defvar my-use-package-filetree "neotree")
-(defvar my-use-package-filetree "treemacs")
+;;更灵活 treemacs
+(defvar my-use-package-filetree "neotree")
+;; neotree 支持android点击触摸
+;;(defvar my-use-package-filetree "treemacs")
 
 ;;我用的 tab-bar
 ;;发现这俩包不冲突
-;;但是awesome包在android下不能点击
+;;但是awesome包在android下不能点击，centaur可以
 (defvar my-use-package-tab-bar t)
-(defvar my-use-package-awesome-tab t)
+(defvar my-use-package-awesome-tab nil)
 (defvar my-use-package-centaur-tabs t)
 
 ;;加载一些 init-key and init command 可能用到的方法
