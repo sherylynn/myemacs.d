@@ -108,8 +108,20 @@
 (when (equal my-use-package-centaur-tabs t)
   (use-package centaur-tabs
     :demand
+    :custom
+    ;;波浪型
+    (centaur-tabs-style "wave")
+    ;;显示icon
+    (centaur-tabs-set-icons t)
+    (centaur-tabs-plain-icons t)
+    (centaur-tabs-gray-out-icons 'buffer)
+    ;;高亮细线
+    (centaur-tabs-set-bar 'under)
+    (x-underline-at-descent-line t)
+    (centaur-tabs-active-bar-face (:foreground "#5300F6"))
     :config
     (centaur-tabs-mode t)
+    (centaur-tabs-headline-match)
     (defun my-left-tab()
       (interactive)
       (centaur-tabs-backward )
