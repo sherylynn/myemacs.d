@@ -160,8 +160,8 @@
 ;;pyim
 (require 'init-pyim)
 
-;;my
-
+;;尝试过后来又不用的代码
+;;(require 'abandon)
 
 ;;关闭 emacs 的 custom 在 init 文件里瞎下蛋拉屎
 (setq custom-file "~/.emacs.d_my/custom.el")
