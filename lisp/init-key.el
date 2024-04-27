@@ -48,8 +48,7 @@
      ;;git pull
      "zf" 'magit-pull-from-upstream
      ;;neotree
-     ;;"1" '(neotree-toggle :wk "toggle neotree")
-     "1" '(treemacs :wk "toggle treemacs")
+     "1" '(my-toggle-filetree :wk "toggle filetree")
      ;;quit buffer
      ;;"q" '(kill-buffer-and-window :wk "quit buffer")
      "q" '(delete-window :wk "delete window")
@@ -65,7 +64,7 @@
      "rc" '(package-recompile-all :wk "recompile package")
      ;;windows
      "w" '(:wk "windows")
-     "wq" 'kill-buffer-and-window
+     "wq" 'my-toggle-filetree
      "wd" 'kill-buffer-and-window
      "wh" 'evil-window-left ;;C-w h
      "wj" 'evil-window-down ;;C-w j
@@ -155,11 +154,4 @@
 
      )
     ))
-(when (equal my-use-package-vim "meow")
-  (use-package meow
-    :config
-    ;;(meow-setup)
-    (meow-global-mode 1)
-    )
-  )
 (provide 'init-key)

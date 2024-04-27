@@ -71,8 +71,8 @@
   (make-variable-buffer-local 'use-my-package-tab-bar)
   (set 'my-use-package-tab-bar t)
   (make-variable-buffer-local 'use-my-package-filetree)
-  ;;都不好用
-  (set 'my-use-package-filetree nil)
+  ;;都不好用, neotree 支持触摸
+  (set 'my-use-package-filetree "neotree")
 
   ;; disable because of elpa bug in android
   (setq package-check-signature nil)

@@ -109,8 +109,8 @@
   (use-package centaur-tabs
     :demand
     :custom
-    ;;波浪型
-    (centaur-tabs-style "wave")
+    ;;标签外观
+    (centaur-tabs-style "bar")
     ;;显示icon
     (centaur-tabs-set-icons t)
     (centaur-tabs-plain-icons t)
@@ -118,7 +118,15 @@
     ;;高亮细线
     (centaur-tabs-set-bar 'under)
     (x-underline-at-descent-line t)
-    (centaur-tabs-active-bar-face (:foreground "#5300F6"))
+    ;;颜色都没什么变化
+    ;;(centaur-tabs-background-color "#5300F6")
+    ;;(centaur-tabs-active-bar-face (:foreground "#5300F6"))
+    :init
+    (defface centaur-tabs-selected-modified
+      '((t (:background "#31343E" :foreground "green")))
+      "Face used for the selected-modified tab."
+      :group 'centaur-tabs)
+
     :config
     (centaur-tabs-mode t)
     (centaur-tabs-headline-match)

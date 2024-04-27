@@ -1,3 +1,13 @@
+(defun my-toggle-filetree()
+  "toggle filetree" ;;need desc
+  (interactive) ;;need interactive
+  (when (equal my-use-package-filetree "treemacs")
+    (treemacs )
+    )
+  (when (equal my-use-package-filetree "neotree")
+    (neotree-toggle )
+    )
+  )
 
 (defun insert-checkbox ()
   "insert checkbox" ;;need desc

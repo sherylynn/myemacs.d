@@ -1,33 +1,6 @@
 
 ;;接下来让我们vim起来
 (when (equal my-use-package-vim "evil")
-  ;;leader键
-  (when (equal my-use-package-leader "evil-leader")
-    (use-package evil-leader
-      :init
-      ;;evil-collection 的 warning, 不得不关闭
-      (setq evil-want-keybinding nil)
-      :config
-      (global-evil-leader-mode)
-      (evil-leader/set-leader "SPC")
-      (evil-leader/set-key
-       ;;org file
-       "zo" 'open-myorg
-       ;;reload init.el
-       "zr" 'reload-emacs
-       ;;init.el
-       "ze" 'configure-emacs
-       ;;neotree
-       "1" 'neotree-toggle
-       ;;quit buffer
-       "q" 'kill-buffer-and-window
-       ;;quit emacs
-       "zz" 'kill-emacs ;;evil leader 不能用qq叠词
-       ;;magit-status
-       "gg" 'magit-status
-       )
-      )
-    )
 
   ;;EVIL:: as vim
   (use-package evil
