@@ -47,7 +47,6 @@
     (setq read-extended-command-predicate #'command-completion-default-include-p))
   ;; corfu in terminal
   (use-package corfu-terminal
-    :ensure t
     :config
     (unless (display-graphic-p)
       (corfu-terminal-mode +1)

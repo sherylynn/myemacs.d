@@ -7,6 +7,7 @@
   (message "why load neotree")
   (use-package neotree
     ;;需要 all the icon 包
+    :defer t
     :if (equal my-use-package-filetree "neotree")
     :custom
     (neo-show-hidden-files t)
