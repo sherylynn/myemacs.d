@@ -123,11 +123,25 @@
     ;;(centaur-tabs-active-bar-face (:foreground "#5300F6"))
     :init
     (defface centaur-tabs-selected-modified
-      '((t (:background "#31343E" :foreground "green")))
+      '((t (:background "red" :foreground "green")))
       "Face used for the selected-modified tab."
       :group 'centaur-tabs)
 
+    (defface centaur-tabs-selected
+      '((t (:background "red" :foreground "green")))
+      "Face used for the selected tab."
+      :group 'centaur-tabs)
+
     :config
+    (defface centaur-tabs-selected-modified
+      '((t (:background "red" :foreground "green")))
+      "Face used for the selected-modified tab."
+      :group 'centaur-tabs)
+
+    (defface centaur-tabs-selected
+      '((t (:background "red" :foreground "green")))
+      "Face used for the selected tab."
+      :group 'centaur-tabs)
     (centaur-tabs-mode t)
     (centaur-tabs-headline-match)
     (defun my-left-tab()
