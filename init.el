@@ -166,3 +166,9 @@
 ;;关闭 emacs 的 custom 在 init 文件里瞎下蛋拉屎
 (setq custom-file "~/.emacs.d_my/custom.el")
 (load custom-file 'no-error 'no-message)
+
+;;自动保存状态重新自动打开
+(desktop-save-mode 1)
+(setq desktop-dirname "~/")
+(setq desktop-base-file-name ".emacs.desktop")
+(desktop-read "~/")

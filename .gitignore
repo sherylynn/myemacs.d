@@ -38,3 +38,5 @@ projectile-bookmarks.eld
 
 session.*
 org-persist
+
+.emacs.desktop*

@@ -3,6 +3,7 @@
   :demand t ;;等需要的时候加载
   :bind (
 	 :map pyim-mode-map
+	 ("C-." . toggle-input-method)
 	 ("<left>" . pyim-previous-word)
 	 ("<right>" . pyim-next-word)
 	 ("<down>" . pyim-next-page)
@@ -12,6 +13,7 @@
   (setq default-input-method "pyim")
   (setq pyim-page-length 5)
   (require 'pyim-dregcache)
+  ;;解决android和termux下的pyim输入
   (setq pyim-dcache-backend 'pyim-dregcache)
   )
 ;;使用原家产的悬浮选词窗
