@@ -13,6 +13,8 @@
   (display-line-numbers-mode 0)
   ;;没有当前窗口关闭的 tab，算了
   ;;(awesome-tab-mode 0)
+  ;;关闭当前窗口的tab
+  (centaur-tabs-local-mode 1)
   ))
 (add-hook
  'org-mode-hook
