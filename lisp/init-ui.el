@@ -149,12 +149,12 @@
     :custom
     (cnfonts-personal-fontnames
      '(;;英文字体
-       ("Droid Sans Mono" "PingFang SC" "Sarasa Term SC Nerd Regular")
+       ("Droid Sans Mono" "PingFang SC" "终端更纱黑体-简 Nerd")
        ;;中文字体
        ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
-       ("PingFang SC" "Sarasa Term SC Nerd Regular")
+       ("PingFang SC" "终端更纱黑体-简 Nerd")
        ;;EXT-B 字体
-       ("Droid Sans Mono" "Source Sans Pro")
+       ("终端更纱黑体-简 Nerd")
        ;;Symbol 字符字体
        ("Symbols Nerd Font Mono")
        ;;装饰字体
