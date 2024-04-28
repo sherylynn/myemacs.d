@@ -1,3 +1,18 @@
+;;----------------gc启动优化--------------------
+;;来自 purcell 的性能优化
+;; Adjust garbage collection threshold for early startup (see use of gcmh below)
+(setq gc-cons-threshold (* 128 1024 1024))
+;; Process performance tuning
+(setq read-process-output-max (* 4 1024 1024))
+(setq process-adaptive-read-buffering nil)
+;; General performance tuning
+(setq jit-lock-defer-time 0)
+
+;;使用 GC 优化包
+(use-package gcmh
+  :config
+  (gcmh-mode 1)
+  )
 ;;----------------UI--------------------
 ;;直接用 doom 的 dashboard
 (when (equal my-init-config-timeup "normal")
