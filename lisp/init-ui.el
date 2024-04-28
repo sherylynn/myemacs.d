@@ -5,6 +5,17 @@
 ;;相对行号
 (setq display-line-numbers-type 'relative)
 
+
+;;这些窗口就没必要tabs占空间拉
+(defun my-centaur-hide-local()
+  ;;关闭当前窗口的tab
+  (centaur-tabs-local-mode 1)
+  )
+(add-hook 'vterm-mode-hook 'my-centaur-hide-local)
+(add-hook 'grep-mode-hook 'my-centaur-hide-local)
+;;(add-hook 'magit-post-commit-hook 'my-centaur-hide-local) ;;提交commit的时候
+
+;;其他调整
 (add-hook
  'vterm-mode-hook
  (
@@ -13,15 +24,6 @@
   (display-line-numbers-mode 0)
   ;;没有当前窗口关闭的 tab，算了
   ;;(awesome-tab-mode 0)
-  ;;关闭当前窗口的tab
-  (centaur-tabs-local-mode 1)
-  ))
-(add-hook
- 'grep-mode-hook
- (
-  lambda()
-  ;;关闭grep结果窗口的tab
-  (centaur-tabs-local-mode 1)
   ))
 (add-hook
  'org-mode-hook
@@ -39,9 +41,6 @@
   (setq truncate-lines nil)
 
   ))
-;;better-defaults 比如关闭工具栏等有趣的行为
-;;(use-package better-defaults)
-;;手动控制上述行为
 
 (when (display-graphic-p)
   (scroll-bar-mode -1) ;;关闭滚动栏
