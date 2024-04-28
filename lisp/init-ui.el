@@ -9,25 +9,22 @@
 ;;ui
 (use-package all-the-icons)
 
-;;这些窗口就没必要tabs占空间拉
 (defun my-centaur-hide-local()
+  ;;其实是直接编辑的.git/下的COMMIT_EDITMSG 文件
   ;;关闭当前窗口的tab
-  (centaur-tabs-local-mode 1)
+  (when (string-equal (buffer-name) "COMMIT_EDITMSG")
+    (centaur-tabs-local-mode 1)
+    )
   )
-(add-hook 'vterm-mode-hook 'my-centaur-hide-local)
-(add-hook 'grep-mode-hook 'my-centaur-hide-local)
-;;(add-hook 'magit-post-commit-hook 'my-centaur-hide-local) ;;提交commit的时候
-;;其实是直接编辑的.git/下的COMMIT_EDITING 文件
+
 
 ;;其他调整
 (add-hook
  'vterm-mode-hook
  (
-  ;;当启动 vterm 的时候关闭行号,关闭 tabs
+  ;;当启动 vterm 的时候关闭行号
   lambda()
   (display-line-numbers-mode 0)
-  ;;没有当前窗口关闭的 tab，算了
-  ;;(awesome-tab-mode 0)
   ))
 (add-hook
  'org-mode-hook
@@ -38,8 +35,6 @@
 
   ;;打开 buffer 大小，显示当前字数
   (size-indication-mode)
-  ;;没有当前窗口关闭的 tab，算了
-  ;;(awesome-tab-mode 0)
 
   ;;开启 org 下面自动换行
   (setq truncate-lines nil)
@@ -119,6 +114,12 @@
   )
 (when (equal my-use-package-centaur-tabs t)
   (use-package centaur-tabs
+    :hook (
+	   ;;这些窗口就没必要tabs占空间拉
+	   (vterm-mode . centaur-tabs-local-mode)
+	   (grep-mode . centaur-tabs-local-mode)
+	   (prog-mode . my-centaur-hide-local)
+	   )
     :demand
     :custom
     ;;标签外观
@@ -133,27 +134,11 @@
     ;;颜色都没什么变化
     ;;(centaur-tabs-background-color "#5300F6")
     ;;(centaur-tabs-active-bar-face (:foreground "#5300F6"))
-    :init
-    (defface centaur-tabs-selected-modified
-      '((t (:background "red" :foreground "green")))
-      "Face used for the selected-modified tab."
-      :group 'centaur-tabs)
-
-    (defface centaur-tabs-selected
-      '((t (:background "red" :foreground "green")))
-      "Face used for the selected tab."
-      :group 'centaur-tabs)
-
     :config
-    (defface centaur-tabs-selected-modified
-      '((t (:background "red" :foreground "green")))
-      "Face used for the selected-modified tab."
-      :group 'centaur-tabs)
-
-    (defface centaur-tabs-selected
-      '((t (:background "red" :foreground "green")))
-      "Face used for the selected tab."
-      :group 'centaur-tabs)
+    ;;(defface centaur-tabs-selected
+    ;; '((t (:background "red" :foreground "green")))
+    ;; "Face used for the selected tab."
+    ;; :group 'centaur-tabs)
     (centaur-tabs-mode t)
     (centaur-tabs-headline-match)
     (defun my-left-tab()
