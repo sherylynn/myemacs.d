@@ -204,6 +204,13 @@ See also `text-scale-adjust'."
       )
     )
   )
+
+(use-package valign
+  :hook
+  (org-mode . valign-mode)
+  )
+
+;;中英文间加空格渲染
 (use-package pangu-spacing
   :hook
   ;;别改我的普通的编程文件，避免搞坏我的字符串
