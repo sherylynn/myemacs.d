@@ -147,7 +147,7 @@
 (when (display-graphic-p)
   (use-package cnfonts
     :config
-    ;;(cnfonts-mode 1)
+    (cnfonts-mode 1)
     ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
     )
   )

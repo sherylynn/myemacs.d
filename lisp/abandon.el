@@ -278,4 +278,30 @@
     )
   )
 
+
+;;----------------program--------------------
+;;自动括号
+(use-package awesome-pair
+  :quelpa (awesome-pair :fetcher github :repo "manateelazycat/awesome-pair")
+  :hook (
+         (java-mode . awesome-pair-mode)
+         (js-mode . awesome-pair-mode)
+         (emacs-lisp-mode . awesome-pair-mode)
+         (python-mode . awesome-pair-mode)
+         (go-mode . awesome-pair-mode)
+         (lua-mode . awesome-pair-mode)
+         (lisp-mode . awesome-pair-mode)
+	 )
+  :bind (
+	 :map awesome-pair-mode-map
+	 ("(" . awesome-pair-open-round)
+	 ("[" . awesome-pair-open-bracket)
+	 ("{" . awesome-pair-open-curly)
+	 (")" . awesome-pair-close-round)
+	 ("]" . awesome-pair-close-bracket)
+	 ("}" . awesome-pair-close-curly)
+	 ("=" . awesome-pair-equal)
+	 )
+  )
+
 (provide 'abandon)
