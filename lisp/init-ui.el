@@ -61,8 +61,8 @@
 (when (equal my-use-theme "nasy-light")
   (use-package nasy-theme
     :quelpa (nasy-theme :fetcher github :repo "nasyxx/emacs-nasy-theme")
-    :custom
-    (nasy-theme-light/dark 'light)
+    ;;:custom
+    ;;(nasy-theme-light/dark 'light)
     ;;(nasy-theme-light/dark 'dark)
     :config
     (load-theme 'nasy t)
