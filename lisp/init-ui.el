@@ -257,10 +257,10 @@ text scale by the ratio therein."
       :custom
       (cnfonts-personal-fontnames
        '(;;英文字体
-	 ("Droid Sans Mono" "PingFang SC" "终端更纱黑体-简 Nerd" "Sarasa Term SC Nerd Regular")
+	 ("Droid Sans Mono" "PingFang SC" "终端更纱黑体-简 Nerd" "Sarasa Term SC Nerd")
 	 ;;中文字体
 	 ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
-	 ("PingFang SC" "终端更纱黑体-简 Nerd")
+	 ("PingFang SC" "终端更纱黑体-简 Nerd" "Sarasa Term SC Nerd")
 	 ;;EXT-B 字体
 	 ("终端更纱黑体-简 Nerd")
 	 ;;Symbol 字符字体
