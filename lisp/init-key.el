@@ -152,6 +152,9 @@
      "-" 'cnfonts-decrease-fontsize
      "=" 'cnfonts-increase-fontsize
 
+     "m" '(:wk "mad")
+     "mm" '((lambda() (load-theme 'crazy)):wk "mad mind crazy theme")
+
      )
     ))
 (provide 'init-key)

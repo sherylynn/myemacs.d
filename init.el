@@ -18,6 +18,10 @@
   ;; neotree 支持android点击触摸
   ;;(defvar my-use-package-filetree "treemacs")
 
+  ;;主题颜色
+  ;;(defvar my-use-theme "doom-dark")
+  (defvar my-use-theme "nasy")
+
   ;;我用的 tab-bar
   ;;发现这俩包不冲突
   ;;但是awesome包在android下不能点击，centaur可以

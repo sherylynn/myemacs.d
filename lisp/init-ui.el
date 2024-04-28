@@ -35,23 +35,40 @@
 ;;关闭烦人的 warning,和我有毛线关系？
 (setq warning-minimum-level :error)
 
-;;偷用 doom 的主题
-(use-package doom-themes
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-dark+ t)
 
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  ;;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  ;;(doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;;偷用 doom 的主题
+(when (equal my-use-theme "doom-dark")
+  (use-package doom-themes
+    :config
+    ;; Global settings (defaults)
+    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+          doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    (load-theme 'doom-dark+ t)
+    ;;(load-theme 'doom-moonlight t) ;;太紫色了吧
+
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+    ;; Enable custom neotree theme (all-the-icons must be installed!)
+    (doom-themes-neotree-config)
+    ;; or for treemacs users
+    ;;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+    ;;(doom-themes-treemacs-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config))
+  )
+
+;;偷用群友主题，失败
+(when (equal my-use-theme "nasy-light")
+  (use-package nasy-theme
+    :quelpa (nasy-theme :fetcher github :repo "nasyxx/emacs-nasy-theme")
+    :custom
+    (nasy-theme-light/dark 'light)
+    ;;(nasy-theme-light/dark 'dark)
+    :config
+    (load-theme 'nasy t)
+    )
+  )
+
 ;;偷用 doom 的状态栏
 (use-package doom-modeline
   :hook
