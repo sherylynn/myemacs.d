@@ -25,6 +25,14 @@
 ;;(use-package better-defaults)
 ;;手动控制上述行为
 
+;;中文表格美化
+;;设置对字体后就不想用这个对其了，太卡了
+(when (equal my-use-package-cn "valign")
+  (use-package valign
+    :hook
+    (org-mode . valign-mode)
+    )
+  )
 
 ;;偷用群友主题，失败
 (when (equal my-use-theme "nasy-light")

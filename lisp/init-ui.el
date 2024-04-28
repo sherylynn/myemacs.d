@@ -276,11 +276,6 @@ text scale by the ratio therein."
     )
   )
 
-(use-package valign
-  :hook
-  (org-mode . valign-mode)
-  )
-
 ;;中英文间加空格渲染
 (use-package pangu-spacing
   :hook
