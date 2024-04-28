@@ -57,18 +57,6 @@
     (doom-themes-org-config))
   )
 
-;;偷用群友主题，失败
-(when (equal my-use-theme "nasy-light")
-  (use-package nasy-theme
-    :quelpa (nasy-theme :fetcher github :repo "nasyxx/emacs-nasy-theme")
-    ;;:custom
-    ;;(nasy-theme-light/dark 'light)
-    ;;(nasy-theme-light/dark 'dark)
-    :config
-    (load-theme 'nasy t)
-    )
-  )
-
 ;;偷用 doom 的状态栏
 (use-package doom-modeline
   :hook

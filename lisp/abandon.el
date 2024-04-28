@@ -26,6 +26,18 @@
 ;;手动控制上述行为
 
 
+;;偷用群友主题，失败
+(when (equal my-use-theme "nasy-light")
+  (use-package nasy-theme
+    :quelpa (nasy-theme :fetcher github :repo "nasyxx/emacs-nasy-theme")
+    ;;:custom
+    ;;(nasy-theme-light/dark 'light)
+    (nasy-theme-light/dark 'dark)
+    :config
+    (load-theme 'nasy t)
+    )
+  )
+
 
 ;;(use-package crazy
  ;; :quelpa (crazy :fetcher github :repo "eval-exec/crazy-theme.el")

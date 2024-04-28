@@ -19,8 +19,8 @@
   ;;(defvar my-use-package-filetree "treemacs")
 
   ;;主题颜色
-  ;;(defvar my-use-theme "doom-dark")
-  (defvar my-use-theme "nasy-light")
+  (defvar my-use-theme "doom-dark")
+  ;;(defvar my-use-theme "nasy-light")
 
   ;;我用的 tab-bar
   ;;发现这俩包不冲突
