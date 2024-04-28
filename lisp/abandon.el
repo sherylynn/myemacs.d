@@ -38,10 +38,9 @@
     )
   )
 
-
 ;;(use-package crazy
- ;; :quelpa (crazy :fetcher github :repo "eval-exec/crazy-theme.el")
- ;; :ensure t)
+;; :quelpa (crazy :fetcher github :repo "eval-exec/crazy-theme.el")
+;; :ensure t)
 
 ;;直接用 doom 的 dashboard
 (when (equal my-init-config-timeup "normal")

@@ -140,33 +140,70 @@
   :hook (prog-mode . rainbow-mode)
   )
 
+;;用原生的设置，方便缩放
+;;找不到字体的时候直接整个配置加载出错，这样不行的
+;;(when (equal my-use-package-cn "emacs")
+;;  (set-face-attribute 'default nil :font "-*-Sarase Term SC Nerd-regular-normal-normal-*-12-*-*-*-m-0-iso10646-1" )
+;;  )
+
 ;;全局字体大小调整
 ;;(use-package default-text-scale)
 ;;也能实现全局大小调整
+;;
 ;;中文英文等宽
-(when (display-graphic-p)
-  (use-package cnfonts
-    :custom
-    (cnfonts-personal-fontnames
-     '(;;英文字体
-       ("Droid Sans Mono" "PingFang SC" "终端更纱黑体-简 Nerd")
-       ;;中文字体
-       ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
-       ("PingFang SC" "终端更纱黑体-简 Nerd")
-       ;;EXT-B 字体
-       ("终端更纱黑体-简 Nerd")
-       ;;Symbol 字符字体
-       ("Symbols Nerd Font Mono")
-       ;;装饰字体
-       ("Droid Sans Mono" "Source Sans Pro")
+(when (equal my-use-package-cn "cnfonts")
+  (when (display-graphic-p)
+    ;;把cnfonts绑滚轮上
+    (defun my-cnfonts-mouse-wheel-text-scale (event)
+      "Adjust font size of the default face according to EVENT.
+See also `text-scale-adjust'."
+      (interactive (list last-input-event))
+      (let ((selected-window (selected-window))
+            (scroll-window (mouse-wheel--get-scroll-window event))
+            (button (mwheel-event-button event)))
+	(select-window scroll-window 'mark-for-redisplay)
+	(unwind-protect
+            (cond ((memq button (list mouse-wheel-down-event
+                                      mouse-wheel-down-alternate-event))
+		   (cnfonts-increase-fontsize)
+		   ;;替换成cnfonts
+		   ;;(text-scale-increase 1)
+		   )
+		  ((memq button (list mouse-wheel-up-event
+                                      mouse-wheel-up-alternate-event))
+		   ;;(text-scale-decrease 1)
+		   ;;替换成cnfonts
+		   (cnfonts-decrease-fontsize)
+		   ))
+	  (select-window selected-window))))
+    (use-package cnfonts
+      :bind (
+	     ("C-<mouse-5>" . #'my-cnfonts-mouse-wheel-text-scale)
+	     ("C-<mouse-4>" . #'my-cnfonts-mouse-wheel-text-scale)
+	     ("C-<wheel-down>" . #'my-cnfonts-mouse-wheel-text-scale)
+	     ("C-<wheel-up>" . #'my-cnfonts-mouse-wheel-text-scale)
+	     )
+      :custom
+      (cnfonts-personal-fontnames
+       '(;;英文字体
+	 ("Droid Sans Mono" "PingFang SC" "终端更纱黑体-简 Nerd")
+	 ;;中文字体
+	 ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
+	 ("PingFang SC" "终端更纱黑体-简 Nerd")
+	 ;;EXT-B 字体
+	 ("终端更纱黑体-简 Nerd")
+	 ;;Symbol 字符字体
+	 ("Symbols Nerd Font Mono")
+	 ;;装饰字体
+	 ("Droid Sans Mono" "Source Sans Pro")
+	 )
        )
-     )
-    :config
-    (cnfonts-mode 1)
-    ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
+      :config
+      (cnfonts-mode 1)
+      ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
+      )
     )
   )
-
 (use-package pangu-spacing
   :hook
   ;;别改我的普通的编程文件，避免搞坏我的字符串

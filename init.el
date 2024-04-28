@@ -18,6 +18,10 @@
   ;; neotree 支持android点击触摸
   ;;(defvar my-use-package-filetree "treemacs")
 
+  ;;中文美化包
+  ;;(defvar my-use-package-cn "emacs")
+  (defvar my-use-package-cn "cnfonts")
+
   ;;主题颜色
   (defvar my-use-theme "doom-dark")
   ;;(defvar my-use-theme "nasy-light")
