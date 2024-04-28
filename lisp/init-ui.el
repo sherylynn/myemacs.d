@@ -18,28 +18,6 @@
   )
 
 
-;;其他调整
-(add-hook
- 'vterm-mode-hook
- (
-  ;;当启动 vterm 的时候关闭行号
-  lambda()
-  (display-line-numbers-mode 0)
-  ))
-(add-hook
- 'org-mode-hook
- (
-  ;;当启动 org 的时候关闭行号
-  lambda()
-  (display-line-numbers-mode 0)
-
-  ;;打开 buffer 大小，显示当前字数
-  (size-indication-mode)
-
-  ;;开启 org 下面自动换行
-  (setq truncate-lines nil)
-
-  ))
 
 (when (display-graphic-p)
   (scroll-bar-mode -1) ;;关闭滚动栏

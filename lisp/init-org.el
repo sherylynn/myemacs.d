@@ -27,9 +27,22 @@
          )
         ("n" todo "NOTE")))
 ;;evil下一些快捷键的绑定
+
 (use-package evil-org
   :after org
-  :hook (org-mode . (lambda () evil-org-mode))
+  :hook (
+	 org-mode . (lambda ()
+		      evil-org-mode
+		      ;;当启动 org 的时候关闭行号
+		      (display-line-numbers-mode 0)
+
+		      ;;打开 buffer 大小，显示当前字数
+		      (size-indication-mode)
+
+		      ;;开启 org 下面自动换行
+		      (setq truncate-lines nil)
+		      )
+	 )
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
