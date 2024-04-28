@@ -5,22 +5,6 @@
     (message "default insert in scratch")
     )
   )
-(defun my_cnfonts_fonts()
-  (interactive)
-  (setq cnfonts-personal-fontnames
-	'(;;英文字体
-	  ("Droid Sans Mono" "PingFang SC" "Source Sans Pro")
-	  ;;中文字体
-	  ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
-	  ("PingFang SC")
-	  ;;EXT-B 字体
-	  ("Droid Sans Mono" "Source Sans Pro")
-	  ;;Symbol 字符字体
-	  ("Symbols Nerd Font Mono")
-	  ;;装饰字体
-	  ("Droid Sans Mono" "Source Sans Pro")
-	  )
-	))
 (defun toggle-android()
   (interactive)
   (modifier-bar-mode)
@@ -105,7 +89,6 @@
     ;;果然想象力才是限制，直接在启动完后，只在具体的buffer执行就行
     ;;(add-hook 'emacs-startup-hook 'android-insert)
 
-    (my_cnfonts_fonts)
     ;;如果遇上了android，设置默认为insert以方便唤出键盘 原来一直弹出的问题是来源于evil对mouse的绑定，所以touch键盘会影响
     (add-hook 'evil-mode-hook 'evil-for-android)
     )

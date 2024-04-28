@@ -146,6 +146,21 @@
 ;;中文英文等宽
 (when (display-graphic-p)
   (use-package cnfonts
+    :custom
+    (cnfonts-personal-fontnames
+     '(;;英文字体
+       ("Droid Sans Mono" "PingFang SC" "Sarasa Term SC Nerd Regular")
+       ;;中文字体
+       ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
+       ("PingFang SC" "Sarasa Term SC Nerd Regular")
+       ;;EXT-B 字体
+       ("Droid Sans Mono" "Source Sans Pro")
+       ;;Symbol 字符字体
+       ("Symbols Nerd Font Mono")
+       ;;装饰字体
+       ("Droid Sans Mono" "Source Sans Pro")
+       )
+     )
     :config
     (cnfonts-mode 1)
     ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
