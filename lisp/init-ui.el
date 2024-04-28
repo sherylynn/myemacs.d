@@ -248,6 +248,7 @@ text scale by the ratio therein."
 
     (define-key global-map [touchscreen-pinch] #'touch-screen-pinch)
     (use-package cnfonts
+      ;;:defer 10
       :bind (
 	     ("C-<mouse-5>" . #'my-cnfonts-mouse-wheel-text-scale)
 	     ("C-<mouse-4>" . #'my-cnfonts-mouse-wheel-text-scale)
