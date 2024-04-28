@@ -13,6 +13,13 @@
   :config
   (gcmh-mode 1)
   )
+;;为了更好的测试一下启动时间
+(when (equal my-init-config-timeup "debug")
+  (use-package benchmark-init
+    :config
+    (add-hook 'after-init-hook 'benchmark-init/deactivate)
+    )
+  )
 ;;----------------UI--------------------
 ;;better-defaults 比如关闭工具栏等有趣的行为
 ;;(use-package better-defaults)

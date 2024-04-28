@@ -6,6 +6,9 @@
 (setq display-line-numbers-type 'relative)
 
 
+;;ui
+(use-package all-the-icons)
+
 ;;这些窗口就没必要tabs占空间拉
 (defun my-centaur-hide-local()
   ;;关闭当前窗口的tab
@@ -14,6 +17,7 @@
 (add-hook 'vterm-mode-hook 'my-centaur-hide-local)
 (add-hook 'grep-mode-hook 'my-centaur-hide-local)
 ;;(add-hook 'magit-post-commit-hook 'my-centaur-hide-local) ;;提交commit的时候
+;;其实是直接编辑的.git/下的COMMIT_EDITING 文件
 
 ;;其他调整
 (add-hook
@@ -161,10 +165,6 @@
       (centaur-tabs-forward )
       )
     )
-  )
-;;elisp ()括号🌈彩虹
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode)
   )
 
 ;;elisp 直接显示字符串 color code🌈彩虹

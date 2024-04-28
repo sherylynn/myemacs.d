@@ -36,7 +36,7 @@
   ;;完成我其他的项目
   (async-shell-command-no-window "git -C ~/work pull")
   (async-shell-command-no-window "git -C ~/sh pull")
-  (async-shell-command-no-window "git -C ~/.doom.d/ pull")
+  ;;(async-shell-command-no-window "git -C ~/.doom.d/ pull")
   ;;(async-shell-command "git -C ~/work pull")
   ;;不管是哪个版本的，都会提示已经有命令在运行了
 
@@ -47,14 +47,6 @@
 
   ;;加载 use-package 和源 （把设置分离出去了，因为很少动)
   (require 'init-package)
-
-  ;;为了更好的测试一下启动时间
-  (when (equal my-init-config-timeup "debug")
-    (use-package benchmark-init
-      :config
-      (add-hook 'after-init-hook 'benchmark-init/deactivate)
-      )
-    )
 
   ;;load terminal, 跟据 my-use-package-terminal 决定终端
   (require 'init-terminal)
@@ -92,50 +84,8 @@
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
     )
 
-  ;;2 is good
-  ;;
-  (setq tab-width 2)
-  ;;ui
-  (use-package all-the-icons)
-  ;;emacs 自动加载外部修改过的文件
-  (global-auto-revert-mode 1)
-  ;;y or n 不要 yes or no
-  (fset 'yes-or-no-p 'y-or-n-p)
-  ;;自动括号 29.3 的 emacs 还不支持:vc 的命令
-  ;;(when (< emacs-major-version 30)
-  ;;    (use-package awesome-pair
-  ;;    :quelpa (awesome-pair :fetcher github :repo "manateelazycat/awesome-pair")
-  ;;    )
-  ;;  )
-  ;;(use-package awesome-pair
-  ;;:vc (:url "" :rev :newest)
-  ;;)
-  ;;所以使用旧的括号匹配
-  ;;(use-package paredit) ;;发现还是没匹配，用 emacs 自带的
-  (electric-pair-mode 1)
-
-  ;; great for programmers
-  (use-package format-all :ensure t :defer t
-    ;; 开启保存时自动格式化
-    :hook (prog-mode . format-all-mode)
-    ;; 绑定一个手动格式化的快捷键
-    :bind ("C-c f" . #'format-all-region-or-buffer))
-  ;;来点语法高亮,自动设置 treesit
-  (use-package treesit-auto
-    :custom
-    (treesit-auto-install 'prompt)
-    :config
-    (setq treesit-font-lock-level 4)
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode))
-  ;;git
-  (use-package magit)
-
-  ;;(use-package fingertip) ;;又是 github 包
-  ;;lsp 客户端
-  ;;(use-package eglot
-  ;;:hook (prog-mode . eglot-ensure)
-  ;;:bind ("C-c e f" . eglot-format))
+  ;;加载 program配置
+  (require 'init-program)
 
   ;;加载 filetree
   (require 'init-filetree)
