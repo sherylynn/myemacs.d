@@ -17,13 +17,20 @@
   (centaur-tabs-local-mode 1)
   ))
 (add-hook
+ 'grep-mode-hook
+ (
+  lambda()
+  ;;关闭grep结果窗口的tab
+  (centaur-tabs-local-mode 1)
+  ))
+(add-hook
  'org-mode-hook
  (
   ;;当启动 org 的时候关闭行号
   lambda()
   (display-line-numbers-mode 0)
 
-  ;;打开 buffer 大小
+  ;;打开 buffer 大小，显示当前字数
   (size-indication-mode)
   ;;没有当前窗口关闭的 tab，算了
   ;;(awesome-tab-mode 0)

@@ -1,8 +1,12 @@
--/eshell
--/elpa
--/quelpa
 -/.cache
--/eln-cache
--/places
 -/cnfonts
+-/eln-cache
+-/elpa
+-/eshell
+-/quelpa
+-/places
+-/pyim
 -/history
+-/transient
+-/tree-sitter
+-/.emacs.desktop
