@@ -228,7 +228,7 @@ See also `text-scale-adjust'."
     ;;(defun text-scale-increase (inc)
     ;;(defun touch-screen-pinch (event)
 
-    (defun touch-screen-pinch (event)
+    (defun my-touch-screen-pinch (event)
       "Scroll the window in the touchscreen-pinch event EVENT.
 Pan the display by the pan deltas in EVENT, and adjust the
 text scale by the ratio therein."
@@ -294,9 +294,16 @@ text scale by the ratio therein."
 		  (setq x-accumulator 0))
 		(aset touch-screen-aux-tool 9 x-accumulator)))))))
 
-    (define-key global-map [touchscreen-pinch] #'touch-screen-pinch)
+    (define-key global-map [touchscreen-pinch] #'my-touch-screen-pinch)
+
+    ;;自己调代码的时候还是用文件夹直接加载的方法好
+    ;;(add-to-list 'load-path (expand-file-name "~/cnfonts"))
+    ;;(require 'cnfonts)
+    ;;(cnfonts-mode 1)
+
     (use-package cnfonts
-      ;;:defer 10
+      ;;quelpa还是会从elpa下载
+      ;;:quelpa (cnfonts :fetcher file :path "~/cnfonts/")
       :bind (
 	     ("C-<mouse-5>" . #'my-cnfonts-mouse-wheel-text-scale)
 	     ("C-<mouse-4>" . #'my-cnfonts-mouse-wheel-text-scale)
@@ -324,7 +331,10 @@ text scale by the ratio therein."
       )
     )
   )
-
+;;quelpa还是会从elpa下载
+;;(quelpa
+;;'(cnfonts :fetcher file
+;;              :path "~/cnfonts"))
 ;;中英文间加空格渲染
 (use-package pangu-spacing
   :hook
