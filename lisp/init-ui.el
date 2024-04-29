@@ -9,6 +9,51 @@
 ;;ui
 (use-package all-the-icons)
 
+;;更纱黑体堂堂来袭 https://raw.githubusercontent.com/sherylynn/fonts/main/sarasa-term-sc-nerd-regular.ttf
+(defvar sarasa-nerd-font-names '("sarasa-term-sc-nerd-regular.ttf")
+  "List of defined font file names.")
+(defun sarasa-nerd-install-fonts (&optional pfx)
+  "Helper function to download and install the latests fonts based on OS.
+The provided Font is Sarasa term SC nerd.
+When PFX is non-nil, ignore the prompt and just install"
+  (interactive "P")
+  (when (or pfx (yes-or-no-p "This will download and install fonts, are you sure you want to do this?"))
+    ;;(let* ((url-format "https://raw.githubusercontent.com/rainstormstudio/nerd-icons.el/main/fonts/%s")
+    (let* ((url-format "https://raw.githubusercontent.com/sherylynn/fonts/main/%s")
+           (font-dest (cond
+                       ;; Default Linux install directories
+                       ((member system-type '(gnu gnu/linux gnu/kfreebsd))
+                        (concat (or (getenv "XDG_DATA_HOME")
+                                    (concat (getenv "HOME") "/.local/share"))
+                                "/fonts/"
+                                ))
+                       ;; Default MacOS install directory
+                       ((eq system-type 'darwin)
+                        (concat (getenv "HOME")
+                                "/Library/Fonts/"
+                                ;;sarasa-nerd-fonts-subdirectory))
+                                ))
+                       ;; Default Android install directory
+                       ((eq system-type 'android)
+                        (concat (getenv "HOME")
+                                "/fonts/"
+                                ))))
+           (known-dest? (stringp font-dest))
+           (font-dest (or font-dest (read-directory-name "Font installation directory: " "~/"))))
+
+      (unless (file-directory-p font-dest) (mkdir font-dest t))
+
+      (mapc (lambda (font)
+              (url-copy-file (format url-format font) (expand-file-name font font-dest) t))
+            sarasa-nerd-font-names)
+      (when known-dest?
+        (message "Fonts downloaded, updating font cache... <fc-cache -f -v> ")
+        (shell-command-to-string (format "fc-cache -f -v")))
+      (message "%s Successfully %s `sarasa-nerd' fonts to `%s'!"
+               ;;(nerd-icons-wicon "nf-weather-stars" :v-adjust 0.0)
+               (if known-dest? "installed" "downloaded")
+               font-dest))))
+
 (defun my-centaur-hide-local()
   ;;其实是直接编辑的.git/下的COMMIT_EDITMSG 文件
   ;;关闭当前窗口的tab
@@ -26,6 +71,9 @@
 (menu-bar-mode -1) ;;关闭菜单栏
 ;;自动换行
 (auto-fill-mode 1)
+;;(add-hook 'calendar-mode-hook '(auto-fill-mode -1))
+;;(setq auto-fill-function nil)
+;;好像是全局开关，没法本地关闭
 
 ;;高亮当前行
 (global-hl-line-mode 1)
