@@ -7,9 +7,12 @@
 			 ))
 
     )
+  (use-package vterm-toggle)
+
   (defun toggle-terminal()
     (interactive)
-    (vterm-other-window )
+    ;;(vterm-other-window )
+    (vterm-toggle-cd)
     ))
 (when (equal my-use-package-terminal "eshell")
   ;;来点终端
