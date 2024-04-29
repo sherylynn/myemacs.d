@@ -100,7 +100,7 @@
 (require 'init-evil)
 
 ;;加载 org 相关插件（把 org 分离出去了，因为很少动)
-(require 'init-org)
+;;(require 'init-org)
 
 (unless (display-graphic-p)
   (xterm-mouse-mode 1)
