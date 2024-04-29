@@ -25,6 +25,7 @@
 ;;(use-package fingertip) ;;又是 github 包
 ;;来点语法高亮,自动设置 treesit
 (use-package treesit-auto
+  :defer t
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -32,7 +33,8 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 ;;git
-(use-package magit)
+(use-package magit
+  :defer t)
 
 ;;lsp 客户端
 ;;(use-package eglot

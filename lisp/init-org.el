@@ -53,6 +53,7 @@
 ;;可以终端下进行渲染，但是没有缩进对齐
 ;;终端下面还是丑陋的竖线，实在是太粗了
 (use-package org-modern
+  :after org
   :custom
   ;;把竖线弄最小了
   (org-modern-table-vertical 1)
@@ -87,6 +88,7 @@
 ;;解决上述包的缩进问题
 ;;(when (< emacs-major-version 30)
 (use-package org-modern-indent
+  :after org-modern
   :custom
   (org-startup-indented t)
   :quelpa  (org-modern-indent :fetcher github :repo "jdtsmith/org-modern-indent")

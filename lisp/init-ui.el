@@ -7,7 +7,8 @@
 
 
 ;;ui
-(use-package all-the-icons)
+(use-package all-the-icons
+  :defer t)
 
 ;;更纱黑体堂堂来袭 https://raw.githubusercontent.com/sherylynn/fonts/main/sarasa-term-sc-nerd-regular.ttf
 (defvar sarasa-nerd-font-names '("sarasa-term-sc-nerd-regular.ttf")

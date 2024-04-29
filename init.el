@@ -84,12 +84,14 @@
 
 ;;加载 emacs 重启的插件，方便调试 emacs
 (use-package restart-emacs
+  :defer t
   :config
   ;;重启后重新打开当前窗口
   (setq restart-emacs-restore-frames t)
   )
 
 (use-package saveplace
+  :defer t
   :ensure nil
   :hook (after-init . save-place-mode))
 

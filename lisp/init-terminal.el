@@ -1,13 +1,16 @@
 (when (equal my-use-package-terminal "vterm")
   ;;来点终端
   (use-package vterm
+    :defer t
     :hook(
 	  vterm-mode . (lambda()
 			 (display-line-numbers-mode 0)
 			 ))
 
     )
-  (use-package vterm-toggle)
+  (use-package vterm-toggle
+    :defer t
+    :after vterm)
 
   (defun toggle-terminal()
     (interactive)
