@@ -141,6 +141,18 @@
 (add-hook 'find-file-hook 'my/git-pull-if-repo)
 
 
+(defun my-desktop-save()
+  "save desktop"
+  (interactive)
+  (desktop-save desktop-path)
+  )
+
+(defun my-desktop-read()
+  "save desktop"
+  (interactive)
+  (desktop-read desktop-path)
+  )
+
 ;;(async-shell-command "git -C ~/work pull")
 ;;(make-process
 ;;        :name "my_work"

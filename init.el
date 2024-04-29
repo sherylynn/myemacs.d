@@ -133,10 +133,11 @@
 (load custom-file 'no-error 'no-message)
 
 ;;自动保存状态重新自动打开
-(desktop-save-mode 1)
-(setq desktop-dirname "~/")
+;;(desktop-save-mode 1)
+(setq desktop-save t)
+(setq desktop-path "~/.emacs.d_my/")
 (setq desktop-base-file-name ".emacs.desktop")
-(desktop-read "~/")
+;;(desktop-read "~/")
 
 ;; )
 
