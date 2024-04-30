@@ -29,6 +29,7 @@
 ;;evil下一些快捷键的绑定
 
 (use-package evil-org
+  ;;  :defer t
   :after org
   :hook (
 	 org-mode . (lambda ()
@@ -48,51 +49,23 @@
   (evil-org-agenda-set-keys)
   )
 
-
-;;用一个写了corfu的作者的包
-;;可以终端下进行渲染，但是没有缩进对齐
-;;终端下面还是丑陋的竖线，实在是太粗了
-(use-package org-modern
-  :after org
-  :custom
-  ;;把竖线弄最小了
-  (org-modern-table-vertical 1)
-  ;;是否覆盖默认todoword颜色
-  ;;(org-modern-todo nil) ;;定制化死活不生效，直接关了
-  ;;定制化todo字样并未生效
-  (org-modern-todo-faces
-   '(
-     ("TODO" :background "blue" :foreground "green")
-     ("KILL" :background "red" :foreground "yellow")
-     ("WAIT" :background "#3498D8" :foreground "#ffc500")
-     ("DONE" :background "black" :foreground "white")
-     ))
-  ;; Org modern settings
-  ;; android native
-  ;;(org-modern-priority nil)
-  (org-modern-star nil)
-  (org-modern-progress nil)
-  ;;(org-modern-list nil)
-  ;;(org-modern-checkbox nil)
-  ;;(org-modern-todo nil)
-  ;;(org-modern-keyword nil)
-
-  ;; Editor settings
-  ;;(org-auto-align-tags nil)
-  ;;(org-tags-column 0)
-  ;;(org-catch-invisible-edits 'show-and-error)
-  ;;(org-special-ctrl-a/e t)
+;;简单的把org前面弄漂亮
+(use-package org-superstar
+  :defer t
+  :hook (orgmode . org-superstar-mode)
+  ;;:custom
+  ;;()
   :config
-  (global-org-modern-mode 1)
+  ;;(org-superstar-configure-like-org-bullets)
+  ;; This is usually the default, but keep in mind it must be nil
+  (setq org-hide-leading-stars nil)
+  ;; This line is necessary.
+  (setq org-superstar-leading-bullet ?\s)
+  ;;我不用org-indent所以不知道什么效果
+  ;; If you use Org Indent you also need to add this, otherwise the
+  ;; above has no effect while Indent is enabled.
+  ;;(setq org-indent-mode-turns-on-hiding-stars nil)
+  ;;删掉星星的空白
+  ;;(setq org-superstar-remove-leading-stars t)
   )
-;;解决上述包的缩进问题
-;;(when (< emacs-major-version 30)
-(use-package org-modern-indent
-  :after org-modern
-  :custom
-  (org-startup-indented t)
-  :quelpa  (org-modern-indent :fetcher github :repo "jdtsmith/org-modern-indent")
-  :config ; add late to hook
-  (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
-;; )
 (provide 'init-org)
