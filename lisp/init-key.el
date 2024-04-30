@@ -56,6 +56,9 @@
       ;;magit-status
       "g" '(:wk "git")
       "gg" '(magit-status :wk "magit-status")
+      "gf" '(magit-pull-from-upstream :wk "git-fetch")
+      "gc" '(magit-pull-from-upstream :wk "git checkout .")
+      
       ;;redo reload restart
       "r" '(:wk "re-do reload restart")
       "rd" 'find-function
