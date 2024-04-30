@@ -339,6 +339,28 @@
   :config ; add late to hook
   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
+;;简单的把org前面弄漂亮
+(use-package org-superstar
+  ;;:defer t
+  :hook (org-mode . org-superstar-mode)
+  ;;:custom
+  ;;()
+  :config
+  ;;(org-superstar-configure-like-org-bullets)
+
+  ;; This is usually the default, but keep in mind it must be nil
+  ;;这个是原本emacs自带的让每行只显示一个星号
+  (setq org-hide-leading-stars nil)
+  ;; This line is necessary.
+  (setq org-superstar-leading-bullet ?\s)
+
+  ;;我不用org-indent所以不知道什么效果
+  ;; If you use Org Indent you also need to add this, otherwise the
+  ;; above has no effect while Indent is enabled.
+  (setq org-indent-mode-turns-on-hiding-stars nil)
+  ;;删掉星星的空白
+  ;;(setq org-superstar-remove-leading-stars t)
+  )
 ;;----------------program--------------------
 ;;自动括号
 (use-package awesome-pair

@@ -26,46 +26,33 @@
           (tags "note"))
          )
         ("n" todo "NOTE")))
-;;evil下一些快捷键的绑定
 
+;;org没法直接use package
+;;(use-package org)
+  ;;这个是原本emacs自带的让每行只显示一个星号
+(defun my-org-mode()
+  (setq org-hide-leading-stars t)
+  ;;开启 org 下面自动换行
+  (setq truncate-lines nil)
+  ;;打开 buffer 大小，显示当前字数
+  (size-indication-mode t)
+
+  ;;当启动 org 的时候关闭行号
+  (display-line-numbers-mode 0)
+
+  ;;打开缩进
+  (org-indent-mode)
+  )
+(add-hook 'org-mode-hook 'my-org-mode)
+
+;;evil下一些快捷键的绑定
 (use-package evil-org
   ;;  :defer t
   :after org
-  :hook (
-	 org-mode . (lambda ()
-		      evil-org-mode
-		      ;;当启动 org 的时候关闭行号
-		      (display-line-numbers-mode 0)
-
-		      ;;打开 buffer 大小，显示当前字数
-		      (size-indication-mode)
-
-		      ;;开启 org 下面自动换行
-		      (setq truncate-lines nil)
-		      )
-	 )
+  :hook (org-mode . evil-org-mode)
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
   )
 
-;;简单的把org前面弄漂亮
-(use-package org-superstar
-  :defer t
-  :hook (orgmode . org-superstar-mode)
-  ;;:custom
-  ;;()
-  :config
-  ;;(org-superstar-configure-like-org-bullets)
-  ;; This is usually the default, but keep in mind it must be nil
-  (setq org-hide-leading-stars nil)
-  ;; This line is necessary.
-  (setq org-superstar-leading-bullet ?\s)
-  ;;我不用org-indent所以不知道什么效果
-  ;; If you use Org Indent you also need to add this, otherwise the
-  ;; above has no effect while Indent is enabled.
-  ;;(setq org-indent-mode-turns-on-hiding-stars nil)
-  ;;删掉星星的空白
-  ;;(setq org-superstar-remove-leading-stars t)
-  )
 (provide 'init-org)
