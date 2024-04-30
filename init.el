@@ -26,6 +26,9 @@
 ;; neotree 支持android点击触摸
 ;;(defvar my-use-package-filetree "treemacs")
 
+;;org modern or org normal
+(defvar my-use-package-org "org-normal")
+
 ;;中文美化包
 ;;(defvar my-use-package-cn "emacs")
 (defvar my-use-package-cn "cnfonts")
