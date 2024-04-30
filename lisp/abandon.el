@@ -26,10 +26,10 @@
 ;;手动控制上述行为
 
 ;;doom启动项目
-  (use-package dashboard
-    :config
-    (progn
-      (dashboard-setup-startup-hook)))
+(use-package dashboard
+  :config
+  (progn
+    (dashboard-setup-startup-hook)))
 
 ;;中文表格美化
 ;;设置对字体后就不想用这个对其了，太卡了
@@ -316,5 +316,99 @@
 	 ("=" . awesome-pair-equal)
 	 )
   )
+;;------------------init-utils-------------------------
+
+;;把cnfonts绑滚轮上
+(defun my-cnfonts-mouse-wheel-text-scale (event)
+  "Adjust font size of the default face according to EVENT.
+See also `text-scale-adjust'."
+  (interactive (list last-input-event))
+  (let ((selected-window (selected-window))
+        (scroll-window (mouse-wheel--get-scroll-window event))
+        (button (mwheel-event-button event)))
+    (select-window scroll-window 'mark-for-redisplay)
+    (unwind-protect
+        (cond ((memq button (list mouse-wheel-down-event
+                                  mouse-wheel-down-alternate-event))
+	       (cnfonts-increase-fontsize)
+	       ;;替换成cnfonts
+	       ;;(text-scale-increase 1)
+	       )
+	      ((memq button (list mouse-wheel-up-event
+                                  mouse-wheel-up-alternate-event))
+	       ;;(text-scale-decrease 1)
+	       ;;替换成cnfonts
+	       (cnfonts-decrease-fontsize)
+	       ))
+      (select-window selected-window))))
+;;其实这俩函数很像
+;;(defun text-scale-increase (inc)
+;;(defun touch-screen-pinch (event)
+
+(defun my-touch-screen-pinch (event)
+  "Scroll the window in the touchscreen-pinch event EVENT.
+Pan the display by the pan deltas in EVENT, and adjust the
+text scale by the ratio therein."
+  (interactive "e")
+  (require 'face-remap)
+  (let* ((posn (cadr event))
+         (window (posn-window posn))
+         (scale (nth 2 event))
+         (ratio-diff (nth 5 event))
+         current-scale start-scale)
+    (when (windowp window)
+      (with-selected-window window
+        (setq current-scale (if text-scale-mode
+                                text-scale-mode-amount
+			      0)
+	      start-scale (or (aref touch-screen-aux-tool 7)
+			      (aset touch-screen-aux-tool 7
+				    current-scale)))
+        ;; Set the text scale.
+	;;这里就是设置字体缩放的地方
+        ;;(text-scale-set (+ start-scale
+        ;;                   (round (log scale text-scale-mode-step))))
+        (if (> (round (log scale text-scale-mode-step )) 0)
+	    (cnfonts-increase-fontsize)
+	  (cnfonts-decrease-fontsize)
+	  )
+        ;; Subsequently move the row which was at the centrum to its Y
+        ;; position.
+        (if (and (not (eq current-scale
+                          text-scale-mode-amount))
+                 (posn-point posn)
+                 (cdr (posn-x-y posn)))
+	    (touch-screen-scroll-point-to-y (posn-point posn)
+					    (cdr (posn-x-y posn)))
+          ;; Rather than scroll POSN's point to its old row, scroll the
+          ;; display by the Y axis deltas within EVENT.
+          (let ((height (window-default-line-height))
+                (y-accumulator (or (aref touch-screen-aux-tool 8) 0)))
+	    (setq y-accumulator (+ y-accumulator (nth 4 event)))
+	    (when (or (> y-accumulator height)
+		      (< y-accumulator (- height)))
+	      (ignore-errors
+                (if (> y-accumulator 0)
+		    (scroll-down 1)
+                  (scroll-up 1)))
+	      (setq y-accumulator 0))
+	    (aset touch-screen-aux-tool 8 y-accumulator))
+          ;; Likewise for the X axis deltas.
+          (let ((width (frame-char-width))
+                (x-accumulator (or (aref touch-screen-aux-tool 9) 0)))
+	    (setq x-accumulator (+ x-accumulator (nth 3 event)))
+	    (when (or (> x-accumulator width)
+		      (< x-accumulator (- width)))
+	      ;; Do not hscroll if the ratio has shrunk, for that is
+	      ;; generally attended by the centerpoint moving left,
+	      ;; and Emacs can hscroll left even when no lines are
+	      ;; truncated.
+	      (unless (and (< x-accumulator 0)
+                           (< ratio-diff 0))
+                (if (> x-accumulator 0)
+		    (scroll-right 1)
+                  (scroll-left 1)))
+	      (setq x-accumulator 0))
+	    (aset touch-screen-aux-tool 9 x-accumulator)))))))
 
 (provide 'abandon)
