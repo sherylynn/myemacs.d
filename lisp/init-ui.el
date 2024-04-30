@@ -5,12 +5,6 @@
 ;;相对行号
 (setq display-line-numbers-type 'relative)
 
-;;doom启动项目
-  (use-package dashboard
-    :config
-    (progn
-      (dashboard-setup-startup-hook)))
-
 ;;ui
 (use-package all-the-icons
   :defer t)

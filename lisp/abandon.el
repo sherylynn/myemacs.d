@@ -25,6 +25,12 @@
 ;;(use-package better-defaults)
 ;;手动控制上述行为
 
+;;doom启动项目
+  (use-package dashboard
+    :config
+    (progn
+      (dashboard-setup-startup-hook)))
+
 ;;中文表格美化
 ;;设置对字体后就不想用这个对其了，太卡了
 (when (equal my-use-package-cn "valign")
