@@ -4,7 +4,7 @@
   )
 ;;熟悉的文件栏
 (when (equal my-use-package-filetree "neotree")
-  (message "why load neotree")
+  ;;(message "why load neotree")
   (use-package neotree
     ;;需要 all the icon 包
     :defer t
