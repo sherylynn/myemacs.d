@@ -21,6 +21,33 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+;; 让package-autoremove 可以用
+;; package.el updates the saved version of package-selected-packages correctly only
+;; after custom-file has been loaded, which is a bug. We work around this by adding
+;; the required packages to package-selected-packages after startup is complete.
+;; Make `package-autoremove' work with `use-package'
+
+(defvar use-package-selected-packages '(use-package)
+  "Packages pulled in by use-package.")
+
+(eval-and-compile
+  (define-advice use-package-handler/:ensure (:around (fn name-symbol keyword args rest state) select)
+    (let ((items (funcall fn name-symbol keyword args rest state)))
+      (dolist (ensure args items)
+        (let ((package
+               (or (and (eq ensure t) (use-package-as-symbol name-symbol))
+                   ensure)))
+          (when package
+            (when (consp package)
+              (setq package (car package)))
+            (push `(add-to-list 'use-package-selected-packages ',package) items)))))))
+
+(when (fboundp 'package--save-selected-packages)
+  (add-hook 'after-init-hook
+            (lambda ()
+              (package--save-selected-packages
+               (seq-uniq (append use-package-selected-packages package-selected-packages))))))
+
 ;; emacs 30有 自带的vc，不然只能用quelpa
 ;; emacs 30 还没出，出了再说吧
 ;;(when (< emacs-major-version 30)
