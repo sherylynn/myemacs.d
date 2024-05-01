@@ -89,10 +89,13 @@ When PFX is non-nil, ignore the prompt and just install"
 ;;  (load-theme 'crazy t)
 ;;  )
 
-;;(package-vc-install
-;;'(crazy :url "https://github.com/eval-exec/crazy-theme.el"
-;;         :lisp-dir "lisp"
-;;        :doc "doc/bbdb.texi"))
+(unless (package-installed-p 'crazy)
+  (package-vc-install
+   '(crazy :url "https://github.com/eval-exec/crazy-theme.el"
+	   ;;         :lisp-dir "lisp"
+	   ;;        :doc "doc/bbdb.texi"
+	   ))
+  )
 ;;eval-exec/crazy-theme.el
 ;;(use-package crazy :quelpa (crazy :fetcher github :repo "eval-exec/crazy-theme.el") :ensure t)
 ;;偷用 doom 的主题
