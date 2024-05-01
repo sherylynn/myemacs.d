@@ -125,7 +125,10 @@
       "ps" 'project-switch-project
       "pg" 'projectile-grep
       "pd" 'evil-scroll-down
-      "pu" 'evil-scroll-up
+      ;;"pu" 'evil-scroll-up
+      "pi" 'package-install
+      "pu" 'package-upgrade-all
+      "pc" 'package-autoremove
       ;;run func
       "x" '(:wk "exce func")
       "xx" 'execute-extended-command
