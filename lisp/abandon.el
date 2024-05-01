@@ -53,6 +53,21 @@
   )
 
 ;;(use-package crazy
+;;  :vc (:url "https://github.com/eval-exec/crazy-theme.el"
+;;            :rev :newest)
+;;  :config
+;;  (load-theme 'crazy t)
+;;  )
+
+(unless (package-installed-p 'crazy)
+  (package-vc-install
+   '(crazy :url "https://github.com/eval-exec/crazy-theme.el"
+	   ;;         :lisp-dir "lisp"
+	   ;;        :doc "doc/bbdb.texi"
+	   ))
+  )
+;;eval-exec/crazy-theme.el
+;;(use-package crazy
 ;; :quelpa (crazy :fetcher github :repo "eval-exec/crazy-theme.el")
 ;; :ensure t)
 

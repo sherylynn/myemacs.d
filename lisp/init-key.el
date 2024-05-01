@@ -1,5 +1,9 @@
 ;;按键总是最重要的，让我们来开始 which-key（leader 时候 general 也会用到)
 ;;which-key 是快捷键提示
+(defun my-mad-theme()
+  "load crazy theme"
+  (interactive)
+  (load-theme 'crazy t))
 (use-package which-key
   :config
   (which-key-mode))
@@ -58,7 +62,7 @@
       "gg" '(magit-status :wk "magit-status")
       "gf" '(magit-pull-from-upstream :wk "git-fetch")
       "gc" '(magit-pull-from-upstream :wk "git checkout .")
-      
+
       ;;redo reload restart
       "r" '(:wk "re-do reload restart")
       "rd" 'find-function
@@ -163,7 +167,7 @@
       "dr" 'my-desktop-read
 
       "m" '(:wk "mad")
-      "mm" '((lambda() (load-theme 'doom-moonlight)):wk "mad mind crazy theme")
+      "mm" '(my-mad-theme :wk "mad mind crazy theme")
 
       )
     ))

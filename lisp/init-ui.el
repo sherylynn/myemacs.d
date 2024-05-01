@@ -82,22 +82,6 @@ When PFX is non-nil, ignore the prompt and just install"
 ;;关闭烦人的 warning,和我有毛线关系？
 (setq warning-minimum-level :error)
 
-;;(use-package crazy
-;;  :vc (:url "https://github.com/eval-exec/crazy-theme.el"
-;;            :rev :newest)
-;;  :config
-;;  (load-theme 'crazy t)
-;;  )
-
-(unless (package-installed-p 'crazy)
-  (package-vc-install
-   '(crazy :url "https://github.com/eval-exec/crazy-theme.el"
-	   ;;         :lisp-dir "lisp"
-	   ;;        :doc "doc/bbdb.texi"
-	   ))
-  )
-;;eval-exec/crazy-theme.el
-;;(use-package crazy :quelpa (crazy :fetcher github :repo "eval-exec/crazy-theme.el") :ensure t)
 ;;偷用 doom 的主题
 (when (equal my-use-theme "doom-dark")
   (use-package doom-themes
@@ -105,10 +89,11 @@ When PFX is non-nil, ignore the prompt and just install"
     ;; Global settings (defaults)
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    ;;(load-theme 'doom-1337 t)
     ;;(load-theme 'doom-dark+ t)
     ;;(load-theme 'doom-solarized-light t)
     ;;(load-theme 'doom-one-light t)
-    ;;(load-theme 'doom-moonlight t) ;;太紫色了吧
+    (load-theme 'doom-moonlight t) ;;太紫色了吧
 
     ;; Enable flashing mode-line on errors
     (doom-themes-visual-bell-config)
