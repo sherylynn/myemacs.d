@@ -29,8 +29,21 @@
   (pyim-basedict-enable)
   )
 ;;自动括号 29.3 的 emacs 还不支持:vc 的命令
+;;(use-package pyim-tsinghua-dict
+;; :ensure t
+;; :quelpa (pyim-tsinghua-dict :fetcher github :repo "redguardtoo/pyim-tsinghua-dict")
+;; :config
+;; (pyim-tsinghua-dict-enable)
+;; )
+(unless (package-installed-p 'pyim-tsinghua-dict)
+  (package-vc-install
+   '(pyim-tsinghua-dict :url "https://github.com/redguardtoo/pyim-tsinghua-dict"
+			;;         :lisp-dir "lisp"
+			;;        :doc "doc/bbdb.texi"
+			))
+  )
 (use-package pyim-tsinghua-dict
-  :quelpa (pyim-tsinghua-dict :fetcher github :repo "redguardtoo/pyim-tsinghua-dict")
+  :ensure t
   :config
   (pyim-tsinghua-dict-enable)
   )

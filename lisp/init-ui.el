@@ -90,10 +90,10 @@ When PFX is non-nil, ignore the prompt and just install"
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
     ;;(load-theme 'doom-1337 t)
-    ;;(load-theme 'doom-dark+ t)
+    (load-theme 'doom-dark+ t)
     ;;(load-theme 'doom-solarized-light t)
     ;;(load-theme 'doom-one-light t)
-    (load-theme 'doom-moonlight t) ;;太紫色了吧
+    ;;(load-theme 'doom-moonlight t) ;;太紫色了吧
 
     ;; Enable flashing mode-line on errors
     (doom-themes-visual-bell-config)
