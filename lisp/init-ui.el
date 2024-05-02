@@ -49,7 +49,7 @@ When PFX is non-nil, ignore the prompt and just install"
       (when known-dest?
         (message "Fonts downloaded, updating font cache... <fc-cache -f -v> ")
         (shell-command-to-string (format "fc-cache -f -v")))
-      (message "%s Successfully %s `sarasa-nerd' fonts to `%s'!"
+      (message "Successfully %s `sarasa-nerd' fonts to `%s'!"
                (if known-dest? "installed" "downloaded")
                font-dest))))
 
