@@ -44,7 +44,6 @@
   ;;(describe-key-briefly (kbd "TAB"))
   ;;(evil-define-key '(insert normal) 'global (kbd "<volume-up>") 'toggle-input-method)
   )
-
 (when (string-equal system-type "android")
   ;; set terminal eshell because of vterm bug in android
   ;; 需要全局变量来操作
