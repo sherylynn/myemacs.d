@@ -101,7 +101,7 @@
       "ic" 'insert-checkbox
       "it" 'insert-todo
       "in" 'insert-now-time
-      "ih" 'org-insert-heading-respect-content
+      "ih" 'org-insert-heading-respect-content ;;insert heading or hour
       "io" 'org-insert-heading-respect-content
       "is" 'my-org-insert-subheading
       "id" 'insert-now-schedule
