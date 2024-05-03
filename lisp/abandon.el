@@ -20,6 +20,33 @@
     (add-hook 'after-init-hook 'benchmark-init/deactivate)
     )
   )
+;;----------------package--------------------
+
+;; emacs 30有 自带的vc，不然只能用quelpa
+;; emacs 30 还没出，出了再说吧
+;; 开始直接用自带的，不用这个了，太久没更新了兼容度不好
+;;(when (< emacs-major-version 30)
+(use-package quelpa
+  :init
+  ;;原来可以配置选项禁用傻逼的自动更新
+  ;;加快启动速度
+  (setq quelpa-update-melpa-p nil)
+  :config ; 在 (require) 之后需要执行的表达式
+  (use-package quelpa-use-package) ; 把 quelpa 嵌入 use-package 的宏扩展
+  (quelpa-use-package-activate-advice)) ; 启用这个 advice
+
+;;但是要hack掉ensure的实现方式
+;;(setq use-package-ensure-function 'quelpa) ;;quelpa启动的时候还检查github上包是否有更新，我无语了,太慢了,而且还会检查自己，弃用
+;;明显降低启动速度，不用use-package的ensure了
+;;)
+
+;; 让 use-package 永远按需加载软件包 ;;结果全没加载，无语
+;;(setq use-package-always-defer t)
+;; 之后就可以使用它了。
+;; 比如上文安装并 require better-defaults 的过程就可以简化为这一行：
+;; 1. 它会判断是否已安装。没有时才会更新 package 缓存并安装它
+;; 2. 它会自动 (require)
+;; 3. 它有很多配置项能让你控制每个环节，从而做到把和这个软件包有关的所
 ;;----------------UI--------------------
 ;;better-defaults 比如关闭工具栏等有趣的行为
 ;;(use-package better-defaults)
@@ -306,6 +333,53 @@
     )
   )
 
+(when (equal my-use-package-org "org-modern")
+  ;;org-modern也不想用了，换其他简单的包，性能很重要。
+  ;;还有一个问题是导致termux emacs和 native emacs不通用
+  ;;用一个写了corfu的作者的包
+  ;;可以终端下进行渲染，但是没有缩进对齐
+  ;;终端下面还是丑陋的竖线，实在是太粗了
+  (use-package org-modern
+    :after org
+    :custom
+    ;;把竖线弄最小了
+    (org-modern-table-vertical 1)
+    ;;是否覆盖默认todoword颜色
+    ;;(org-modern-todo nil) ;;定制化死活不生效，直接关了
+    ;;定制化todo字样并未生效
+    (org-modern-todo-faces
+     '(
+       ("TODO" :background "blue" :foreground "green")
+       ("KILL" :background "red" :foreground "yellow")
+       ("WAIT" :background "#3498D8" :foreground "#ffc500")
+       ("DONE" :background "black" :foreground "white")
+       ))
+    ;; Org modern settings
+    ;; android native
+    ;;(org-modern-priority nil)
+    (org-modern-star nil)
+    (org-modern-progress nil)
+    ;;(org-modern-list nil)
+    ;;(org-modern-checkbox nil)
+    ;;(org-modern-todo nil)
+    ;;(org-modern-keyword nil)
+
+    ;; Editor settings
+    ;;(org-auto-align-tags nil)
+    ;;(org-tags-column 0) ;;(org-catch-invisible-edits 'show-and-error)
+    ;;(org-special-ctrl-a/e t)
+    :config
+    (global-org-modern-mode 1)
+    )
+  ;;解决上述包的缩进问题
+  (use-package org-modern-indent
+    :after org-modern
+    :custom
+    (org-startup-indented t)
+    :quelpa  (org-modern-indent :fetcher github :repo "jdtsmith/org-modern-indent")
+    :config ; add late to hook
+    (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
+  )
 
 ;;简单的把org前面弄漂亮
 (use-package org-superstar
