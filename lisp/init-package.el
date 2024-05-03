@@ -1,4 +1,4 @@
-(setq package-native-compile t)
+;;(setq package-native-compile t)
 ;;设置tuna源
 (setq package-archives '(
 			 ("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
