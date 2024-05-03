@@ -102,6 +102,7 @@
       "it" 'insert-todo
       "in" 'insert-now-time
       "ih" 'org-insert-heading-respect-content
+      "io" 'org-insert-heading-respect-content
       "is" 'my-org-insert-subheading
       "id" 'insert-now-schedule
       ;;"it" 'toggle-input-method
@@ -110,6 +111,14 @@
       "ct" 'change-todo
       "ci" 'toggle-input-method
       "ck" 'my-close-android-keyboard
+      ;;org-heading
+      "h" '(:wk "org heading")
+      ;;move item
+      "hl" '(org-demote-subtree :wk "item demote")
+      "hh" '(org-promote-subtree :wk "item promote")
+      "hj" '(outline-move-subtree-down :wk "item down")
+      "hk" '(outline-move-subtree-up :wk "item up")
+      ;;"ow" 'org-agenda-date-weekend
       ;;org-agenda
       "o" '(:wk "org")
       "oa" 'org-agenda
