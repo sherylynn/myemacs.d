@@ -88,10 +88,10 @@ When PFX is non-nil, ignore the prompt and just install"
     (if (and (>= hour 8) (< hour 18))
         ;;(load-theme 'doom-one-light t)
         ;;(load-theme 'doom-nord-light t)
-      ;;(load-theme 'doom-solarized-light t)
+	(load-theme 'doom-solarized-light t)
       ;;(load-theme 'doom-one t)
       ;;(load-theme 'doom-nord t)
-        (load-theme 'doom-solarized-light t)
+      (load-theme 'doom-solarized-dark t)
       )))
 
 
