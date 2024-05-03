@@ -111,13 +111,13 @@
       "ct" 'change-todo
       "ci" 'toggle-input-method
       "ck" 'my-close-android-keyboard
-      ;;org-heading
-      "h" '(:wk "org heading")
-      ;;move item
-      "hl" '(org-demote-subtree :wk "item demote")
-      "hh" '(org-promote-subtree :wk "item promote")
-      "hj" '(outline-move-subtree-down :wk "item down")
-      "hk" '(outline-move-subtree-up :wk "item up")
+      ;;"h" '(:wk "org heading")
+      ;;"hi" '(org-insert-heading-respect-content :wk "head inssert")
+      ;;"hl" '(org-demote-subtree :wk "item demote")
+      ;;"hh" '(org-promote-subtree :wk "item promote")
+      ;;"hj" '(outline-move-subtree-down :wk "item down")
+      ;;"hk" '(outline-move-subtree-up :wk "item up")
+      ;;"ht" '(outline-move-subtree-up :wk "item todo")
       ;;"ow" 'org-agenda-date-weekend
       ;;org-agenda
       "o" '(:wk "org")
