@@ -91,7 +91,9 @@ When PFX is non-nil, ignore the prompt and just install"
 	(load-theme 'doom-solarized-light t)
       ;;(load-theme 'doom-one t)
       ;;(load-theme 'doom-nord t)
-      (load-theme 'doom-solarized-dark t)
+      ;;
+      (load-theme 'doom-dark+ t)
+      ;;(load-theme 'doom-solarized-dark t)
       )))
 
 
