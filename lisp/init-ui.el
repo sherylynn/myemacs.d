@@ -83,8 +83,8 @@ When PFX is non-nil, ignore the prompt and just install"
 (setq warning-minimum-level :error)
 (defun my-load-theme-by-time ()
   "Execute command based on current time."
-  (let* (
-         (hour (nth 2 (decode-time (current-time)))))
+  (let* ( ;;current-time获取当前秒数，decode-time获取第二列的时间
+         (hour (nth 2 (decode-time (current-time) 28800)))) ;;设置东八区的时间偏移量，28800
     (if (and (>= hour 8) (< hour 18))
         ;;(load-theme 'doom-one-light t)
         ;;(load-theme 'doom-nord-light t)
