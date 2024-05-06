@@ -128,6 +128,9 @@
 ;;pyim
 (require 'init-pyim)
 
+;;试用期的代码
+(require 'init-test)
+
 ;;尝试过后来又不用的代码
 ;;(require 'abandon)
 
