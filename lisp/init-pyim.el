@@ -17,6 +17,17 @@
   (require 'pyim-dregcache)
   ;;解决android和termux下的pyim输入
   (setq pyim-dcache-backend 'pyim-dregcache)
+  ;;设置模糊音
+  (setq pyim-pinyin-fuzzy-alist
+	'(
+	  ("z" "zh")
+	  ("c" "ch")
+	  ("s" "sh")
+	  ("en" "eng")
+	  ("in" "ing")
+	  ("un" "ong")
+	  )
+	)
   )
 ;;使用原家产的悬浮选词窗
 (use-package posframe
