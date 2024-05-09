@@ -2,6 +2,7 @@
 (use-package pyim
   :demand t ;;等需要的时候加载
   :bind
+  ;;多绑一个切换输入法的方式快捷键
   ("C-." . toggle-input-method)
   (
    :map pyim-mode-map
@@ -17,6 +18,8 @@
   (require 'pyim-dregcache)
   ;;解决android和termux下的pyim输入
   (setq pyim-dcache-backend 'pyim-dregcache)
+  ;;设置拼写候选词长度
+  (setq pyim-page-length 9)
   ;;设置模糊音
   (setq pyim-pinyin-fuzzy-alist
 	'(
