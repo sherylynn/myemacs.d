@@ -42,6 +42,9 @@
 
   ;;打开缩进
   (org-indent-mode)
+
+  ;;打开富文本渲染
+  (setq org-format-markup-matcher t)
   )
 
 (when (equal my-use-package-org "org-normal")
