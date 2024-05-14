@@ -36,6 +36,18 @@
 (use-package magit
   :defer t)
 
+;;diff-hl-mode
+;;显示git变化
+;;据说git-gutter有性能问题
+(use-package diff-hl
+  :config
+  (global-diff-hl-mode)
+  (unless (display-graphic-p )
+    ;;在终端也显示变化
+    (diff-hl-margin-mode)
+    )
+  )
+
 ;;lsp 客户端
 ;;(use-package eglot
 ;;:hook (prog-mode . eglot-ensure)
