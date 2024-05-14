@@ -40,6 +40,13 @@
 ;;显示git变化
 ;;据说git-gutter有性能问题
 (use-package diff-hl
+  ;;:custom (diff-hl-draw-borders nil)
+  ;;:custom-face
+  ;;(diff-hl-change ((t (:inherit custom-changed :foreground unspecified :background unspecified))))
+  ;;新增的变成加号
+  ;;(diff-hl-insert ((t (:inherit diff-added :background unspecified))))
+  ;;删除的变成减号
+  ;;(diff-hl-delete ((t (:inherit diff-removed :background unspecified))))
   :config
   (global-diff-hl-mode)
   (unless (display-graphic-p )
