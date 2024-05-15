@@ -1,10 +1,27 @@
+;;根据时间来切换输入法框体
+(defun my-load-pyim-theme-by-time ()
+  "Execute command based on current time."
+  (let* ( ;;current-time获取当前秒数，decode-time获取第二列的时间
+         (hour (nth 2 (decode-time (current-time) 28800)))) ;;设置东八区的时间偏移量，28800
+    (if (and (>= hour 8) (< hour 18))
+        ;;(load-theme 'doom-one-light t)
+        ;;(load-theme 'doom-nord-light t)
+	(progn
+	  (load-theme 'doom-solarized-light t)
+	  (set-face-attribute 'pyim-page nil :background "yellow" :foreground "blue")
+	  )
+      ;;(load-theme 'doom-one t)
+      ;;(load-theme 'doom-nord t)
+      ;;
+      ;;(load-theme 'doom-dark+ t)
+      (load-theme 'doom-solarized-dark t) ;;ssh不行
+      )))
 ;;来点基础词库
 (use-package pyim
   :demand t ;;等需要的时候加载
-  :custom-face
-  (pyim-page
-   ((t (:inherit default :background "yellow" :foreground "blue")))
-   "Face used for the pyim page.")
+  ;;:custom-face
+  ;;(pyim-page ((t (:inherit default :background "yellow" :foreground "blue"))))
+  ;;(pyim-page-border ((t (:inherit pyim-page :background "green"))))
   :bind
   ;;多绑一个切换输入法的方式快捷键
   ("C-." . toggle-input-method)
@@ -16,10 +33,8 @@
    ("<up>" . pyim-previous-page))
 
   :config
-  (defface
-    pyim-page
-    '((t (:inherit default :background "yellow" :foreground "blue")))
-    "Face used for the pyim page.")
+  (my-load-pyim-theme-by-time)
+  ;;(defface pyim-page-border '((t (:inherit pyim-page :background "green"))))
   ;;默认输入法设置
   (setq default-input-method "pyim")
   (setq pyim-page-length 5)
