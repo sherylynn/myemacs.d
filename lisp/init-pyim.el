@@ -1,6 +1,10 @@
 ;;来点基础词库
 (use-package pyim
   :demand t ;;等需要的时候加载
+  :custom-face
+  (pyim-page
+   ((t (:inherit default :background "yellow" :foreground "blue")))
+   "Face used for the pyim page.")
   :bind
   ;;多绑一个切换输入法的方式快捷键
   ("C-." . toggle-input-method)
@@ -12,6 +16,10 @@
    ("<up>" . pyim-previous-page))
 
   :config
+  (defface
+    pyim-page
+    '((t (:inherit default :background "yellow" :foreground "blue")))
+    "Face used for the pyim page.")
   ;;默认输入法设置
   (setq default-input-method "pyim")
   (setq pyim-page-length 5)
