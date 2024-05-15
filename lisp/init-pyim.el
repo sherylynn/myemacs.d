@@ -8,13 +8,15 @@
         ;;(load-theme 'doom-nord-light t)
 	(progn
 	  (load-theme 'doom-solarized-light t)
-	  (set-face-attribute 'pyim-page nil :background "yellow" :foreground "blue")
+	  (set-face-attribute 'pyim-page nil :background "#fefbf1" :foreground "#6c71c4")
+	  (set-face-attribute 'pyim-page nil :background "#fefbf1" :foreground "#6c71c4")
+	  (set-face-attribute 'pyim-page-selection nil :background "#073642")
 	  )
       ;;(load-theme 'doom-one t)
       ;;(load-theme 'doom-nord t)
       ;;
-      ;;(load-theme 'doom-dark+ t)
-      (load-theme 'doom-solarized-dark t) ;;ssh不行
+      ;;(load-theme 'doom-dark+ t);;ssh不行
+      (load-theme 'doom-solarized-dark t) 
       )))
 ;;来点基础词库
 (use-package pyim
