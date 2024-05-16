@@ -265,7 +265,11 @@ When PFX is non-nil, ignore the prompt and just install"
 (use-package pangu-spacing
   :hook
   ;;别改我的普通的编程文件，避免搞坏我的字符串
-  (org-mode . '(setq pangu-spacing-real-insert-separtor t))
+  (org-mode . (lambda()
+		(setq pangu-spacing-real-insert-separtor t)
+		(message "hello")
+		)
+	    )
   :init
   (global-pangu-spacing-mode 1)
   )

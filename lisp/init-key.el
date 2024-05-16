@@ -92,8 +92,9 @@
       ;;配置中文字体
       "ec" '(cnfonts-edit-profile :wk "edit chinese fonts")
       ;;file
-      "f" '(:wk "find or file")
+      "f" '(:wk "find or file or format")
       "ff" 'find-file
+      "ft" '(org-table-align :wk "format table")
       ;;SPC SPC ;;apt remove fd-find ;;brew install fd
       "SPC" 'projectile-find-file
       ;;insert input ;;插入
