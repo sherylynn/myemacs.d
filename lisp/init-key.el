@@ -13,7 +13,7 @@
   (use-package general
     ;;https://github.com/noctuid/general.el
     :init
-    ;;覆盖掉evil-collection的SPC绑定
+    ;;覆盖掉 evil-collection 的 SPC 绑定
     (setq general-override-states '(insert
                                     emacs
                                     hybrid
@@ -29,7 +29,7 @@
       :states '(normal insert visual emacs hybrid motion operater replace)
       :keymaps 'override
       :prefix "SPC"
-      ;;非normal情况下的按键
+      ;;非 normal 情况下的按键
       :non-normal-prefix "C-SPC"
       )
     ;;定义键位时，可以用 :which-key 或简写 :wk 来指定 which-key 所显示的文字：
@@ -94,7 +94,8 @@
       ;;file
       "f" '(:wk "find or file or format")
       "ff" 'find-file
-      "ft" '(org-table-align :wk "format table")
+      "fe" '(format-all-buffer :wk "edit format")
+      "ft" '(write-and-table-align :wk "edit format")
       ;;SPC SPC ;;apt remove fd-find ;;brew install fd
       "SPC" 'projectile-find-file
       ;;insert input ;;插入

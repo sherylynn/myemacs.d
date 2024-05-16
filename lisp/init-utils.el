@@ -87,6 +87,12 @@
   ;;因为配置模块化，所以直接打开 lisp 下面的侧边栏让自己选择
   ;;(neotree-dir "~/sh/")
   )
+(defun write-and-table-align()
+  "write and table align"
+  (interactive)
+  (save-buffer)
+  (org-table-align)
+  )
 (defun reload-emacs ()
   "reload emacs"
   (interactive)
