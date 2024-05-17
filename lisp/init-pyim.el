@@ -1,7 +1,7 @@
 ;;根据时间来切换输入法框体
 (defun my-load-pyim-theme-by-time ()
   "Execute command based on current time."
-  (let* ( ;;current-time获取当前秒数，decode-time获取第二列的时间
+  (let* ( ;;current-time 获取当前秒数，decode-time 获取第二列的时间
          (hour (nth 2 (decode-time (current-time) 28800)))) ;;设置东八区的时间偏移量，28800
     (if (and (>= hour 8) (< hour 18))
         ;;(load-theme 'doom-one-light t)
@@ -15,8 +15,8 @@
       ;;(load-theme 'doom-one t)
       ;;(load-theme 'doom-nord t)
       ;;
-      ;;(load-theme 'doom-dark+ t);;ssh不行
-      (load-theme 'doom-solarized-dark t) 
+      ;;(load-theme 'doom-dark+ t);;ssh 不行
+      (load-theme 'doom-solarized-dark t)
       )))
 ;;来点基础词库
 (use-package pyim
@@ -41,7 +41,7 @@
   (setq default-input-method "pyim")
   (setq pyim-page-length 5)
   (require 'pyim-dregcache)
-  ;;解决android和termux下的pyim输入
+  ;;解决 android 和 termux 下的 pyim 输入
   (setq pyim-dcache-backend 'pyim-dregcache)
   ;;设置拼写候选词长度
   (setq pyim-page-length 9)
@@ -59,9 +59,19 @@
   )
 ;;使用原家产的悬浮选词窗
 (use-package posframe
+  :when
+  (display-graphic-p )
   :config
   ;;使用悬浮选词窗
   (setq pyim-page-tooltip 'posframe)
+  )
+;;终端下的悬浮窗
+(use-package popup
+  :unless
+  (display-graphic-p)
+  :config
+  ;;使用悬浮选词窗
+  (setq pyim-page-tooltip 'popup)
   )
 (use-package pyim-basedict
   :config
