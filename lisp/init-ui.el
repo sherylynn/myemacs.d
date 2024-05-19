@@ -54,8 +54,8 @@ When PFX is non-nil, ignore the prompt and just install"
                font-dest))))
 
 (defun my-centaur-hide-local()
-  ;;其实是直接编辑的.git/下的COMMIT_EDITMSG 文件
-  ;;关闭当前窗口的tab
+  ;;其实是直接编辑的.git/下的 COMMIT_EDITMSG 文件
+  ;;关闭当前窗口的 tab
   (when (string-equal (buffer-name) "COMMIT_EDITMSG")
     (centaur-tabs-local-mode 1)
     )
@@ -83,7 +83,7 @@ When PFX is non-nil, ignore the prompt and just install"
 (setq warning-minimum-level :error)
 (defun my-load-theme-by-time ()
   "Execute command based on current time."
-  (let* ( ;;current-time获取当前秒数，decode-time获取第二列的时间
+  (let* ( ;;current-time 获取当前秒数，decode-time 获取第二列的时间
          (hour (nth 2 (decode-time (current-time) 28800)))) ;;设置东八区的时间偏移量，28800
     (if (and (>= hour 8) (< hour 18))
         ;;(load-theme 'doom-one-light t)
@@ -93,9 +93,11 @@ When PFX is non-nil, ignore the prompt and just install"
       ;;(load-theme 'doom-nord t)
       ;;
       ;;(load-theme 'doom-dark+ t)
-      (load-theme 'doom-solarized-dark t) ;;ssh不行
+      (load-theme 'doom-solarized-dark t) ;;ssh 不行
       )))
 
+(defun let_theme_dark())
+(defun let_theme_light())
 
 ;;偷用 doom 的主题
 (when (equal my-use-theme "doom-dark")
@@ -144,8 +146,8 @@ When PFX is non-nil, ignore the prompt and just install"
     (tab-bar-show 1) ;;hide bar if <= 1 tabs open
     (tab-bar-auto-width nil) ;;自动宽度取消
     (tab-bar-close-button-show t) ;;显示关闭按钮
-    (tab-bar-new-tab-choice "*scratch*") ;;新tab的buffer
-    (tab-bar-tab-hints t) ;;显示tab-bar 序号
+    (tab-bar-new-tab-choice "*scratch*") ;;新 tab 的 buffer
+    (tab-bar-tab-hints t) ;;显示 tab-bar 序号
     ;;(tab-bar-format '(tab-bar-format-menu-bar tab-bar-format-tabs tab-bar-separator))
     (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
     :config
@@ -163,7 +165,7 @@ When PFX is non-nil, ignore the prompt and just install"
 (when (equal my-use-package-centaur-tabs t)
   (use-package centaur-tabs
     :hook (
-	   ;;这些窗口就没必要tabs占空间拉
+	   ;;这些窗口就没必要 tabs 占空间拉
 	   (vterm-mode . centaur-tabs-local-mode)
 	   (grep-mode . centaur-tabs-local-mode)
 	   (prog-mode . my-centaur-hide-local)
@@ -172,7 +174,7 @@ When PFX is non-nil, ignore the prompt and just install"
     :custom
     ;;标签外观
     (centaur-tabs-style "bar")
-    ;;显示icon
+    ;;显示 icon
     (centaur-tabs-set-icons t)
     (centaur-tabs-plain-icons t)
     (centaur-tabs-gray-out-icons 'buffer)
@@ -224,9 +226,9 @@ When PFX is non-nil, ignore the prompt and just install"
     ;;(cnfonts-mode 1)
 
     (use-package cnfonts
-      ;;quelpa还是会从elpa下载
+      ;;quelpa 还是会从 elpa 下载
       ;;:quelpa (cnfonts :fetcher file :path "~/cnfonts/")
-      ;;平时用load-path进行开发
+      ;;平时用 load-path 进行开发
       ;;:load-path "~/cnfonts/"
       ;;自己的代码已经合并到上游，不用自己绑定了
       ;;:bind (
@@ -257,7 +259,7 @@ When PFX is non-nil, ignore the prompt and just install"
       )
     )
   )
-;;quelpa还是会从elpa下载
+;;quelpa 还是会从 elpa 下载
 ;;(quelpa
 ;;'(cnfonts :fetcher file
 ;;              :path "~/cnfonts"))
