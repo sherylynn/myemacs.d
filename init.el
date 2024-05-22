@@ -117,6 +117,9 @@
 ;;加载 filetree
 (require 'init-filetree)
 
+;;pyim
+(require 'init-pyim)
+
 ;;加载 UI 界面
 (require 'init-ui)
 
@@ -124,9 +127,6 @@
 (require 'init-key)
 ;;加载补全配置
 (require 'init-completion)
-
-;;pyim
-(require 'init-pyim)
 
 ;;试用期的代码
 (require 'init-test)

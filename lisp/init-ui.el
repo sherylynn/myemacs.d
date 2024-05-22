@@ -86,14 +86,13 @@ When PFX is non-nil, ignore the prompt and just install"
   (let* ( ;;current-time 获取当前秒数，decode-time 获取第二列的时间
          (hour (nth 2 (decode-time (current-time) 28800)))) ;;设置东八区的时间偏移量，28800
     (if (and (>= hour 8) (< hour 18))
-        ;;(load-theme 'doom-one-light t)
-        ;;(load-theme 'doom-nord-light t)
-	(load-theme 'doom-solarized-light t)
-      ;;(load-theme 'doom-one t)
-      ;;(load-theme 'doom-nord t)
-      ;;
-      ;;(load-theme 'doom-dark+ t)
-      (load-theme 'doom-solarized-dark t) ;;ssh 不行
+	(progn
+	  (let_theme_light)
+	  (let_pyim_theme_light)
+	  )
+      (progn
+	(let_theme_dark)
+	)
       )))
 
 (defun let_theme_dark()
