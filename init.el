@@ -1,5 +1,5 @@
 ;; ~/.emacs.d/init.el
-;;---------------GC启动优化----begin---------------
+;;---------------GC 启动优化----begin---------------
 ;;(let (;; 加载的时候临时增大`gc-cons-threshold'以加速启动速度。
 ;;     (gc-cons-threshold most-positive-fixnum)
 ;; 清空避免加载远程文件的时候分析文件。
@@ -13,7 +13,7 @@
 (setq process-adaptive-read-buffering nil)
 ;; General performance tuning
 (setq jit-lock-defer-time 0)
-;; Emacs配置文件内容写到下面.
+;; Emacs 配置文件内容写到下面.
 
 ;;加载自己的方法,在 lisp 文件夹下的
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
@@ -23,7 +23,7 @@
 (defvar my-use-package-terminal "vterm")
 ;;更灵活 treemacs
 (defvar my-use-package-filetree "neotree")
-;; neotree 支持android点击触摸
+;; neotree 支持 android 点击触摸
 ;;(defvar my-use-package-filetree "treemacs")
 
 ;;org modern or org normal
@@ -39,7 +39,7 @@
 
 ;;我用的 tab-bar
 ;;发现这俩包不冲突
-;;但是awesome包在android下不能点击，centaur可以
+;;但是 awesome 包在 android 下不能点击，centaur 可以
 (defvar my-use-package-tab-bar t)
 (defvar my-use-package-awesome-tab nil)
 (defvar my-use-package-centaur-tabs t)
@@ -47,11 +47,11 @@
 ;;加载一些 init-key and init command 可能用到的方法
 (require 'init-utils)
 
-;;init-system 中会改默认终端，改变mouse
+;;init-system 中会改默认终端，改变 mouse
 (require 'init-system)
 
 ;;异步获取自动更新
-(async-shell-command-no-window "git -C ~/.emacs.d_my pull")
+(async-shell-command-no-window "git -C ~/.emacs.d pull")
 ;;完成我其他的项目
 (async-shell-command-no-window "git -C ~/work pull")
 (async-shell-command-no-window "git -C ~/sh pull")
@@ -111,7 +111,7 @@
   (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
   )
 
-;;加载 program配置
+;;加载 program 配置
 (require 'init-program)
 
 ;;加载 filetree
@@ -135,17 +135,17 @@
 ;;(require 'abandon)
 
 ;;关闭 emacs 的 custom 在 init 文件里瞎下蛋拉屎
-(setq custom-file "~/.emacs.d_my/custom.el")
+(setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'no-error 'no-message)
 
 ;;自动保存状态重新自动打开
 ;;(desktop-save-mode 1)
 (setq desktop-save t)
-(setq desktop-path "~/.emacs.d_my/")
+(setq desktop-path "~/.emacs.d/")
 (setq desktop-base-file-name ".emacs.desktop")
 ;;(desktop-read "~/")
 
 ;; )
 
 
-;;---------------GC启动优化----end---------------
+;;---------------GC 启动优化----end---------------
