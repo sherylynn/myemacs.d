@@ -96,8 +96,16 @@ When PFX is non-nil, ignore the prompt and just install"
       (load-theme 'doom-solarized-dark t) ;;ssh 不行
       )))
 
-(defun let_theme_dark())
-(defun let_theme_light())
+(defun let_theme_dark()
+  (interactive)
+  (mapc 'disable-theme custom-enabled-themes)
+  (load-theme 'doom-solarized-dark t) ;;ssh 不行
+  )
+(defun let_theme_light()
+  (interactive)
+  (mapc 'disable-theme custom-enabled-themes)
+  (load-theme 'doom-solarized-light t)
+  )
 
 ;;偷用 doom 的主题
 (when (equal my-use-theme "doom-dark")
