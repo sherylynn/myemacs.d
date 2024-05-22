@@ -1,8 +1,12 @@
 (defun let_pyim_theme_light()
   (interactive)
   (set-face-attribute 'pyim-page nil :background "#fefbf1" :foreground "#6c71c4")
-  (set-face-attribute 'pyim-page nil :background "#fefbf1" :foreground "#6c71c4")
   (set-face-attribute 'pyim-page-selection nil :background "#073642")
+  )
+(defun let_pyim_theme_dark()
+  (interactive)
+  (set-face-attribute 'pyim-page nil :background "#333333" :foreground "#dcdccc")
+  (set-face-attribute 'pyim-page-selection nil :background "gray44")
   )
 ;;来点基础词库
 (use-package pyim
@@ -12,7 +16,7 @@
   ;;(pyim-page-border ((t (:inherit pyim-page :background "green"))))
   :bind
   ;;多绑一个切换输入法的方式快捷键
-  ("C-." . toggle-input-method) ;;不知道为啥normal下无效
+  ("C-." . toggle-input-method) ;;不知道为啥 normal 下无效
   (
    :map pyim-mode-map
    ("<left>" . pyim-previous-word)

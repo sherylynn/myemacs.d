@@ -88,7 +88,6 @@ When PFX is non-nil, ignore the prompt and just install"
     (if (and (>= hour 8) (< hour 18))
 	(progn
 	  (let_theme_light)
-	  (let_pyim_theme_light)
 	  )
       (progn
 	(let_theme_dark)
@@ -99,11 +98,14 @@ When PFX is non-nil, ignore the prompt and just install"
   (interactive)
   (mapc 'disable-theme custom-enabled-themes)
   (load-theme 'doom-solarized-dark t) ;;ssh 不行
+  (let_pyim_theme_dark)
+
   )
 (defun let_theme_light()
   (interactive)
   (mapc 'disable-theme custom-enabled-themes)
   (load-theme 'doom-solarized-light t)
+  (let_pyim_theme_light)
   )
 
 ;;偷用 doom 的主题
