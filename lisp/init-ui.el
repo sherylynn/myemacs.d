@@ -97,7 +97,12 @@ When PFX is non-nil, ignore the prompt and just install"
 (defun let_theme_dark()
   (interactive)
   (mapc 'disable-theme custom-enabled-themes)
-  (load-theme 'doom-solarized-dark t) ;;ssh 不行
+  (cond ((display-graphic-p)
+	 (load-theme 'doom-solarized-dark t) ;;ssh 不行
+	 (t)
+	 (load-theme 'doom-dark+ t)
+	 )
+	)
   (let_pyim_theme_dark)
 
   )
