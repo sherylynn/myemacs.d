@@ -86,23 +86,15 @@ When PFX is non-nil, ignore the prompt and just install"
   (let* ( ;;current-time 获取当前秒数，decode-time 获取第二列的时间
          (hour (nth 2 (decode-time (current-time) 28800)))) ;;设置东八区的时间偏移量，28800
     (if (and (>= hour 8) (< hour 18))
-	(progn
-	  (let_theme_light)
-	  )
-      (progn
-	(let_theme_dark)
-	)
+	(let_theme_light)
+      (let_theme_dark)
       )))
 
 (defun let_theme_dark()
   (interactive)
   (mapc 'disable-theme custom-enabled-themes)
-  (cond ((display-graphic-p)
-	 (load-theme 'doom-solarized-dark t) ;;ssh 不行
-	 (t)
-	 (load-theme 'doom-dark+ t)
-	 )
-	)
+  (load-theme 'doom-solarized-dark t) ;;ssh 不行
+  ;;(load-theme 'doom-dark+ t)
   (let_pyim_theme_dark)
 
   )
@@ -118,8 +110,8 @@ When PFX is non-nil, ignore the prompt and just install"
   (use-package doom-themes
     :config
     ;; Global settings (defaults)
-    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-          doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    (setq doom-themes-enable-bold t )   ; if nil, bold is universally disabled
+    (setq doom-themes-enable-italic t) ; if nil, italics is universally disabled
     (my-load-theme-by-time)
     ;;(load-theme 'doom-1337 t)
     ;;(load-theme 'doom-dark+ t)
