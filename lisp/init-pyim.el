@@ -13,7 +13,7 @@
   :demand t ;;等需要的时候加载
   ;;:custom-face
   ;;(pyim-page ((t (:inherit default :background "yellow" :foreground "blue"))))
-  ;;(pyim-page-border ((t (:inherit pyim-page :background "green"))))
+  ;;(pyim-page-border ((t (:inherit pyim-page :background "green")))
   :bind
   ;;多绑一个切换输入法的方式快捷键
   ("C-." . toggle-input-method) ;;不知道为啥 normal 下无效
@@ -33,7 +33,7 @@
   ;;解决 android 和 termux 下的 pyim 输入
   (setq pyim-dcache-backend 'pyim-dregcache)
   ;;设置拼写候选词长度
-  (setq pyim-page-length 9)
+  (setq pyim-page-length 5)
   ;;设置模糊音
   (setq pyim-pinyin-fuzzy-alist
 	'(
