@@ -88,6 +88,7 @@
       ;;edit
       "e" '(:wk "edit/eval")
       "ef" '(format-all-buffer :wk "edit format")
+      ;;"ef" '(my-format-all :wk "edit format")
       "eb" '(eval-buffer :wk "eval-buffer")
       ;;配置中文字体
       "ec" '(cnfonts-edit-profile :wk "edit chinese fonts")

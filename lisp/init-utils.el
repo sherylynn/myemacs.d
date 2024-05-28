@@ -87,6 +87,22 @@
   ;;因为配置模块化，所以直接打开 lisp 下面的侧边栏让自己选择
   ;;(neotree-dir "~/sh/")
   )
+;;自己的 format 方法
+(defun my-format-all()
+  "format-all&table align"
+  (interactive)
+  (cond
+   ((derived-mode-p 'org-mode)
+    ;;原来直接 tab 就能对齐，无语
+    (write-and-table-align))
+   ((derived-mode-p 'prog-mode)
+    (format-all-buffer)
+    ;;发现认不出来 formatter
+    ;;(format-all--buffer-or-region prompt nil)
+    )
+   )
+  )
+
 (defun write-and-table-align()
   "write and table align"
   (interactive)
