@@ -1,6 +1,6 @@
 
-;;in-buffer补全
-;;corfu是前端，还需要后端
+;;in-buffer 补全
+;;corfu 是前端，还需要后端
 (use-package corfu
   ;; Optional customizations
   :custom
@@ -15,7 +15,7 @@
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
 
   ;; Enable Corfu only for certain modes.
-  ;;不开org模式,
+  ;;不开 org 模式,
   ;;:hook ((prog-mode . corfu-mode)
   ;;(shell-mode . corfu-mode)
   ;;(eshell-mode . corfu-mode))
@@ -23,7 +23,7 @@
   ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
   ;; be used globally (M-/).  See also the customization variable
   ;; `global-corfu-modes' to exclude certain modes.
-  ;;开全局会影响org下面的便捷输入,结果发现是evil里绑定的
+  ;;开全局会影响 org 下面的便捷输入,结果发现是 evil 里绑定的
   :init
   (global-corfu-mode))
 
@@ -63,9 +63,10 @@
   ;; Since 29.1, use `dabbrev-ignored-buffer-regexps' on older.
   (add-to-list 'dabbrev-ignored-buffer-modes 'doc-view-mode)
   (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode)
+  (add-to-list 'dabbrev-ignored-buffer-modes 'org-mode)
   (add-to-list 'dabbrev-ignored-buffer-modes 'tags-table-mode))
 
-;;corfu自己的后端
+;;corfu 自己的后端
 ;; Add extensions
 (use-package cape
   ;; Bind dedicated completion commands
@@ -90,7 +91,7 @@
 
 
 
-;;minibuffer补全
+;;minibuffer 补全
 (use-package vertico
   :init
   (vertico-mode)
@@ -109,12 +110,12 @@
   )
 
 
-;;记住上个命令,配合vertico使用更香
+;;记住上个命令,配合 vertico 使用更香
 (use-package savehist
   :init
   (savehist-mode)
   )
-;;使用orderless无序补全
+;;使用 orderless 无序补全
 (use-package orderless
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
@@ -123,7 +124,7 @@
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
-;;增强minibuffer的补全，会有更多提示
+;;增强 minibuffer 的补全，会有更多提示
 (use-package marginalia
   :init
   (marginalia-mode))
