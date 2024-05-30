@@ -63,7 +63,8 @@
   ;; Since 29.1, use `dabbrev-ignored-buffer-regexps' on older.
   (add-to-list 'dabbrev-ignored-buffer-modes 'doc-view-mode)
   (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode)
-  (add-to-list 'dabbrev-ignored-buffer-modes 'org-mode)
+  ;;输入法的 buffer 补全看来不是这个带来的
+  ;;(add-to-list 'dabbrev-ignored-buffer-modes 'org-mode)
   (add-to-list 'dabbrev-ignored-buffer-modes 'tags-table-mode))
 
 ;;corfu 自己的后端
