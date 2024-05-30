@@ -43,8 +43,11 @@
 	  ("en" "eng")
 	  ("in" "ing")
 	  ("un" "ong")
-	  )
-	)
+	  ))
+  ;;关闭云搜词
+  (setq pyim-cloudim nil)
+  ;;关闭 buffer 搜词
+  (setq pyim-candidates-search-buffer-p nil)
   )
 ;;使用原家产的悬浮选词窗
 (use-package posframe
