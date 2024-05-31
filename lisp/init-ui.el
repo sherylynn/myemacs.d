@@ -285,7 +285,7 @@ When PFX is non-nil, ignore the prompt and just install"
   ;;别改我的普通的编程文件，避免搞坏我的字符串
   (org-mode . (lambda()
 		(setq pangu-spacing-real-insert-separtor t)
-		(message "hello")
+		;;(message "hello")
 		)
 	    )
   :init
