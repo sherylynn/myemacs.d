@@ -80,6 +80,10 @@
 (setq my-use-package-vim "evil")
 ;;(setq my-use-package-vim "meow")
 
+;; input method swith
+(setq my-use-package-input "rime")
+;;(setq my-use-package-input "pyim")
+
 ;;leader key
 ;;(setq my-use-package-leader "evil-leader")  ;;evil-leader 没法复合键位
 (setq my-use-package-leader "general") ;; general 配置未完成，可以用 whichkey 提示, 发现都不能叠词，算了
@@ -118,7 +122,14 @@
 (require 'init-filetree)
 
 ;;pyim
-(require 'init-pyim)
+(when (equal my-use-package-input "pyim")
+  (require 'init-pyim)
+  )
+
+;;rime
+(when (equal my-use-package-input "rime")
+  (require 'init-rime)
+  )
 
 ;;加载 UI 界面
 (require 'init-ui)
