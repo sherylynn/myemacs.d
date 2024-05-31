@@ -90,6 +90,22 @@ When PFX is non-nil, ignore the prompt and just install"
       (let_theme_dark)
       )))
 
+(defface pyim-page
+  '((t (:inherit default :background "#333333" :foreground "#dcdccc")))
+  "Face used for the pyim page.")
+(defface pyim-page-selection
+  '((t (:background "gray44")))
+  "选词框中已选词条的 face.")
+(defun let_pyim_theme_light()
+  (interactive)
+  (set-face-attribute 'pyim-page nil :background "#fefbf1" :foreground "#6c71c4")
+  (set-face-attribute 'pyim-page-selection nil :background "#073642")
+  )
+(defun let_pyim_theme_dark()
+  (interactive)
+  (set-face-attribute 'pyim-page nil :background "#333333" :foreground "#dcdccc")
+  (set-face-attribute 'pyim-page-selection nil :background "gray44")
+  )
 (defun let_theme_dark()
   (interactive)
   (mapc 'disable-theme custom-enabled-themes)
@@ -99,11 +115,11 @@ When PFX is non-nil, ignore the prompt and just install"
     )
    ((not (display-graphic-p))
     (progn
-     ;;(setq term-true-color-alist t)
-     ;;(setq term-term-name "xterm-256color")
-     ;;启用真彩色失败，终端还是回落颜色吧
-     (load-theme 'doom-dark+ t)
-     ))
+      ;;(setq term-true-color-alist t)
+      ;;(setq term-term-name "xterm-256color")
+      ;;启用真彩色失败，终端还是回落颜色吧
+      (load-theme 'doom-dark+ t)
+      ))
    )
   (let_pyim_theme_dark)
 

@@ -81,8 +81,8 @@
 ;;(setq my-use-package-vim "meow")
 
 ;; input method swith
-(setq my-use-package-input "rime")
-;;(setq my-use-package-input "pyim")
+;;(setq my-use-package-input "rime")
+(setq my-use-package-input "pyim")
 
 ;;leader key
 ;;(setq my-use-package-leader "evil-leader")  ;;evil-leader 没法复合键位
@@ -121,15 +121,16 @@
 ;;加载 filetree
 (require 'init-filetree)
 
-;;pyim
-(when (equal my-use-package-input "pyim")
-  (require 'init-pyim)
-  )
-
-;;rime
-(when (equal my-use-package-input "rime")
+(cond
+ ;;pyim
+ ((equal my-use-package-input "pyim")
+  (require 'init-pyim))
+ ;;rime
+ ((equal my-use-package-input "rime")
   (require 'init-rime)
   )
+ )
+
 
 ;;加载 UI 界面
 (require 'init-ui)
