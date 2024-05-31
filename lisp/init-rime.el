@@ -6,7 +6,7 @@
     (setq rime-emacs-module-header-root
           "/home/linuxbrew/.linuxbrew/include"
           ))
-  (setq rime-show-candidate 'posframe)
+
   (defun toggle-rime-show-candidate()
     "toggle rime show candidate"
     (interactive)
@@ -17,6 +17,21 @@
   (setq rime-user-data-dir "~/rime")
   (setq rime-share-data-dir "~/rime")
   ;;rime-user-data-dir "~/storage/download/rime")
-
+  )
+;;使用图形悬浮选词窗
+(use-package posframe
+  :when
+  (display-graphic-p )
+  :config
+  ;;使用悬浮选词窗
+  (setq rime-show-candidate 'posframe)
+  )
+;;终端下的悬浮窗
+(use-package popup
+  :unless
+  (display-graphic-p)
+  :config
+  ;;使用悬浮选词窗
+  (setq rime-show-candidate 'popup)
   )
 (provide 'init-rime)
