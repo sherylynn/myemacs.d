@@ -1,4 +1,7 @@
 (use-package rime
+  :bind
+  ;;多绑一个切换输入法的方式快捷键
+  ("C-." . toggle-input-method) ;;不知道为啥 normal 下无效
   :custom
   (default-input-method "rime")
   :config
