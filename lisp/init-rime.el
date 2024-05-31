@@ -25,6 +25,7 @@
   :config
   ;;使用悬浮选词窗
   (setq rime-show-candidate 'posframe)
+  (setq rime-posframe-style 'vertical)
   )
 ;;终端下的悬浮窗
 (use-package popup
@@ -33,5 +34,7 @@
   :config
   ;;使用悬浮选词窗
   (setq rime-show-candidate 'popup)
+  (setq rime-popup-style 'vertical)
+  ;;一堆乱码
   )
 (provide 'init-rime)
