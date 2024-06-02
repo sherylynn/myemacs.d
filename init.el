@@ -81,8 +81,9 @@
 ;;(setq my-use-package-vim "meow")
 
 ;; input method swith
-(setq my-use-package-input "rime")
-;;(setq my-use-package-input "pyim")
+;;mac下有一点点麻烦，还要什么动态模块
+;;(setq my-use-package-input "rime")
+(setq my-use-package-input "pyim")
 
 ;;leader key
 ;;(setq my-use-package-leader "evil-leader")  ;;evil-leader 没法复合键位
