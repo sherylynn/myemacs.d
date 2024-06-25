@@ -143,6 +143,17 @@
   (require 'init-rime)
   )
 
+(when (string-equal system-type "android")
+  ;;(add-hook 'emacs-startup-hook 'android-insert)
+  ;;说明在这里面设置会被覆盖掉
+  ;; (add-hook 'evil-mode-hook
+  ;;    (lambda ()
+  ;;     (setq evil-default-state 'insert)
+  ;;    )
+  ;; )
+  (require 'init-rime)
+  )
+
 ;;加载 UI 界面
 (require 'init-ui)
 
