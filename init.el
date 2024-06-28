@@ -81,7 +81,7 @@
 ;;(setq my-use-package-vim "meow")
 
 ;; input method swith
-;;mac下有一点点麻烦，还要什么动态模块
+;;mac 下有一点点麻烦，还要什么动态模块
 ;;(setq my-use-package-input "rime")
 (setq my-use-package-input "pyim")
 
@@ -133,11 +133,11 @@
  )
 
 (when (string-equal system-type "gnu/linux")
-  ;;(require 'init-rime)
+  (require 'init-rime)
   )
 
 (when (string-equal system-type "android")
-  ;;(require 'init-rime)
+  (require 'init-rime)
   )
 
 ;;加载 UI 界面
