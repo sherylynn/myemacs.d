@@ -22,6 +22,8 @@
 ;; 让 use-package 永远按需安装软件包 不知道为啥不行了
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+;;更新内置包
+(setq package-install-upgrade-built-in t)
 
 ;; 让package-autoremove 可以用
 ;; package.el updates the saved version of package-selected-packages correctly only

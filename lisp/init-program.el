@@ -23,15 +23,19 @@
   :bind ("C-c f" . #'format-all-region-or-buffer))
 
 ;;(use-package fingertip) ;;又是 github 包
-;;来点语法高亮,自动设置 treesit
-(use-package treesit-auto
-  :defer t
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (setq treesit-font-lock-level 4)
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
+
+(unless (< emacs-major-version 29)
+  ;;来点语法高亮,自动设置 treesit
+  ;;不支持29以下的emacs
+  (use-package treesit-auto
+    :defer t
+    :custom
+    (treesit-auto-install 'prompt)
+    :config
+    (setq treesit-font-lock-level 4)
+    (treesit-auto-add-to-auto-mode-alist 'all)
+    (global-treesit-auto-mode))
+  )
 ;;git
 (use-package magit
   :defer t)
