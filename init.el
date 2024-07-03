@@ -85,6 +85,13 @@
 ;;(setq my-use-package-input "rime")
 (setq my-use-package-input "pyim")
 
+(when (string-equal system-type "gnu/linux")
+    (setq my-use-package-input "rime")
+  )
+
+(when (string-equal system-type "android")
+    (setq my-use-package-input "rime")
+  )
 ;;leader key
 ;;(setq my-use-package-leader "evil-leader")  ;;evil-leader 没法复合键位
 (setq my-use-package-leader "general") ;; general 配置未完成，可以用 whichkey 提示, 发现都不能叠词，算了
@@ -132,13 +139,6 @@
   )
  )
 
-(when (string-equal system-type "gnu/linux")
-  (require 'init-rime)
-  )
-
-(when (string-equal system-type "android")
-  (require 'init-rime)
-  )
 
 ;;加载 UI 界面
 (require 'init-ui)
