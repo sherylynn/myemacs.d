@@ -42,6 +42,7 @@
   :config
   (when (< emacs-major-version 29)
     ;;(use-package seq)
+    ;;28缺少关键包，没办法
     (defun seq-keep (function sequence)
       "Apply FUNCTION to SEQUENCE and return the list of all the non-nil results."
       (delq nil (seq-map function sequence))
