@@ -86,11 +86,14 @@
 (setq my-use-package-input "pyim")
 
 (when (string-equal system-type "gnu/linux")
+  (when (display-graphic-p)
+    ;;图形下rime不会冲突，终端下会有rime输出的一堆乱码
     (setq my-use-package-input "rime")
+    )
   )
 
 (when (string-equal system-type "android")
-    (setq my-use-package-input "rime")
+  (setq my-use-package-input "rime")
   )
 ;;leader key
 ;;(setq my-use-package-leader "evil-leader")  ;;evil-leader 没法复合键位
