@@ -38,7 +38,16 @@
   )
 ;;git
 (use-package magit
-  :defer t)
+  :defer t
+  :config
+  (when (< emacs-major-version 29)
+    ;;(use-package seq)
+    (defun seq-keep (function sequence)
+      "Apply FUNCTION to SEQUENCE and return the list of all the non-nil results."
+      (delq nil (seq-map function sequence))
+      )
+    )
+  )
 
 ;;diff-hl-mode
 ;;显示git变化
