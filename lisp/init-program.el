@@ -41,6 +41,8 @@
   :defer t
   :config
   (when (< emacs-major-version 29)
+    ;;更新内置包
+    ;;(setq package-install-upgrade-built-in t)
     ;;(use-package seq)
     ;;28缺少关键包，没办法
     (defun seq-keep (function sequence)
