@@ -7,9 +7,14 @@
   :config
   ;;(concat (car (directory-files "~/.emacs.d/elpa/" t "^rime")) "/librime-emacs.so")
   (when (file-exists-p "/home/linuxbrew")
+    ;;for mac
+    ;;(setq rime-librime-root "/usr/lib/x86_64-linux-gnu/librime.so.1")
+    ;;(setenv "LIBRARY_PATH" (format "%s:%s" "/usr/lib/x86_64-linux-gnu/" (getenv "LIBRARY_PATH")))
+    ;;(setenv "LD_LIBRARY_PATH" (format "%s:%s" "/usr/lib/x86_64-linux-gnu/" (getenv "LD_LIBRARY_PATH")))
     (setq rime-emacs-module-header-root
           "/home/linuxbrew/.linuxbrew/include"
-          ))
+          )
+    )
 
   (defun toggle-rime-show-candidate()
     "toggle rime show candidate"
