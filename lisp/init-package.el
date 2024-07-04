@@ -9,13 +9,14 @@
 (when (< emacs-major-version 29)
   ;; 以下用来 bootstrap use-package 自己。在上文设置好软件源后，
   ;; 如果 use-package 没安装
-  ;; 28压根没installed-p
+  ;; 28压根没installed-p，采取直接判断文件夹方式，判断是否有use-package开头的文件夹
   ;;(unless (package-installed-p 'use-package)
-  ;; 更新本地缓存
-  (package-refresh-contents)
-  ;; 之后安装它。use-package 应该是你配置中唯一一个需要这样安装的包。
-  (package-install 'use-package)
-  ;;)
+  (unless (directory-files "~/.emacs.d/elpa/" t "^use-package")
+    ;; 更新本地缓存
+    (package-refresh-contents)
+    ;; 之后安装它。use-package 应该是你配置中唯一一个需要这样安装的包。
+    (package-install 'use-package)
+    )
 
   (require 'use-package)
   )
