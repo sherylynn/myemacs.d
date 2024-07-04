@@ -17,6 +17,8 @@
   ;; (directory-files "~/.emacs.d/elpa/" t "^use-package")
   ;; "use-package.el"
   ;; )
+  (setq my_package_path "~/.emacs.d/elpa")
+  (unless (file-directory-p my_package_path) (mkdir my_package_path t))
   (unless (directory-files "~/.emacs.d/elpa/" t "^use-package")
     ;; 更新本地缓存
     (message "开始安装use-package")

@@ -5,6 +5,7 @@
   :custom
   (default-input-method "rime")
   :config
+  ;;(concat (car (directory-files "~/.emacs.d/elpa/" t "^rime")) "/librime-emacs.so")
   (when (file-exists-p "/home/linuxbrew")
     (setq rime-emacs-module-header-root
           "/home/linuxbrew/.linuxbrew/include"
