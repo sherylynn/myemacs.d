@@ -76,10 +76,10 @@
 			  ;;         :lisp-dir "lisp"
 			  ;;        :doc "doc/bbdb.texi"
 			  )))
-  )
-(use-package pyim-tsinghua-dict
-  :ensure t
-  :config
-  (pyim-tsinghua-dict-enable)
+  (use-package pyim-tsinghua-dict
+    :ensure t
+    :config
+    (pyim-tsinghua-dict-enable)
+    )
   )
 (provide 'init-pyim)
