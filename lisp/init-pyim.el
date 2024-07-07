@@ -68,9 +68,9 @@
 ;; :config
 ;; (pyim-tsinghua-dict-enable)
 ;; )
-(unless (package-installed-p 'pyim-tsinghua-dict)
-  (unless (< emacs-major-version 29)
-    ;;这个命令29后才支持，没办法
+(unless (< emacs-major-version 29)
+  ;;这个命令29后才支持，没办法
+  (unless (package-installed-p 'pyim-tsinghua-dict)
     (package-vc-install
      '(pyim-tsinghua-dict :url "https://github.com/redguardtoo/pyim-tsinghua-dict"
 			  ;;         :lisp-dir "lisp"
