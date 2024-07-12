@@ -16,11 +16,17 @@
   )
 
 ;; great for programmers
-(use-package format-all :defer t
+(use-package format-all
+  :defer t
   ;; 开启保存时自动格式化
   :hook (prog-mode . format-all-mode)
   ;; 绑定一个手动格式化的快捷键
-  :bind ("C-c f" . #'format-all-region-or-buffer))
+  :bind ("C-c f" . #'format-all-region-or-buffer)
+  :config
+  (setq-default format-all-formatters
+		'(("Shell" (shfmt "-i" "2" "-ci"))
+		  ))
+  )
 
 ;;(use-package fingertip) ;;又是 github 包
 
