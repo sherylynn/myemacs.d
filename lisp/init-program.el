@@ -24,8 +24,12 @@
   :bind ("C-c f" . #'format-all-region-or-buffer)
   :config
   (setq-default format-all-formatters
-		'(("Shell" (shfmt "-i" "2" "-ci"))
-		  ))
+                '(
+                  ("Shell" (shfmt "-i" "2" "-ci"))))
+  ;;:custom
+  ;;(format-all-formatters
+  ;; '(("Shell" (shfmt "-i" "2" "-ci"))
+  ;;   ))
   )
 
 ;;(use-package fingertip) ;;又是 github 包
