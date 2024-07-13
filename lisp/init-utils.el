@@ -191,6 +191,7 @@
   (interactive)
   (my-git-pull-ALL-project)
   ;;(if (fboundp 'magit-pull-from-upstream)
+  ;;magit这个命令不适合脚本里
   ;;  (magit-pull-from-upstream )
   ;;(message "1")
   ;;(message "2")
