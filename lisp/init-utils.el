@@ -190,12 +190,12 @@
   "git pull now"
   (interactive)
   (my-git-pull-ALL-project)
-  (if (fboundp 'magit-pull-from-upstream)
-      (magit-pull-from-upstream)
-    ;;(message "1")
-    ;;(message "2")
-    (my-git-pull-if-repo)
-    )
+  ;;(if (fboundp 'magit-pull-from-upstream)
+  ;;  (magit-pull-from-upstream )
+  ;;(message "1")
+  ;;(message "2")
+  (my-git-pull-if-repo)
+  ;;)
   )
 
 (defun my-desktop-save()
