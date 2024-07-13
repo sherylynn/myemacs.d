@@ -153,12 +153,27 @@
 ;; (let ((output (async-shell-command my_command)));;结果还是会有窗口
 ;;   (message "Command output: %s" output))
 ;; )
+
+(defun my-git-pull-ALL-project()
+  "git pull All my project"
+  (interactive)
+  ;;异步获取自动更新
+  (async-shell-command-no-window "git -C ~/.emacs.d pull")
+  ;;完成我其他的项目
+  (async-shell-command-no-window "git -C ~/work pull")
+  (async-shell-command-no-window "git -C ~/sh pull")
+  ;;(async-shell-command-no-window "git -C ~/.doom.d/ pull")
+  ;;(async-shell-command "git -C ~/work pull")
+  ;;不管是哪个版本的，都会提示已经有命令在运行了
+  )
+
+
 (defun my-org-agenda-week-view()
   "agenda w"
   (interactive)
   (org-agenda nil "w"))
 
-(defun my/git-pull-if-repo ()
+(defun my-git-pull-if-repo ()
   "Check if the current directory is a Git repository and pull it."
   ;;检查是否目录下有.git 文件夹
   (when (file-exists-p (locate-dominating-file default-directory ".git"))
@@ -169,8 +184,19 @@
     ))
 
 ;;判断有 git 的时候进行 git pull
-(add-hook 'find-file-hook 'my/git-pull-if-repo)
+(add-hook 'find-file-hook 'my-git-pull-if-repo)
 
+(defun my-git-pull-ALL-now()
+  "git pull now"
+  (interactive)
+  (my-git-pull-ALL-project)
+  (if (fboundp 'magit-pull-from-upstream)
+      (magit-pull-from-upstream)
+    ;;(message "1")
+    ;;(message "2")
+    (my-git-pull-if-repo)
+    )
+  )
 
 (defun my-desktop-save()
   "save desktop"

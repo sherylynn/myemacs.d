@@ -50,7 +50,7 @@
       ;;"zt" 'org-show-todo-tree
       "zt" 'my-org-show-todo-tree
       ;;git pull
-      "zf" 'magit-pull-from-upstream
+      "zf" '(my-git-pull-ALL-now :wk "git pull all now")
       ;;neotree
       "1" '(my-toggle-filetree :wk "toggle filetree")
       ;;quit buffer

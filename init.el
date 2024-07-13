@@ -50,14 +50,9 @@
 ;;init-system 中会改默认终端，改变 mouse
 (require 'init-system)
 
-;;异步获取自动更新
-(async-shell-command-no-window "git -C ~/.emacs.d pull")
-;;完成我其他的项目
-(async-shell-command-no-window "git -C ~/work pull")
-(async-shell-command-no-window "git -C ~/sh pull")
-;;(async-shell-command-no-window "git -C ~/.doom.d/ pull")
-;;(async-shell-command "git -C ~/work pull")
-;;不管是哪个版本的，都会提示已经有命令在运行了
+
+;;异步获取自动更新 完成我的项目
+(my-git-pull-ALL-project)
 
 ;;加快启动速度
 ;;(setq my-init-config-timeup "normal")
