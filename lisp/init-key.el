@@ -45,7 +45,7 @@
       ;;init.el
       "ze" '(configure-emacs :wk "edit emacs configure")
       ;;quit emacs
-      "zz" 'kill-emacs
+      "zz" '(quit-emacs :wk "quit emacs smart")
       ;;show todo tree
       ;;"zt" 'org-show-todo-tree
       "zt" 'my-org-show-todo-tree

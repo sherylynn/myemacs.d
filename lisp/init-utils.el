@@ -77,6 +77,15 @@
   ;;因为配置模块化，所以直接打开 lisp 下面的侧边栏让自己选择
   ;;(neotree-dir "~/.emacs.d_my/lisp/")
   )
+(defun quit-emacs ()
+  "quit emacs"
+  (interactive)
+  (if (fboundp 'server-running-p)
+      (if (server-running-p)
+          (delete-frame)
+        (kill-emacs))
+    (kill-emacs)))
+
 (defun configure-zsh ()
   "configure zsh"
   (interactive)
