@@ -85,6 +85,8 @@
     ;;图形下rime不会冲突，终端下会有rime输出的一堆乱码
     (setq my-use-package-input "rime")
     )
+  ;;还是rime好用
+  (setq my-use-package-input "rime")
   )
 
 (when (string-equal system-type "android")
