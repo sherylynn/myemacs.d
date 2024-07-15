@@ -1,3 +1,41 @@
+(defun librime-install (&optional pfx)
+  "Helper function to download and install the librime based on OS"
+  (interactive "P")
+  (when (or pfx (yes-or-no-p "This will download and install librime, are you sure you want to do this?"))
+    ;;(let* ((url-format "https://raw.githubusercontent.com/rainstormstudio/nerd-icons.el/main/fonts/%s")
+    (let* ((url-format "https://raw.githubusercontent.com/sherylynn/fonts/main/%s")
+           (font-dest (cond
+                       ;; Default Linux install directories
+                       ((member system-type '(gnu gnu/linux gnu/kfreebsd))
+                        (concat (or (getenv "XDG_DATA_HOME")
+                                    (concat (getenv "HOME") "/.local/share"))
+                                "/fonts/"
+                                ))
+                       ;; Default MacOS install directory
+                       ((eq system-type 'darwin)
+                        (concat (getenv "HOME")
+                                "/Library/Fonts/"
+                                ;;sarasa-nerd-fonts-subdirectory))
+                                ))
+                       ;; Default Android install directory
+                       ((eq system-type 'android)
+                        (concat (getenv "HOME")
+                                "/fonts/"
+                                ))))
+           (known-dest? (stringp font-dest))
+           (font-dest (or font-dest (read-directory-name "Font installation directory: " "~/"))))
+
+      (unless (file-directory-p font-dest) (mkdir font-dest t))
+
+      (mapc (lambda (font)
+              (url-copy-file (format url-format font) (expand-file-name font font-dest) t))
+            sarasa-nerd-font-names)
+      (when known-dest?
+        (message "Fonts downloaded, updating font cache... <fc-cache -f -v> ")
+        (shell-command-to-string (format "fc-cache -f -v")))
+      (message "Successfully %s `sarasa-nerd' fonts to `%s'!"
+               (if known-dest? "installed" "downloaded")
+               font-dest))))
 (use-package rime
   :bind
   ;;多绑一个切换输入法的方式快捷键
