@@ -63,9 +63,9 @@ When PFX is non-nil, ignore the prompt and just install"
 
 
 
-(when (display-graphic-p)
-  (scroll-bar-mode -1) ;;关闭滚动栏
-  )
+;;(when (display-graphic-p)
+;;)
+(scroll-bar-mode -1) ;;关闭滚动栏
 (tool-bar-mode -1) ;;取消工具栏
 (menu-bar-mode -1) ;;关闭菜单栏
 ;;自动换行
@@ -251,7 +251,7 @@ When PFX is non-nil, ignore the prompt and just install"
 ;;
 ;;中文英文等宽
 (when (equal my-use-package-cn "cnfonts")
-  ;;mac 的emacsclients的图像识别有误
+  ;;mac 的 emacsclients 的图像识别有误
   ;;(when (display-graphic-p)
   ;;自己调代码的时候还是用文件夹直接加载的方法好
   ;;(add-to-list 'load-path (expand-file-name "~/cnfonts"))
