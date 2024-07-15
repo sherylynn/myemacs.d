@@ -63,10 +63,11 @@ When PFX is non-nil, ignore the prompt and just install"
 
 
 
-;;(when (display-graphic-p)
-;;)
-(scroll-bar-mode -1) ;;关闭滚动栏
-(tool-bar-mode -1) ;;取消工具栏
+;;
+(when (or (display-graphic-p) (string-equal system-type "darwin"))
+  (scroll-bar-mode -1) ;;关闭滚动栏
+  (tool-bar-mode -1) ;;取消工具栏
+  )
 (menu-bar-mode -1) ;;关闭菜单栏
 ;;自动换行
 (auto-fill-mode 1)
@@ -252,44 +253,44 @@ When PFX is non-nil, ignore the prompt and just install"
 ;;中文英文等宽
 (when (equal my-use-package-cn "cnfonts")
   ;;mac 的 emacsclients 的图像识别有误
-  ;;(when (display-graphic-p)
-  ;;自己调代码的时候还是用文件夹直接加载的方法好
-  ;;(add-to-list 'load-path (expand-file-name "~/cnfonts"))
-  ;;(require 'cnfonts)
-  ;;(cnfonts-mode 1)
+  (when (or (display-graphic-p) (string-equal system-type "darwin"))
+    ;;自己调代码的时候还是用文件夹直接加载的方法好
+    ;;(add-to-list 'load-path (expand-file-name "~/cnfonts"))
+    ;;(require 'cnfonts)
+    ;;(cnfonts-mode 1)
 
-  (use-package cnfonts
-    ;;quelpa 还是会从 elpa 下载
-    ;;:quelpa (cnfonts :fetcher file :path "~/cnfonts/")
-    ;;平时用 load-path 进行开发
-    ;;:load-path "~/cnfonts/"
-    ;;自己的代码已经合并到上游，不用自己绑定了
-    ;;:bind (
-    ;;("C-<mouse-5>" . #'my-cnfonts-mouse-wheel-text-scale)
-    ;;("C-<mouse-4>" . #'my-cnfonts-mouse-wheel-text-scale)
-    ;;("C-<wheel-down>" . #'my-cnfonts-mouse-wheel-text-scale)
-    ;;("C-<wheel-up>" . #'my-cnfonts-mouse-wheel-text-scale)
-    ;;([touchscreen-pinch] . #'my-touch-screen-pinch)
-    ;;     )
-    :custom
-    (cnfonts-personal-fontnames
-     '(;;英文字体
-       ("Droid Sans Mono" "PingFang SC" "终端更纱黑体-简 Nerd" "Sarasa Term SC Nerd")
-       ;;中文字体
-       ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
-       ("PingFang SC" "终端更纱黑体-简 Nerd" "Sarasa Term SC Nerd")
-       ;;EXT-B 字体
-       ("终端更纱黑体-简 Nerd")
-       ;;Symbol 字符字体
-       ("Symbols Nerd Font Mono")
-       ;;装饰字体
-       ("Droid Sans Mono" "Source Sans Pro")
+    (use-package cnfonts
+      ;;quelpa 还是会从 elpa 下载
+      ;;:quelpa (cnfonts :fetcher file :path "~/cnfonts/")
+      ;;平时用 load-path 进行开发
+      ;;:load-path "~/cnfonts/"
+      ;;自己的代码已经合并到上游，不用自己绑定了
+      ;;:bind (
+      ;;("C-<mouse-5>" . #'my-cnfonts-mouse-wheel-text-scale)
+      ;;("C-<mouse-4>" . #'my-cnfonts-mouse-wheel-text-scale)
+      ;;("C-<wheel-down>" . #'my-cnfonts-mouse-wheel-text-scale)
+      ;;("C-<wheel-up>" . #'my-cnfonts-mouse-wheel-text-scale)
+      ;;([touchscreen-pinch] . #'my-touch-screen-pinch)
+      ;;     )
+      :custom
+      (cnfonts-personal-fontnames
+       '(;;英文字体
+	 ("Droid Sans Mono" "PingFang SC" "终端更纱黑体-简 Nerd" "Sarasa Term SC Nerd")
+	 ;;中文字体
+	 ;;("Droid Sans Mono" "Source Sans Pro" "Symbols Nerd Font Mono" "WenQuanYi Zen Hei Mono" "PingFang SC")
+	 ("PingFang SC" "终端更纱黑体-简 Nerd" "Sarasa Term SC Nerd")
+	 ;;EXT-B 字体
+	 ("终端更纱黑体-简 Nerd")
+	 ;;Symbol 字符字体
+	 ("Symbols Nerd Font Mono")
+	 ;;装饰字体
+	 ("Droid Sans Mono" "Source Sans Pro")
+	 )
        )
-     )
-    :config
-    (cnfonts-mode 1)
-    ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
-    ;;)
+      :config
+      (cnfonts-mode 1)
+      ;;使用这个会给中文和英文分配不一样的字号，用起来有点离谱
+      )
     )
   )
 ;;quelpa 还是会从 elpa 下载
