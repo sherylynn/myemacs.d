@@ -53,6 +53,13 @@
           "/home/linuxbrew/.linuxbrew/include"
           )
     )
+  (when (file-exists-p "~/tools/emacs/librime/dist/lib/librime.dylib")
+    ;;for mac
+    (setq rime-emacs-module-header-root
+          "/opt/homebrew/include"
+          )
+    (setq rime-librime-root "~/tools/emacs/librime/dist")
+    )
 
   (defun toggle-rime-show-candidate()
     "toggle rime show candidate"
@@ -84,7 +91,7 @@
   (setq rime-popup-style 'vertical)
   ;;一堆乱码
   )
-;;支持escape
+;;支持 escape
 (defun rime-evil-escape-advice (orig-fun key)
   "advice for `rime-input-method' to make it work together with `evil-escape'.
         Mainly modified from `evil-escape-pre-command-hook'"

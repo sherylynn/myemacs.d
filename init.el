@@ -82,10 +82,17 @@
 
 (when (string-equal system-type "gnu/linux")
   (when (display-graphic-p)
-    ;;图形下rime不会冲突，终端下会有rime输出的一堆乱码
+    ;;图形下 rime 不会冲突，终端下会有 rime 输出的一堆乱码
     (setq my-use-package-input "rime")
     )
-  ;;还是rime好用
+  ;;还是 rime 好用
+  (setq my-use-package-input "rime")
+  )
+
+(when (and
+       (string-equal system-type "darwin")
+       (file-exists-p "~/tools/emacs/librime/dist/lib/librime.dylib")
+       )
   (setq my-use-package-input "rime")
   )
 
