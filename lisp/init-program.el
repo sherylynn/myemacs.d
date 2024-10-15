@@ -86,4 +86,6 @@
 ;;:hook (prog-mode . eglot-ensure)
 ;;:bind ("C-c e f" . eglot-format))
 
+(use-package ess)
+
 (provide 'init-program)
