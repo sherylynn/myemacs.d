@@ -1,4 +1,4 @@
-;; ~/.emacs.d/init.el
+;; work~/.emacs.d/init.el
 ;;---------------GC 启动优化----begin---------------
 ;;(let (;; 加载的时候临时增大`gc-cons-threshold'以加速启动速度。
 ;;     (gc-cons-threshold most-positive-fixnum)

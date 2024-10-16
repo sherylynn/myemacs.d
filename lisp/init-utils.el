@@ -162,6 +162,7 @@
   ;;完成我其他的项目
   (async-shell-command-no-window "git -C ~/work pull")
   (async-shell-command-no-window "git -C ~/sh pull")
+  (async-shell-command-no-window "git -C ~/toys pull")
   ;;(async-shell-command-no-window "git -C ~/.doom.d/ pull")
   ;;(async-shell-command "git -C ~/work pull")
   ;;不管是哪个版本的，都会提示已经有命令在运行了
