@@ -86,6 +86,33 @@
 ;;:hook (prog-mode . eglot-ensure)
 ;;:bind ("C-c e f" . eglot-format))
 
-(use-package ess)
+;;r语言客户端
+(use-package ess
+  :init
+  (setq ess-style 'RStudio)
+  :mode
+  (("\\.[rR]" . ess-r-mode)
+   ;; If you also use julia or some other language
+   ("\\.[jJ][lL]" . ess-julia-mode))
+  ;; Add my personal key-map
+  :config
+  ;; ESS process (print all)
+  (setq ess-eval-visibly-p t)
+  ;; Silence asking for aprenth directory
+  (setq ess-ask-for-ess-directory nil)
+  ;; Syntax highlights
+  (setq ess-R-font-lock-keywords
+	'((ess-R-fl-keyword:keywords . t)
+	  (ess-R-fl-keyword:constants . t)
+	  (ess-R-fl-keyword:modifiers . t)
+	  (ess-R-fl-keyword:fun-defs . t)
+	  (ess-R-fl-keyword:assign-ops . t)
+	  (ess-R-fl-keyword:%op% . t)
+	  (ess-fl-keyword:fun-calls . t)
+	  (ess-fl-keyword:numbers . t)
+	  (ess-fl-keyword:operators)
+	  (ess-fl-keyword:delimiters)
+	  (ess-fl-keyword:=)
+	  (ess-R-fl-keyword:F&T . t))))
 
 (provide 'init-program)
