@@ -38,7 +38,7 @@
   ;;来点语法高亮,自动设置 treesit
   ;;不支持29以下的emacs
   (use-package treesit-auto
-    :defer t
+    ;;:defer t
     :custom
     (treesit-auto-install 'prompt)
     :config
