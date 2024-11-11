@@ -40,9 +40,10 @@
   (use-package treesit-auto
     ;;:defer t
     :custom
-    ;;(treesit-auto-install 'prompt)
+    ;;询问是否安装，termux需要cc这个命令，需要clang
+    (treesit-auto-install 'prompt)
     ;;直接进行安装，不提示了
-    (treesit-auto-install t)
+    ;;(treesit-auto-install t)
     :config
     (setq treesit-font-lock-level 4)
     (treesit-auto-add-to-auto-mode-alist 'all)
