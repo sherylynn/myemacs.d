@@ -40,7 +40,9 @@
   (use-package treesit-auto
     ;;:defer t
     :custom
-    (treesit-auto-install 'prompt)
+    ;;(treesit-auto-install 'prompt)
+    ;;直接进行安装，不提示了
+    (treesit-auto-install t)
     :config
     (setq treesit-font-lock-level 4)
     (treesit-auto-add-to-auto-mode-alist 'all)
