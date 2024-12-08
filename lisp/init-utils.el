@@ -77,6 +77,11 @@
   ;;因为配置模块化，所以直接打开 lisp 下面的侧边栏让自己选择
   ;;(neotree-dir "~/.emacs.d_my/lisp/")
   )
+
+;; (server-start)
+(setq server-use-tcp t)
+(setq server-port 9999)  ;; 指定端口号
+
 (defun quit-emacs ()
   "quit emacs"
   (interactive)
