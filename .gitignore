@@ -40,3 +40,6 @@ session.*
 org-persist
 
 .emacs.desktop*
+
+#server
+server/
