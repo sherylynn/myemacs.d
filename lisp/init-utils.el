@@ -79,9 +79,9 @@
   )
 
 ;; (server-start)
-(setq server-socket-dir "$HOME/.emacs.d/server")
-(setq server-use-tcp t)
-(setq server-port 9999)  ;; 指定端口号
+;;(setq server-socket-dir "$HOME/.emacs.d/server")
+;;(setq server-use-tcp t)
+;;(setq server-port 9999)  ;; 配合指定端口号
 
 (defun quit-emacs ()
   "quit emacs"
