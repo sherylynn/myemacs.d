@@ -74,38 +74,44 @@
 ;;:hook (prog-mode . eglot-ensure)
 ;;:bind ("C-c e f" . eglot-format))
 
-;;r语言客户端
-(use-package ess
-  :init
-  (setq ess-style 'RStudio)
-  :mode
-  (("\\.[rR]" . ess-r-mode)
-   ;; If you also use julia or some other language
-   ("\\.[jJ][lL]" . ess-julia-mode))
-  ;; Add my personal key-map
-  :config
-  ;; ESS process (print all)
-  (setq ess-eval-visibly-p t)
-  ;; Silence asking for aprenth directory
-  (setq ess-ask-for-ess-directory nil)
-  ;; Syntax highlights
-  (setq ess-R-font-lock-keywords
-	'((ess-R-fl-keyword:keywords . t)
-	  (ess-R-fl-keyword:constants . t)
-	  (ess-R-fl-keyword:modifiers . t)
-	  (ess-R-fl-keyword:fun-defs . t)
-	  (ess-R-fl-keyword:assign-ops . t)
-	  (ess-R-fl-keyword:%op% . t)
-	  (ess-fl-keyword:fun-calls . t)
-	  (ess-fl-keyword:numbers . t)
-	  (ess-fl-keyword:operators)
-	  (ess-fl-keyword:delimiters)
-	  (ess-fl-keyword:=)
-	  (ess-R-fl-keyword:F&T . t))))
 
-(use-package ess-view-data
+;;r语言客户端
+(if (executable-find "R")
+    (use-package ess
+      :init
+      (setq ess-style 'RStudio)
+      :mode
+      (("\\.[rR]" . ess-r-mode)
+       ;; If you also use julia or some other language
+       ("\\.[jJ][lL]" . ess-julia-mode))
+      ;; Add my personal key-map
+      :config
+      ;; ESS process (print all)
+      (setq ess-eval-visibly-p t)
+      ;; Silence asking for aprenth directory
+      (setq ess-ask-for-ess-directory nil)
+      ;; Syntax highlights
+      (setq ess-R-font-lock-keywords
+	    '((ess-R-fl-keyword:keywords . t)
+	      (ess-R-fl-keyword:constants . t)
+	      (ess-R-fl-keyword:modifiers . t)
+	      (ess-R-fl-keyword:fun-defs . t)
+	      (ess-R-fl-keyword:assign-ops . t)
+	      (ess-R-fl-keyword:%op% . t)
+	      (ess-fl-keyword:fun-calls . t)
+	      (ess-fl-keyword:numbers . t)
+	      (ess-fl-keyword:operators)
+	      (ess-fl-keyword:delimiters)
+	      (ess-fl-keyword:=)
+	      (ess-R-fl-keyword:F&T . t))))
+
+  (use-package ess-view-data
     :after (ess))
 
+  (use-package tree-sitter-ess-r
+    :after (ess)
+    :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
+  )
 
 (unless (< emacs-major-version 29)
   ;;来点语法高亮,自动设置 treesit
@@ -121,9 +127,6 @@
     (setq treesit-font-lock-level 4)
     (treesit-auto-add-to-auto-mode-alist 'all)
     (global-treesit-auto-mode))
-  (use-package tree-sitter-ess-r
-    :after (ess)
-    :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
   )
 
 (provide 'init-program)
