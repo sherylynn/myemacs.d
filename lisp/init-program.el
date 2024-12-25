@@ -103,7 +103,8 @@
 	  (ess-fl-keyword:=)
 	  (ess-R-fl-keyword:F&T . t))))
 
-(use-package ess-view-data)
+(use-package ess-view-data
+    :after (ess))
 
 
 (unless (< emacs-major-version 29)
