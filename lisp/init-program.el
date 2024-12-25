@@ -48,6 +48,9 @@
     (setq treesit-font-lock-level 4)
     (treesit-auto-add-to-auto-mode-alist 'all)
     (global-treesit-auto-mode))
+  (use-package tree-sitter-ess-r
+    :after (ess)
+    :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
   )
 ;;git
 (use-package magit
