@@ -103,6 +103,9 @@
 	  (ess-fl-keyword:=)
 	  (ess-R-fl-keyword:F&T . t))))
 
+(use-package ess-view-data)
+
+
 (unless (< emacs-major-version 29)
   ;;来点语法高亮,自动设置 treesit
   ;;不支持29以下的emacs
