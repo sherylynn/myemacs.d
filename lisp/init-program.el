@@ -34,24 +34,6 @@
 
 ;;(use-package fingertip) ;;又是 github 包
 
-(unless (< emacs-major-version 29)
-  ;;来点语法高亮,自动设置 treesit
-  ;;不支持29以下的emacs
-  (use-package treesit-auto
-    ;;:defer t
-    :custom
-    ;;询问是否安装，termux需要cc这个命令，需要clang
-    (treesit-auto-install 'prompt)
-    ;;直接进行安装，不提示了
-    ;;(treesit-auto-install t)
-    :config
-    (setq treesit-font-lock-level 4)
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode))
-  (use-package tree-sitter-ess-r
-    :after (ess)
-    :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
-  )
 ;;git
 (use-package magit
   :defer t
@@ -120,5 +102,24 @@
 	  (ess-fl-keyword:delimiters)
 	  (ess-fl-keyword:=)
 	  (ess-R-fl-keyword:F&T . t))))
+
+(unless (< emacs-major-version 29)
+  ;;来点语法高亮,自动设置 treesit
+  ;;不支持29以下的emacs
+  (use-package treesit-auto
+    ;;:defer t
+    :custom
+    ;;询问是否安装，termux需要cc这个命令，需要clang
+    (treesit-auto-install 'prompt)
+    ;;直接进行安装，不提示了
+    ;;(treesit-auto-install t)
+    :config
+    (setq treesit-font-lock-level 4)
+    (treesit-auto-add-to-auto-mode-alist 'all)
+    (global-treesit-auto-mode))
+  (use-package tree-sitter-ess-r
+    :after (ess)
+    :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
+  )
 
 (provide 'init-program)
