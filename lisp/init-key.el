@@ -39,7 +39,7 @@
       ;;org file
       "zo" '(open-myorg :wk "open my orgfile")
       ;;reload init.el
-      "zr" '(reload-emacs :wk "reload emacs")
+      ;;"zr" '(reload-emacs :wk "reload emacs")
       ;;configure zsh
       "zs" '(configure-zsh :wk "edit zsh configure")
       ;;init.el
@@ -49,8 +49,8 @@
       ;;show todo tree
       ;;"zt" 'org-show-todo-tree
       "zt" 'my-org-show-todo-tree
-      ;;configure project
-      "zp" '(configure-project :wk "edit project")
+      ;;configure R-project
+      "zr" '(configure-project :wk "edit project")
       ;;git pull
       "zf" '(my-git-pull-ALL-now :wk "git pull all now")
       ;;neotree
