@@ -226,54 +226,75 @@
 ;;      :command (list "git" "-C" "~/work" "pull")
 ;;     :noquery t)
 
-(defun my-rstudio-layout () ""
-       (interactive)
-       (add-to-list 'display-buffer-alist
-                    '((derived-mode . ess-mode)
-                      (display-buffer-reuse-window)
-                      (side .  left)
-                      (slot . -1)
-                      (dedicated . t)
-                      (tab-group . "rstudio-1")))
+(defun my-rstudio-layout ()
+  "Find a buffer by regex."
+  (interactive)
+  (split-window-vertically)
+  (other-window 1)
+  (let ((matching-buffer (cl-find-if (lambda (buf)
+                                       (string-match-p "*R.*" (buffer-name buf)))
+                                     (buffer-list))))
+    (if matching-buffer
+        (switch-to-buffer matching-buffer)
+      (message "No matching buffer found."))))
 
 
-       ;;(add-to-list 'display-buffer-alist
-       ;;             `("^\\*help\\[R\\]\\|^\\*xwidget-webkit"
-       ;;               (display-buffer-reuse-mode-window  display-buffer-in-side-window)
-       ;;               (mode . '(ess-help-mode xwidget-webkit-mode))
-       ;;               (side . right)
-       ;;               (slot . 1)
-       ;;               (window-width . 0.33)
-       ;;               (dedicated . nil)))
+;;(defun my-rstudio-layout () ""
+;;     (interactive)
+;;   (add-to-list 'display-buffer-alist
+;;              '((derived-mode . ess-mode)
+;;              (display-buffer-reuse-window)
+;;            (side .  left)
+;;          (slot . -1)
+;;        (dedicated . t)
+;;      (tab-group . "rstudio-1")))
 
 
-       (add-to-list 'display-buffer-alist
-                    `("^\\*R.*\\*"
-                      (display-buffer-reuse-mode-window display-buffer-at-bottom)
-                      (mode . ess-mode)
-                      (window-width . 0.5)
-                      (dedicated . t)
-                      (tab-group "rstudio-3")))
+;;(add-to-list 'display-buffer-alist
+;;             `("^\\*magit:*\\*"
+;;               (display-buffer-reuse-mode-window  display-buffer-in-side-window)
+;;               (mode . '(ess-help-mode ))
+;;               (side . right)
+;;               (slot . 1)
+;;               (window-width . 0.33)
+;;               (dedicated . nil)))
+;;(add-to-list 'display-buffer-alist
+;;             `("^\\*help\\[R\\]\\|^\\*xwidget-webkit"
+;;               (display-buffer-reuse-mode-window  display-buffer-in-side-window)
+;;               (mode . '(ess-help-mode xwidget-webkit-mode))
+;;               (side . right)
+;;               (slot . 1)
+;;               (window-width . 0.33)
+;;               (dedicated . nil)))
 
-       (add-to-list 'display-buffer-alist
-                    `("^\\*R dired\\*"
-                      (display-buffer-reuse-mode-window display-buffer-in-side-window)
-                      (mode . ess-rdired-mode)
-                      (side . right)
-                      (slot . -1)
-                      (window-width . 0.33)
-                      (dedicated . t)
-                      (reusable-frames . nil)
-                      (tab-group . "rstudio-2")))
 
-       (let ((ess-startup-directory 'default-directory)
-             (ess-ask-for-ess-directory nil))
-         (delete-other-windows)
-         (ess-switch-to-ESS t)
-         (ess-rdired)
-         (ess-help "help")
-         (tab-line-mode 1)
-         (my-start-hdg)))
+;;(add-to-list 'display-buffer-alist
+;;              `("^\\*R.*\\*"
+;;               (display-buffer-reuse-mode-window display-buffer-at-bottom)
+;;              (mode . ess-mode)
+;;            (window-width . 0.5)
+;;          (dedicated . t)
+;;        (tab-group "rstudio-3")))
+
+;;(add-to-list 'display-buffer-alist
+;;           `("^\\*R dired\\*"
+;;           (display-buffer-reuse-mode-window display-buffer-in-side-window)
+;;         (mode . ess-rdired-mode)
+;;       (side . right)
+;;     (slot . -1)
+;;   (window-width . 0.33)
+;; (dedicated . t)
+;;        (reusable-frames . nil)
+;;      (tab-group . "rstudio-2")))
+
+;;(let ((ess-startup-directory 'default-directory)
+;;     (ess-ask-for-ess-directory nil))
+;;  (delete-other-windows)
+;;  (ess-switch-to-ESS t)
+;;  (ess-rdired)
+;;  (ess-help "help")
+;;  (tab-line-mode 1)
+;;  (my-start-hdg)))
 
 
 (provide 'init-utils)
