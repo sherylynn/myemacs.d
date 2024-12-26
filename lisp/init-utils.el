@@ -81,11 +81,7 @@
   "configure project"
   (interactive)
   ;;(find-file "~/.emacs.d/packages.el")
-  (find-file "~/toys/R/test.R")
-  ;;配置模块化，就不主打打开这个了
-  ;;(open-file-in-right-window "~/.emacs.d/lisp/init-utils.el")
-  ;;因为配置模块化，所以直接打开 lisp 下面的侧边栏让自己选择
-  ;;(neotree-dir "~/.emacs.d_my/lisp/")
+  (find-file "~/toys/R/random.R")
   )
 
 ;; (server-start)
