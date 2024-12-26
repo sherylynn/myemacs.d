@@ -103,7 +103,9 @@
 	      (ess-fl-keyword:operators)
 	      (ess-fl-keyword:delimiters)
 	      (ess-fl-keyword:=)
-	      (ess-R-fl-keyword:F&T . t))))
+	      (ess-R-fl-keyword:F&T . t)))
+
+      )
 
   (use-package ess-view-data
     :after (ess))
