@@ -49,6 +49,8 @@
       ;;show todo tree
       ;;"zt" 'org-show-todo-tree
       "zt" 'my-org-show-todo-tree
+      ;;configure project
+      "zp" '(configure-project :wk "edit project")
       ;;git pull
       "zf" '(my-git-pull-ALL-now :wk "git pull all now")
       ;;neotree
