@@ -111,6 +111,7 @@
   (use-package tree-sitter-ess-r
     :after (ess)
     :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
+
   )
 
 (unless (< emacs-major-version 29)
