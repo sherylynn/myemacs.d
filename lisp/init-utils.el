@@ -103,16 +103,6 @@
   (ess-remote)
   )
 
-(defun is-portrait-layout ()
-  "判断当前窗口或终端是否为纵向布局（高度大于宽度）。
-在图形界面中，使用 frame 的宽度和高度。在终端中，使用 tty 的宽度和高度。"
-  (if (display-graphic-p) ;; 判断是否为图形界面
-      (> (frame-height) (frame-width)) ;; 图形界面下比较 frame 高度和宽度
-    (> (tty-height) (tty-width)))) ;; 终端模式下比较 tty 高度和宽度
-
-;; 示例：运行并显示结果
-(message "Is portrait layout? %s" (if (is-portrait-layout) "Yes" "No"))
-
 (defun eval-Rstudio()
   "eval R buffer"
   (interactive)
@@ -123,7 +113,7 @@
     )
   (ess-eval-buffer)
   ;; 增加画布大小判断
-  (if (is-portrait-layout)
+  (if (> (frame-height) (frame-width))
       (message "竖屏")
     (ess-rdired)
     )
@@ -283,7 +273,7 @@
   (split-window-vertically)
   (other-window 1)
   (let ((matching-buffer (cl-find-if (lambda (buf)
-                                       (string-match-p "*R.*" (buffer-name buf)))
+				       (string-match-p "*R.*" (buffer-name buf)))
                                      (buffer-list))))
     (if matching-buffer
         (switch-to-buffer matching-buffer)
