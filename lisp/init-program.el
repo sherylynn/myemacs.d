@@ -76,7 +76,8 @@
 
 
 ;;r语言客户端
-(if (executable-find "R")
+;;(if (executable-find "R")
+;;可以远程来连接的
     (use-package ess
       :init
       (setq ess-style 'RStudio)
@@ -123,7 +124,7 @@
                (window-width . 0.33)
                (reusable-frames . nil))))
 
-      )
+ ;;     )
 
   (use-package ess-view-data
     :after (ess))
