@@ -75,63 +75,63 @@
 ;;:bind ("C-c e f" . eglot-format))
 
 
-;;r语言客户端
-;;(if (executable-find "R")
 ;;可以远程来连接的
-    (use-package ess
-      :init
-      (setq ess-style 'RStudio)
-      :mode
-      (("\\.[rR]" . ess-r-mode)
-       ;; If you also use julia or some other language
-       ("\\.[jJ][lL]" . ess-julia-mode))
-      ;; Add my personal key-map
-      :config
-      ;; ESS process (print all)
-      (setq ess-eval-visibly-p t)
-      ;; Silence asking for aprenth directory
-      (setq ess-ask-for-ess-directory nil)
-      ;; Syntax highlights
-      (setq ess-R-font-lock-keywords
-	    '((ess-R-fl-keyword:keywords . t)
-	      (ess-R-fl-keyword:constants . t)
-	      (ess-R-fl-keyword:modifiers . t)
-	      (ess-R-fl-keyword:fun-defs . t)
-	      (ess-R-fl-keyword:assign-ops . t)
-	      (ess-R-fl-keyword:%op% . t)
-	      (ess-fl-keyword:fun-calls . t)
-	      (ess-fl-keyword:numbers . t)
-	      (ess-fl-keyword:operators)
-	      (ess-fl-keyword:delimiters)
-	      (ess-fl-keyword:=)
-	      (ess-R-fl-keyword:F&T . t)))
-      ;; UI
-      (setq display-buffer-alist
-	    `(("^\\*R Dired"
-               (display-buffer-reuse-window display-buffer-in-side-window)
-               (side . right)
-               (slot . -1)
-               (window-width . 0.33)
-               (reusable-frames . nil))
-              ("^\\*R"
-               (display-buffer-reuse-window display-buffer-at-bottom)
-               (window-width . 0.5)
-               (reusable-frames . nil))
-              ("^\\*Help"
-               (display-buffer-reuse-window display-buffer-in-side-window)
-               (side . right)
-               (slot . 1)
-               (window-width . 0.33)
-               (reusable-frames . nil))))
+(use-package ess
+  :init
+  (setq ess-style 'RStudio)
+  :mode
+  (("\\.[rR]" . ess-r-mode)
+   ;; If you also use julia or some other language
+   ("\\.[jJ][lL]" . ess-julia-mode))
+  ;; Add my personal key-map
+  :config
+  ;; ESS process (print all)
+  (setq ess-eval-visibly-p t)
+  ;; Silence asking for aprenth directory
+  (setq ess-ask-for-ess-directory nil)
+  ;; Syntax highlights
+  (setq ess-R-font-lock-keywords
+	'((ess-R-fl-keyword:keywords . t)
+	  (ess-R-fl-keyword:constants . t)
+	  (ess-R-fl-keyword:modifiers . t)
+	  (ess-R-fl-keyword:fun-defs . t)
+	  (ess-R-fl-keyword:assign-ops . t)
+	  (ess-R-fl-keyword:%op% . t)
+	  (ess-fl-keyword:fun-calls . t)
+	  (ess-fl-keyword:numbers . t)
+	  (ess-fl-keyword:operators)
+	  (ess-fl-keyword:delimiters)
+	  (ess-fl-keyword:=)
+	  (ess-R-fl-keyword:F&T . t)))
+  ;; UI
+  (setq display-buffer-alist
+	`(("^\\*R Dired"
+           (display-buffer-reuse-window display-buffer-in-side-window)
+           (side . right)
+           (slot . -1)
+           (window-width . 0.33)
+           (reusable-frames . nil))
+          ("^\\*R"
+           (display-buffer-reuse-window display-buffer-at-bottom)
+           (window-width . 0.5)
+           (reusable-frames . nil))
+          ("^\\*Help"
+           (display-buffer-reuse-window display-buffer-in-side-window)
+           (side . right)
+           (slot . 1)
+           (window-width . 0.33)
+           (reusable-frames . nil))))
+  )
 
- ;;     )
 
-  (use-package ess-view-data
-    :after (ess))
+(use-package ess-view-data
+  :after (ess))
 
-  (use-package tree-sitter-ess-r
-    :after (ess)
-    :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
+;;r语言客户端
+(if (executable-find "R")
+    (use-package tree-sitter-ess-r
+      :after (ess)
+      :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
 
   )
 
