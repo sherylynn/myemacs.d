@@ -83,12 +83,50 @@
   ;;(find-file "~/.emacs.d/packages.el")
   (find-file "~/toys/R/random.R")
   )
+(defun ess-remote-connect ()
+  "Connect to a remote R session using ess-remote."
+  (interactive)
+  ;; 启动一个新的 shell 进程
+  (shell)
+  ;; 设置终端类型，以便远程 R 会话可以正确显示输出
+  (insert "TERM=xterm\n")
+  (comint-send-input)
+  ;; 连接到远程服务器，这里需要替换为你的服务器信息
+  (insert "ssh -Y -C root@localhost\n")
+  (comint-send-input)
+  ;; 启动远程 R 会话
+  (insert "R\n")
+  (comint-send-input)
+  ;; 等待 R 会话启动
+  (sleep-for 2) ;; 等待2秒，确保 R 会话已经启动
+  ;; 连接到远程 R 会话
+  (ess-remote)
+  )
+
+(defun is-portrait-layout ()
+  "判断当前窗口或终端是否为纵向布局（高度大于宽度）。
+在图形界面中，使用 frame 的宽度和高度。在终端中，使用 tty 的宽度和高度。"
+  (if (display-graphic-p) ;; 判断是否为图形界面
+      (> (frame-height) (frame-width)) ;; 图形界面下比较 frame 高度和宽度
+    (> (tty-height) (tty-width)))) ;; 终端模式下比较 tty 高度和宽度
+
+;; 示例：运行并显示结果
+(message "Is portrait layout? %s" (if (is-portrait-layout) "Yes" "No"))
+
 (defun eval-Rstudio()
   "eval R buffer"
   (interactive)
+
+  ;; 安卓终端就远程一下
+  (when (string-equal system-type "android")
+    (ess-remote-connect)
+    )
   (ess-eval-buffer)
   ;; 增加画布大小判断
-  (ess-rdired)
+  (if (is-portrait-layout)
+      (message "竖屏")
+    (ess-rdired)
+    )
   )
 
 ;; (server-start)
