@@ -83,6 +83,13 @@
   ;;(find-file "~/.emacs.d/packages.el")
   (find-file "~/toys/R/random.R")
   )
+(defun eval-Rstudio()
+  "eval R buffer"
+  (interactive)
+  (ess-eval-buffer)
+  ;; 增加画布大小判断
+  (ess-rdired)
+  )
 
 ;; (server-start)
 ;;(setq server-socket-dir "$HOME/.emacs.d/server")
