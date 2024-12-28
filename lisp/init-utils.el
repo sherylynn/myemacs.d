@@ -92,7 +92,7 @@
   (insert "TERM=xterm\n")
   (comint-send-input)
   ;; 连接到远程服务器，这里需要替换为你的服务器信息
-  (insert "ssh -Y -C root@localhost\n")
+  (insert "ssh -Y -C R\n")
   (comint-send-input)
   ;; 启动远程 R 会话
   (insert "R\n")
