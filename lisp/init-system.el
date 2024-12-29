@@ -65,7 +65,6 @@
   (setenv "PATH" (format "%s:%s" "/data/data/com.termux/files/usr/bin"
 			 (getenv "PATH")))
   (push "/data/data/com.termux/files/usr/bin" exec-path)
-  ;;(pop  exec-path)
 
 
 
@@ -83,6 +82,7 @@
     ;;不知道为啥后来就一直能弹出来，原来是改掉了 evil 的影响
     ;;把 tool-bar 位置靠近键盘
     (tool-bar-position 'bottom)
+    ;;一些android下面的路径实际上没权限访问
 
     :init
     ;;还是会引入很多问题,问题的来源其实是因为 android 输入法和 emacs 本身实现的问题，会导致 evil 的 normal 模式下还是会不断键入 hjkl ，可以通过下面这个来关闭输入转译
@@ -92,6 +92,15 @@
 
     ;;如果遇上了 android，设置默认为 insert 以方便唤出键盘 原来一直弹出的问题是来源于 evil 对 mouse 的绑定，所以 touch 键盘会影响
     (add-hook 'evil-mode-hook 'evil-for-android)
+    (delete "/product/bin" exec-path)
+    (delete "/apex/com.android.runtime/bin" exec-path)
+    (delete "/apex/com.android.art/bin" exec-path)
+    (delete "/system_ext/bin" exec-path)
+    (delete "/system/bin" exec-path)
+    (delete "/system/xbin" exec-path)
+    (delete "/odm/bin" exec-path)
+    (delete "/vendor/bin" exec-path)
+    (delete "/vendor/xbin" exec-path)
     )
 
   )
