@@ -110,14 +110,15 @@
   ;; 安卓终端就远程一下
   ;;(when (string-equal system-type "android"))
   ;; 如果没有R环境就远程
-  (if (executable-find "R")
+  (if (not (executable-find "R"))
       (ess-remote-connect)
     )
   (ess-eval-buffer)
-  ;; 增加画布大小判断
-  (if (> (frame-height) (frame-width))
+  ;; 增加画布大小判断，英文字体其实长度需要乘以2才和宽度能对比
+  (if (> (* 2(frame-height)) (frame-width))
       (message "竖屏")
     (ess-rdired)
+    ;;(message "横屏")
     )
   )
 
