@@ -108,8 +108,10 @@
   (interactive)
 
   ;; 安卓终端就远程一下
-  (when (string-equal system-type "android")
-    (ess-remote-connect)
+  ;;(when (string-equal system-type "android"))
+  ;; 如果没有R环境就远程
+  (if (executable-find "R")
+      (ess-remote-connect)
     )
   (ess-eval-buffer)
   ;; 增加画布大小判断

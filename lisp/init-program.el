@@ -128,12 +128,10 @@
   :after (ess))
 
 ;;r语言客户端
-;;(if (executable-find "R")
 (use-package tree-sitter-ess-r
   :after (ess)
   :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
 
-;;)
 
 (unless (< emacs-major-version 29)
   ;;来点语法高亮,自动设置 treesit
