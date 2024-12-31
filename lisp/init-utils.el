@@ -114,6 +114,8 @@
       (ess-remote-connect)
     )
   (ess-eval-buffer)
+  ;;R结果呼唤
+  ;;(my-rstudio-layout)
   ;; 增加画布大小判断，英文字体其实长度需要乘以2才和宽度能对比
   (if (> (* 2(frame-height)) (frame-width))
       (message "竖屏")
