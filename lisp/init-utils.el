@@ -113,7 +113,7 @@
   (if (not (executable-find "R"))
       (ess-remote-connect)
     )
-  (ess-eval-buffer)
+  (ess-eval-buffer-and-go)
   ;;R 结果呼唤
   ;;(my-rstudio-layout)
   ;; 增加画布大小判断，英文字体其实长度需要乘以 2 才和宽度能对比
