@@ -123,6 +123,7 @@
     (ess-rdired)
     ;;(message "横屏")
     )
+  (configure-project)
   )
 
 ;; (server-start)
