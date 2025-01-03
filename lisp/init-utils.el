@@ -98,7 +98,7 @@
   (insert "R\n")
   (comint-send-input)
   ;; 等待 R 会话启动
-  (sleep-for 2) ;; 等待2秒，确保 R 会话已经启动
+  (sleep-for 2) ;; 等待 2 秒，确保 R 会话已经启动
   ;; 连接到远程 R 会话
   (ess-remote)
   )
@@ -109,15 +109,16 @@
 
   ;; 安卓终端就远程一下
   ;;(when (string-equal system-type "android"))
-  ;; 如果没有R环境就远程
+  ;; 如果没有 R 环境就远程
   (if (not (executable-find "R"))
       (ess-remote-connect)
     )
   (ess-eval-buffer)
-  ;;R结果呼唤
+  ;;R 结果呼唤
   ;;(my-rstudio-layout)
-  ;; 增加画布大小判断，英文字体其实长度需要乘以2才和宽度能对比
-  (if (> (* 2(frame-height)) (frame-width))
+  ;; 增加画布大小判断，英文字体其实长度需要乘以 2 才和宽度能对比
+  ;;(if (> (* 2(frame-height)) (frame-width))
+  (if (<  (frame-width) 80)
       (message "竖屏")
     (ess-rdired)
     ;;(message "横屏")
@@ -244,7 +245,7 @@
   (interactive)
   (my-git-pull-ALL-project)
   ;;(if (fboundp 'magit-pull-from-upstream)
-  ;;magit这个命令不适合脚本里
+  ;;magit 这个命令不适合脚本里
   ;;  (magit-pull-from-upstream )
   ;;(message "1")
   ;;(message "2")
