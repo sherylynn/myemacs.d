@@ -152,7 +152,7 @@
       "xx" 'execute-extended-command
       "xe" 'eval-last-sexp
       "xl" 'ess-eval-line
-      "xr" 'eval-Rstudio
+      "xr" 'eval-script
       ;;toggle/tab/todo
       "t" '(:wk "toggle/tab/todo")
       "tt" 'toggle-terminal
