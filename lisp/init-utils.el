@@ -102,6 +102,16 @@
   ;; 连接到远程 R 会话
   (ess-remote)
   )
+(defun eval-script()
+  "eval buffer"
+  (interactive)
+  (when (string-equal major-mode "emacs-lisp-mode")
+    (eval-buffer)
+    )
+  (when (string-equal major-mode "ess-r-mode")
+    (eval-Rstudio)
+    )
+  )
 
 (defun eval-Rstudio()
   "eval R buffer"
