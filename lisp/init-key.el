@@ -151,6 +151,7 @@
       "x" '(:wk "exce func")
       "xx" 'execute-extended-command
       "xe" 'eval-last-sexp
+      "xl" 'ess-eval-line
       "xr" 'eval-Rstudio
       ;;toggle/tab/todo
       "t" '(:wk "toggle/tab/todo")
