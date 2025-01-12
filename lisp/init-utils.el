@@ -102,6 +102,17 @@
   ;; 连接到远程 R 会话
   (ess-remote)
   )
+(defun my-eval-line()
+  "eval buffer"
+  (interactive)
+  (when (string-equal major-mode "emacs-lisp-mode")
+    ;;(eval-region)
+    (eval-last-sexp)
+    )
+  (when (string-equal major-mode "ess-r-mode")
+    (ess-eval-line)
+    )
+  )
 (defun eval-script()
   "eval buffer"
   (interactive)
