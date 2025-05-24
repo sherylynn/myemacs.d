@@ -124,11 +124,13 @@
 ;;加载 org 相关插件（把 org 分离出去了，因为很少动)
 (require 'init-org)
 
-(unless (display-graphic-p)
-  (xterm-mouse-mode 1)
-  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
-  (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
-  )
+;;(unless (display-graphic-p)
+(xterm-mouse-mode 1)
+(global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+(global-set-key (kbd "<wheel-down>") 'scroll-down-line)
+(global-set-key (kbd "<mouse-5>") 'scroll-up-line)
+(global-set-key (kbd "<wheel-up>") 'scroll-up-line)
+;; )
 
 ;;加载 program 配置
 (require 'init-program)
